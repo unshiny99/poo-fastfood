@@ -28,7 +28,7 @@ public class Client {
     @Override
     public String toString(){
         return "Id : " + this.id +
-                "nom : " + this.nom +
-                "prenom : " + this.prenom;
+                ", nom : " + this.nom +
+                ", prenom : " + this.prenom;
     }
 }

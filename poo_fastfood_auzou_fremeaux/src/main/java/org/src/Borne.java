@@ -1,14 +1,13 @@
 package org.src;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.src.ObjetBorne.Commande;
+import org.src.ObjetBorne.Menu.Menu;
 
 public class Borne {
     private Integer id; 
-    private List<Commande> liste_commande;
+    private List<Menu> liste_menu;
     private List<Client> liste_client;
     private Scanner scanner;
     
@@ -16,17 +15,17 @@ public class Borne {
      * Constructeur de Borne
      * @param id Integer : id de la borne
      */
-    public Borne(Integer id){
+    public Borne(Integer id, List<Menu> liste_Menu, List<Client> liste_client){
         this.id = id;
-        this.liste_client = new ArrayList<Client>();
-        this.liste_commande = new ArrayList<Commande>();
+        this.liste_client = liste_client;
+        this.liste_menu = liste_Menu;
         this.scanner = new Scanner(System.in);
     }
 
     /**
      * Lancement de la borne
      */
-    public void idletBorne(){
+    public void runBorne(){
         Integer id = null;
         while(true){
             System.out.println("Identifier vous :");
