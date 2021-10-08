@@ -1,17 +1,17 @@
 package org.src;
 
 public class Client {
+    private static Integer idClient = 1;
     private Integer id;
     private String nom, prenom;
 
     /**
      * Constructeur de client
-     * @param id Integer : identifiant du client
      * @param nom String : nom du client
      * @param prenom String : prenom du client
      */
-    public Client(Integer id, String nom, String prenom){
-        this.id = id;
+    public Client(String nom, String prenom){
+        this.id = idClient++;
         this.nom = nom;
         this.prenom = prenom;
     }

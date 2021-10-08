@@ -6,6 +6,7 @@ public class Menu {
     private String nom;
     private List<Produit> produits;
     private double prix;
+    private double tempsPreparation;
 
     /**
      * Constructeur de menu
@@ -13,12 +14,14 @@ public class Menu {
      * @param produits : liste des produits du menu
      * @param prix : prix du menu
      */
-    public Menu(String nom, List<Produit> produits, double prix) {
+    public Menu(String nom, List<Produit> produits, double prix, double tempsPreparation) {
         this.nom = nom;
         this.produits = produits;
         this.prix = prix;
+        this.tempsPreparation = tempsPreparation;
     }
 
+    // méthodes get et set des attributs
     public String getNom() {
         return nom;
     }
@@ -41,5 +44,13 @@ public class Menu {
 
     public void setPrix(double prix) {
         this.prix = prix;
+    }
+
+    public double getTempsPreparation() {
+        return tempsPreparation;
+    }
+
+    public void setTempsPreparation(double tempsPreparation) {
+        this.tempsPreparation = tempsPreparation;
     }
 }
