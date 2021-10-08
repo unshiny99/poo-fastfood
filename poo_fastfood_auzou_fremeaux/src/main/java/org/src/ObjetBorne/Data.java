@@ -17,8 +17,6 @@ public class Data {
 
     /**
      * Generation des données pour la borne
-     * @param liste_menu List<Menu> : liste des menus
-     * @param liste_client List<Client> : liste des clients
      */
     public static void GenerateData(){
         
@@ -56,7 +54,7 @@ public class Data {
                     new Ingredient("Salade roquette"),
                     new Ingredient("Sauce à la moutarde à l'ancienne"),
                     new Ingredient("Oignons Frits"),
-                    new Ingredient("Oingons Caramélisés"),
+                    new Ingredient("Oignons Caramélisés"),
                     new Ingredient("BUN"),
                     new IngredientCuisable("Viande de boeuf", "Saignant", 3.5)
                 ))),

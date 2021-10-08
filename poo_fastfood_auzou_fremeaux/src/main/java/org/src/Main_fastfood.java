@@ -1,8 +1,4 @@
 package org.src;
-
-import java.util.List;
-
-import org.src.ObjetBorne.Commande;
 import org.src.ObjetBorne.Data;
 import org.src.ObjetBorne.Menu.Menu;
 
@@ -12,7 +8,12 @@ public class Main_fastfood{
 
         Data.GenerateData();
 
-        System.out.println(Data.getListeClient());
+        System.out.println("##### DEBUG #####");
+        for(Menu menu : Data.getListeMenu()){
+            System.out.println(menu);
+            System.out.println(menu.getProduits());
+        }
+        System.out.println("##########");
 
         Borne borne_1 = new Borne(1, Data.getListeMenu(), Data.getListeClient());
         borne_1.runBorne();

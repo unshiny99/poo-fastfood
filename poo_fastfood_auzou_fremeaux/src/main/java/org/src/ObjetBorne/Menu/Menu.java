@@ -21,36 +21,22 @@ public class Menu {
         this.tempsPreparation = tempsPreparation;
     }
 
-    // méthodes get et set des attributs
-    public String getNom() {
-        return nom;
+    /**
+     * Redéfinition de la méthode toString pour Menu
+     */
+    @Override
+    public String toString(){
+        return "Nom du menu : " + this.nom +
+                ", Prix : " + this.prix +
+                ", temps de préparation : " + 
+                this.tempsPreparation;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+    // Getter
+    public String getNom() {return this.nom;}
 
-    public List<Produit> getProduits() {
-        return produits;
-    }
+    public List<Produit> getProduits() {return this.produits;}
 
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
-
-    public double getTempsPreparation() {
-        return tempsPreparation;
-    }
-
-    public void setTempsPreparation(double tempsPreparation) {
-        this.tempsPreparation = tempsPreparation;
-    }
+    public double getPrix() {return this.prix;}
+    public double getTempsPreparation() {return this.tempsPreparation;}
 }

@@ -21,7 +21,7 @@ public class Produit {
         this.nom = nom;
         this.type = type;
         this.isExclusif = isExclusif;
-        this.liste_ingredient = new ArrayList<Ingredient>(liste_ingredient);
+        this.liste_ingredient = liste_ingredient;
     }
 
     /**
@@ -34,7 +34,6 @@ public class Produit {
         this.nom = nom;
         this.type = type;
         this.isExclusif = isExclusif;
-        this.liste_ingredient = null;
     }
 
     /**
@@ -58,6 +57,6 @@ public class Produit {
                 "Type : " + this.type +
                 "Est exclusif : " + this.isExclusif +
                 ", Lists des ingrédients : " + 
-                this.getListIngredients(); 
+                this.liste_ingredient + "\n"; 
     }
 }
