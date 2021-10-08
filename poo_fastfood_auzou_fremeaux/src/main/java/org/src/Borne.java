@@ -1,9 +1,6 @@
 package org.src;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import org.src.ObjetBorne.Menu.Menu;
 
@@ -29,6 +26,7 @@ public class Borne {
      */
     public void runBorne(){
         Integer id = null;
+        String lettre;
         do {
             System.out.println("Identifiez-vous : ");
             try {
@@ -39,6 +37,18 @@ public class Borne {
                 else {
                     System.out.println("Identifiant client inconnu !");
                     id=null;
+
+                    try {
+                        System.out.println("Quitter ? (o/N)");
+                        lettre=this.scanner.next();
+                        if (lettre.equals("o")) {
+                            System.out.println("q bien reconnu");
+                            return;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
             } catch (Exception e) {
                 //e.printStackTrace();
