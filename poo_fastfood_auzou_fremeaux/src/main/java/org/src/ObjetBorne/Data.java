@@ -64,7 +64,7 @@ public class Data {
             new Produit("Moyennes frites", "Accompagnements", false),
             new Produit("Onion Rings (6)", "Accompagnements", false),
             new Produit("Coca-Cola Sans Sucres® (40cl)", "Boisson", false),
-            new Produit("Coca-Cola® (40cl)", "Buisson", false),
+            new Produit("Coca-Cola® (40cl)", "Boisson", false),
             new Produit("Fanta® Goût Original sans sucres (40cl.", "Biosson", false)
         ));
 
