@@ -22,7 +22,7 @@ public class Borne {
     }
 
     /**
-     * Lancement de la borne
+     * Lancement du programme de la borne
      */
     public void runBorne(){
         Integer id = null;
@@ -32,6 +32,7 @@ public class Borne {
             try {
                 id = this.scanner.nextInt();
                 if(this.verifIdentifiantCLient(id)){
+                    System.out.format("Bonjour %s %s\n",this.liste_client.get(id-1).getPrenom(),this.liste_client.get(id-1).getNom());
                     System.out.println("Vous pouvez commencer votre commande !");
                 }
                 else {
@@ -42,8 +43,7 @@ public class Borne {
                         System.out.println("Quitter ? (o/N)");
                         lettre=this.scanner.next();
                         if (lettre.equals("o")) {
-                            System.out.println("q bien reconnu");
-                            return;
+                            return; // on quitte le programme
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -51,11 +51,10 @@ public class Borne {
 
                 }
             } catch (Exception e) {
-                //e.printStackTrace();
                 System.out.println("Merci d'entrer un identifiant correct.");
                 scanner.next();
             }
-        } while(id==null);
+        } while(id==null); // tant que pas d'id correct attribué
         this.scanner.close();
     }
 
