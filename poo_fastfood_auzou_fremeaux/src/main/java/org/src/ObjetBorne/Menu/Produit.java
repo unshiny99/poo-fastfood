@@ -41,7 +41,7 @@ public class Produit {
      * Retourne la liste des noms ingredients du produit
      * @return String : liste des noms d'ingrédients
      */
-    private String getListIngredients(){
+    public String getListIngredients(){
         String liste_string = null;
         for(Ingredient ingredient : this.liste_ingredient){
             liste_string += ingredient.getName() + "\n";
@@ -49,7 +49,7 @@ public class Produit {
         return liste_string;
     }
 
-    private Boolean getIsExclusif(){return this.isExclusif;}
+    public Boolean getIsExclusif(){return this.isExclusif;}
 
     /**
      * Redéfinition de la méthode toString pour Produits
