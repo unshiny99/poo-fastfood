@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.src.ObjetBorne.Commande;
 import org.src.ObjetBorne.Menu.Menu;
+import org.src.ObjetBorne.Menu.Produit;
 
 public class Borne {
     private Integer id; 
@@ -22,6 +23,16 @@ public class Borne {
         this.scanner = new Scanner(System.in);
     }
 
+    public void afficherMenuPrincipal() {
+        System.out.println();
+        System.out.println("1 Menus");
+        System.out.println("2 Compléments");
+        System.out.println("3 Valider panier");
+        System.out.println("4 Mes commandes");
+        System.out.println("5 Annuler et quitter");
+        System.out.println();
+    }
+
     /**
      * Gestion d'une commande sur une borne
      * @param client Client : le client faisant la commande
@@ -29,20 +40,18 @@ public class Borne {
     public void gererCommande(Client client) {
         Commande commande = new Commande(client);
 
-        System.out.println("1 Menus");
-        System.out.println("2 Compléments");
-        System.out.println("3 Valider panier");
-        System.out.println("4 Mes commandes");
-        System.out.println("5 Annuler et quitter");
-
         Scanner sc = new Scanner(System.in);
         int choix = 0;
 
         do {
+            afficherMenuPrincipal();
             choix = sc.nextInt(); // lire le code
             switch (choix) {
                 case 1:
-                    System.out.println("on affichera les menus ici");
+                    //System.out.println("on affichera les menus ici");
+                    for (Menu m : liste_menu) {
+                        System.out.println(m);
+                    }
                     break;
                 case 2:
                     System.out.println("on affichera les compléments ici");
