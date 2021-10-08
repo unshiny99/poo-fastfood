@@ -2,6 +2,7 @@ package org.src;
 
 import java.util.*;
 
+import org.src.ObjetBorne.Commande;
 import org.src.ObjetBorne.Menu.Menu;
 
 public class Borne {
@@ -14,11 +15,52 @@ public class Borne {
      * Constructeur de Borne
      * @param id Integer : id de la borne
      */
-    public Borne(Integer id, List<Menu> liste_Menu, List<Client> liste_client){
+    public Borne(Integer id, List<Menu> liste_menu, List<Client> liste_client){
         this.id = id;
         this.liste_client = liste_client;
-        this.liste_menu = liste_Menu;
+        this.liste_menu = liste_menu;
         this.scanner = new Scanner(System.in);
+    }
+
+    /**
+     * Gestion d'une commande sur une borne
+     * @param client Client : le client faisant la commande
+     */
+    public void gererCommande(Client client) {
+        Commande commande = new Commande(client);
+
+        System.out.println("1 Menus");
+        System.out.println("2 Compléments");
+        System.out.println("3 Valider panier");
+        System.out.println("4 Mes commandes");
+        System.out.println("5 Annuler et quitter");
+
+        Scanner sc = new Scanner(System.in);
+        int choix = 0;
+
+        do {
+            choix = sc.nextInt(); // lire le code
+            switch (choix) {
+                case 1:
+                    System.out.println("on affichera les menus ici");
+                    break;
+                case 2:
+                    System.out.println("on affichera les compléments ici");
+                    break;
+                case 3:
+                    System.out.println("on affichera le temps de la commande et son statut");
+                    break;
+                case 4:
+                    System.out.println("on affichera la liste des commandes");
+                    break;
+                case 5:
+                    System.out.println("Au revoir");
+                    break;
+                default:
+                    System.out.println("Merci de faire un choix correct");
+                    break;
+            }
+        } while (choix!=5);
     }
 
     /**
@@ -32,10 +74,12 @@ public class Borne {
             try {
                 id = this.scanner.nextInt();
                 if(this.verifIdentifiantCLient(id)){
-                    System.out.format("Bonjour %s %s\n",this.liste_client.get(id-1).getPrenom(),this.liste_client.get(id-1).getNom());
+                    Client client = this.liste_client.get(id-1);
+                    System.out.format("Bonjour %s %s\n",client.getPrenom(),client.getNom());
                     System.out.println("Vous pouvez commencer votre commande !");
+                    gererCommande(client);
                 }
-                else {
+                else { // si le client donne autre chose qu'un entier
                     System.out.println("Identifiant client inconnu !");
                     id=null;
 
