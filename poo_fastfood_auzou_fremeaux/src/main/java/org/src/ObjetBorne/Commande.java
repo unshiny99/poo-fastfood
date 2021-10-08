@@ -14,7 +14,7 @@ public class Commande {
     private List<Produit> produits;
     private double tempsPreparation;
     private String statut;
-    private Date date;
+    private String date;
     private double prix;
 
     public Commande(double prix) {
@@ -24,7 +24,8 @@ public class Commande {
         this.tempsPreparation = 0.0;
         this.statut = "En attente de validation";
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        this.date = new Date();
+        Date date = new Date();
+        this.date=dateFormat.format(date);
     }
 
     @Override
@@ -39,11 +40,9 @@ public class Commande {
                 '}';
     }
 
-    /*
     // test pour vérifier que la date est ok
     public static void main(String[] args) {
         Commande c = new Commande(10.0);
         System.out.println(c.toString());
     }
-     */
 }
