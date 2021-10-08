@@ -19,7 +19,7 @@ public class Ingredient {
     }
 
     /**
-     * Constructeur d'ingredient sans cuisson
+     * Constructeur d'ingrédient sans cuisson
      * @param nom String : nom de l'ingrédient
      */
     public Ingredient(String nom){
@@ -32,6 +32,7 @@ public class Ingredient {
     /**
      * Redéfinition de la méthode toString
      */
+    @Override
     public String toString(){
         if(this.cuit){
             return "Nom de l'ingrédient : " + this.nom +
@@ -42,7 +43,7 @@ public class Ingredient {
         }
     }
 
-    // guetter
+    //Getter
 
     public String getName(){return this.nom;}
     public String getTypeCuisson(){return this.type_cuisson;}
