@@ -1,9 +1,9 @@
 package org.src.ObjetBorne;
 
 public class Ingredient {
-    Boolean cuit;
-    Double time_cuisson;
-    String nom, type_cuisson;
+    private Boolean cuit;
+    private Double time_cuisson;
+    private String nom, type_cuisson;
 
     /**
      * Constructeur d'ingrédient avec cuisson
@@ -11,9 +11,9 @@ public class Ingredient {
      * @param type_cuisson String : type de cuisson
      * @param time_cuisson Double : temps de cuisson
      */
-    public Ingredient(String nom,String type_cuisson, Double time_cuisson){
-        this.nom = nom;
+    public Ingredient(String nom, String type_cuisson, Double time_cuisson){
         this.cuit = true;
+        this.nom = nom;
         this.type_cuisson = type_cuisson;
         this.time_cuisson = time_cuisson;
     }
@@ -25,6 +25,8 @@ public class Ingredient {
     public Ingredient(String nom){
         this.nom = nom;
         this.cuit = false;
+        this.type_cuisson = null;
+        this.time_cuisson = null;
     }
 
     /**
