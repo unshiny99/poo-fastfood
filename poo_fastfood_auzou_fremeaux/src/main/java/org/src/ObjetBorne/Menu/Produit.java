@@ -63,5 +63,6 @@ public class Produit {
                 this.liste_ingredient + "\n"; 
     }
 
+    public String getNom(){return this.nom;}
     public String getNomAndType(){return "Nom produit : " + this.nom + ", Type : " + this.type;}
 }
