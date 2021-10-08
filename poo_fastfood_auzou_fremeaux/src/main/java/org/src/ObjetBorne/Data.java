@@ -37,18 +37,18 @@ public class Data {
                     new IngredientCuisable("Bacon", "fumé", 2.0),
                     new IngredientCuisable("Viande de boeuf", "Saignant", 3.5)
                 ))),
-            new Produit("Salade", "Accompagnements", false),
-            new Produit("King Fries Cheese & Bacon", "Accompagnements", false),
-            new Produit("King Fries Cheese & Crispy Onions" , "Accompagnements", false),
-            new Produit("Moyennes frites", "Accompagnements", false),
-            new Produit("Onion Rings (6)", "Accompagnements", false),
+            new Produit("Salade", "Accompagnement", false),
+            new Produit("King Fries Cheese & Bacon", "Accompagnement", false),
+            new Produit("King Fries Cheese & Crispy Onions" , "Accompagnement", false),
+            new Produit("Moyennes frites", "Accompagnement", false),
+            new Produit("Onion Rings (6)", "Accompagnement", false),
             new Produit("Coca-Cola Sans Sucres® (40cl)", "Boisson", false),
             new Produit("Coca-Cola® (40cl)", "Boisson", false),
-            new Produit("Fanta® Goût Original sans sucres (40cl.", "Boisson", false)
+            new Produit("Fanta® Goût Original sans sucres (40cl)", "Boisson", false)
         ));
 
         List<Produit> liste_produits_master_cantal = new ArrayList<Produit>(Arrays.asList(
-            new Produit("master cantal", "Hamburger", true, 
+            new Produit("Master Cantal", "Hamburger", true,
                 new ArrayList<Ingredient>(Arrays.asList(
                     new Ingredient("Cantal AOP"),
                     new Ingredient("Salade roquette"),
@@ -58,14 +58,14 @@ public class Data {
                     new Ingredient("BUN"),
                     new IngredientCuisable("Viande de boeuf", "Saignant", 3.5)
                 ))),
-            new Produit("Salade", "Accompagnements", false),
-            new Produit("King Fries Cheese & Bacon", "Accompagnements", false),
-            new Produit("King Fries Cheese & Crispy Onions" , "Accompagnements", false),
-            new Produit("Moyennes frites", "Accompagnements", false),
-            new Produit("Onion Rings (6)", "Accompagnements", false),
+            new Produit("Salade", "Accompagnement", false),
+            new Produit("King Fries Cheese & Bacon", "Accompagnement", false),
+            new Produit("King Fries Cheese & Crispy Onions" , "Accompagnement", false),
+            new Produit("Moyennes frites", "Accompagnement", false),
+            new Produit("Onion Rings (6)", "Accompagnement", false),
             new Produit("Coca-Cola Sans Sucres® (40cl)", "Boisson", false),
             new Produit("Coca-Cola® (40cl)", "Boisson", false),
-            new Produit("Fanta® Goût Original sans sucres (40cl.", "Biosson", false)
+            new Produit("Fanta® Goût Original sans sucres (40cl)", "Boisson", false)
         ));
 
         List<Produit> liste_produits_wrap_crousty_chevre = new ArrayList<Produit>(Arrays.asList(
@@ -78,14 +78,14 @@ public class Data {
                     new Ingredient("Sauce Cajun"),
                     new Ingredient("Salade")
                 ))),
-            new Produit("Salade", "Accompagnements", false),
-            new Produit("King Fries Cheese & Bacon", "Accompagnements", false),
-            new Produit("King Fries Cheese & Crispy Onions" , "Accompagnements", false),
-            new Produit("Moyennes frites", "Accompagnements", false),
-            new Produit("Onion Rings (6)", "Accompagnements", false),
-            new Produit("Coca-Cola Sans Sucres® (40cl)", "Boissons", false),
-            new Produit("Coca-Cola® (40cl)", "Biossons", false),
-            new Produit("Fanta® Goût Original sans sucres (40cl.", "Boissons", false)
+            new Produit("Salade", "Accompagnement", false),
+            new Produit("King Fries Cheese & Bacon", "Accompagnement", false),
+            new Produit("King Fries Cheese & Crispy Onions" , "Accompagnement", false),
+            new Produit("Moyennes frites", "Accompagnement", false),
+            new Produit("Onion Rings (6)", "Accompagnement", false),
+            new Produit("Coca-Cola Sans Sucres® (40cl)", "Boisson", false),
+            new Produit("Coca-Cola® (40cl)", "Boisson", false),
+            new Produit("Fanta® Goût Original sans sucres (40cl)", "Boisson", false)
         ));
 
         Data.liste_menu = new ArrayList<Menu>(Arrays.asList(
