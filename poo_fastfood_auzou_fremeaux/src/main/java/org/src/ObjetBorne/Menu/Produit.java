@@ -8,26 +8,28 @@ public class Produit {
     private String nom, type;
     private Boolean isExclusif;
     private List<Ingredient> liste_ingredient;
+    private double tempsPreparation;
 
     /**
      * Constructeur de produit, avec ingrédients
      * @param nom String : nom produit
      * @param type String : type du produit
-     * @param Boolean Boolean : si le produit est exclusif à un menu
+     * @param isExclusif Boolean : si le produit est exclusif à un menu
      * @param liste_ingredient List<Ingredient> : liste_d'ingredient
      */
-    public Produit(String nom, String type, Boolean isExclusif, List<Ingredient> liste_ingredient){
+    public Produit(String nom, String type, Boolean isExclusif, List<Ingredient> liste_ingredient, double tempsPreparation){
         this.nom = nom;
         this.type = type;
         this.isExclusif = isExclusif;
         this.liste_ingredient = liste_ingredient;
+        this.tempsPreparation = tempsPreparation;
     }
 
     /**
      * Constructeur de produit, sans ingrédients
      * @param nom String : nom produit
      * @param type String : type du produit
-     * @param Boolean Boolean : si le produit est exclusif à un menu
+     * @param isExclusif Boolean : si le produit est exclusif à un menu
      */
     public Produit(String nom, String type, Boolean isExclusif){
         this.nom = nom;
@@ -59,12 +61,12 @@ public class Produit {
         return "Nom produits : " + this.nom +
                 "Type : " + this.type +
                 "Est exclusif : " + this.isExclusif +
-                ", Lists des ingrédients : " + 
+                ", Liste des ingrédients : " +
                 this.liste_ingredient + "\n"; 
     }
 
     public String getNom(){return this.nom;}
-    public String getNomAndType(){return "Nom produit : " + this.nom + ", Type : " + this.type;}
+    public String getAffichage(){return "Nom produit : " + this.nom + ", Type : " + this.type + ", temps préparation : " + this.tempsPreparation;}
 
     @Override
     public boolean equals(Object o) {

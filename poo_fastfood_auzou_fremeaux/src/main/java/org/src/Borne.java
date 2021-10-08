@@ -69,7 +69,7 @@ public class Borne {
                             }
                             if (!found) {
                                 complements.add(p);
-                                System.out.println(p.getNomAndType());
+                                System.out.println(p.getAffichage());
                             }
                         }
                     }

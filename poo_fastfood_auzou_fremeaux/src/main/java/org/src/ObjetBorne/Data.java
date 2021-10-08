@@ -36,7 +36,7 @@ public class Data {
                     new Ingredient("Oignons"),
                     new IngredientCuisable("Bacon", "fumé", 2.0),
                     new IngredientCuisable("Viande de boeuf", "Saignant", 3.5)
-                ))),
+                )),5.0),
             new Produit("Salade", "Accompagnement", false),
             new Produit("King Fries Cheese & Bacon", "Accompagnement", false),
             new Produit("King Fries Cheese & Crispy Onions" , "Accompagnement", false),
@@ -57,7 +57,7 @@ public class Data {
                     new Ingredient("Oignons Caramélisés"),
                     new Ingredient("BUN"),
                     new IngredientCuisable("Viande de boeuf", "Saignant", 3.5)
-                ))),
+                )),3.0),
             new Produit("Salade", "Accompagnement", false),
             new Produit("King Fries Cheese & Bacon", "Accompagnement", false),
             new Produit("King Fries Cheese & Crispy Onions" , "Accompagnement", false),
@@ -77,7 +77,7 @@ public class Data {
                     new Ingredient("Oignons Frits"),
                     new Ingredient("Sauce Cajun"),
                     new Ingredient("Salade")
-                ))),
+                )),1.5),
             new Produit("Salade", "Accompagnement", false),
             new Produit("King Fries Cheese & Bacon", "Accompagnement", false),
             new Produit("King Fries Cheese & Crispy Onions" , "Accompagnement", false),
