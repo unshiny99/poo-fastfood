@@ -84,8 +84,8 @@ public class Data {
             new Produit("Moyennes frites", "Accompagnements", false),
             new Produit("Onion Rings (6)", "Accompagnements", false),
             new Produit("Coca-Cola Sans Sucres® (40cl)", "Boissons", false),
-            new Produit("Coca-Cola® (40cl)", "Buissons", false),
-            new Produit("Fanta® Goût Original sans sucres (40cl.", "Buissons", false)
+            new Produit("Coca-Cola® (40cl)", "Biossons", false),
+            new Produit("Fanta® Goût Original sans sucres (40cl.", "Boissons", false)
         ));
 
         Data.liste_menu = new ArrayList<Menu>(Arrays.asList(

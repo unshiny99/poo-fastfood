@@ -62,4 +62,6 @@ public class Produit {
                 ", Lists des ingrédients : " + 
                 this.liste_ingredient + "\n"; 
     }
+
+    public String getNomAndType(){return "Nom produit : " + this.nom + ", Type : " + this.type;}
 }
