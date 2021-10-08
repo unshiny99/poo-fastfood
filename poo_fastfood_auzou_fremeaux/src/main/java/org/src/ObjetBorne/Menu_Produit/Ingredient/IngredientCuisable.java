@@ -3,7 +3,7 @@ package org.src.ObjetBorne.Menu_Produit.Ingredient;
 public class IngredientCuisable extends Ingredient{
     private Boolean cuit;
     private Double time_cuisson;
-    private String nom, type_cuisson;
+    private String type_cuisson;
 
     /**
      * Constructeur d'ingrédient avec cuisson
@@ -13,7 +13,6 @@ public class IngredientCuisable extends Ingredient{
      */
     public IngredientCuisable(String nom, String type_cuisson, Double time_cuisson){
         super(nom);
-        this.nom = nom;
         this.type_cuisson = type_cuisson;
         this.time_cuisson = time_cuisson;
     }
@@ -23,17 +22,12 @@ public class IngredientCuisable extends Ingredient{
      */
     @Override
     public String toString(){
-        if(this.cuit){
-            return "Nom de l'ingrédient : " + this.nom +
-                    ", Type de cuisson : "  + this.type_cuisson +
-                    ", Temps de cuisson : " + this.time_cuisson;
-        }else{
-            return "Nom de l'ingrédient : " + this.nom;       
-        }
+        return "Nom de l'ingrédient : " + this.getName() +
+                ", Type de cuisson : "  + this.type_cuisson +
+                ", Temps de cuisson : " + this.time_cuisson;
     }
 
-    //Getter
-
+    // Getter
     public String getName(){return super.getName();}
     public String getTypeCuisson(){return this.type_cuisson;}
     
