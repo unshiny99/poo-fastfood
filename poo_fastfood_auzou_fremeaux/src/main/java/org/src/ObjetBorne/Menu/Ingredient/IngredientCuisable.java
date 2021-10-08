@@ -1,4 +1,4 @@
-package org.src.ObjetBorne.Menu_Produit.Ingredient;
+package org.src.ObjetBorne.Menu.Ingredient;
 
 public class IngredientCuisable extends Ingredient{
     private Boolean cuit;
