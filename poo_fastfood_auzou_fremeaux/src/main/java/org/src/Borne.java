@@ -1,6 +1,7 @@
 package org.src;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,15 +29,24 @@ public class Borne {
      */
     public void idletBorne(){
         Integer id = null;
-        while(true){
-            System.out.println("Identifier vous :");
-            id = this.scanner.nextInt();
-            if(this.verifIdentifiantCLient(id)){
-                /**TODO */
-            }else{
-                System.out.println("Identifiant client inconnue !");
+        do {
+            System.out.println("Identifiez-vous : ");
+            try {
+                id = this.scanner.nextInt();
+                if(this.verifIdentifiantCLient(id)){
+                    System.out.println("Vous pouvez commencer votre commande !");
+                }
+                else {
+                    System.out.println("Identifiant client inconnu !");
+                    id=null;
+                }
+            } catch (Exception e) {
+                //e.printStackTrace();
+                System.out.println("Merci d'entrer un identifiant correct.");
+                scanner.next();
             }
-        }
+        } while(id==null);
+        this.scanner.close();
     }
 
     /**
