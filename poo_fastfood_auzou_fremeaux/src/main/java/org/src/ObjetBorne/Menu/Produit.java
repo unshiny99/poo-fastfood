@@ -1,6 +1,5 @@
 package org.src.ObjetBorne.Menu;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.src.ObjetBorne.Menu.Ingredient.Ingredient;
@@ -36,6 +35,8 @@ public class Produit {
         this.isExclusif = isExclusif;
     }
 
+    // Getter
+
     /**
      * Retourne la liste des noms ingredients du produit
      * @return String : liste des noms d'ingrédients
@@ -47,6 +48,8 @@ public class Produit {
         }
         return liste_string;
     }
+
+    private Boolean getIsExclusif(){return this.isExclusif;}
 
     /**
      * Redéfinition de la méthode toString pour Produits
