@@ -1,7 +1,9 @@
-package org.src.ObjetBorne;
+package org.src.ObjetBorne.Menu_Produit.Produit;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.src.ObjetBorne.Menu_Produit.Ingredient.Ingredient;
 
 public class Produits {
     private String nom;

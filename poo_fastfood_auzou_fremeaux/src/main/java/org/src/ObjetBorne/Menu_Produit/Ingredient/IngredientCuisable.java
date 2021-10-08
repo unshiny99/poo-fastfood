@@ -1,6 +1,6 @@
-package org.src.ObjetBorne;
+package org.src.ObjetBorne.Menu_Produit.Ingredient;
 
-public class IngredientNonCuissable extends Ingredient{
+public class IngredientCuisable extends Ingredient{
     private Boolean cuit;
     private Double time_cuisson;
     private String nom, type_cuisson;
@@ -11,7 +11,7 @@ public class IngredientNonCuissable extends Ingredient{
      * @param type_cuisson String : type de cuisson
      * @param time_cuisson Double : temps de cuisson
      */
-    public IngredientNonCuissable(String nom, String type_cuisson, Double time_cuisson){
+    public IngredientCuisable(String nom, String type_cuisson, Double time_cuisson){
         super(nom);
         this.nom = nom;
         this.type_cuisson = type_cuisson;

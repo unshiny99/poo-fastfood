@@ -1,4 +1,4 @@
-package org.src.ObjetBorne;
+package org.src.ObjetBorne.Menu_Produit.Ingredient;
 
 public class Ingredient {;
     private String nom;
@@ -13,7 +13,7 @@ public class Ingredient {;
      * Redéfinition de la méthode toString
      */
     @Override
-    public String toString(){return "Nom de l'ingrédient : " + this.nom;       }
+    public String toString(){return "Nom de l'ingrédient : " + this.nom;}
 
     //Getter
 

@@ -1,5 +1,8 @@
 package org.src.ObjetBorne;
 
+import org.src.ObjetBorne.Menu_Produit.*;
+import org.src.ObjetBorne.Menu_Produit.Produit.Produits;
+
 import java.util.ArrayList;
 import java.util.List;
 
