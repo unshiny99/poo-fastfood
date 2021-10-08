@@ -54,7 +54,25 @@ public class Borne {
                     }
                     break;
                 case 2:
-                    System.out.println("on affichera les compléments ici");
+                    List<Produit> complements = new ArrayList<>();
+                    boolean found = false;
+                    for (Menu m : liste_menu) {
+                        for( Produit p : m.getProduits()) {
+                            if (!p.getIsExclusif()) {
+                                //System.out.println(complements.size());
+                                for (Produit produit : complements) {
+                                    if (produit.equals(p)) {
+                                        found = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (!found) {
+                                complements.add(p);
+                                System.out.println(p.getNomAndType());
+                            }
+                        }
+                    }
                     break;
                 case 3:
                     System.out.println("on affichera le temps de la commande et son statut");

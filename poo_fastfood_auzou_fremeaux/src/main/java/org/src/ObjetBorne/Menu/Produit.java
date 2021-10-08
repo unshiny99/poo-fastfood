@@ -65,4 +65,12 @@ public class Produit {
 
     public String getNom(){return this.nom;}
     public String getNomAndType(){return "Nom produit : " + this.nom + ", Type : " + this.type;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produit produit = (Produit) o;
+        return nom.equals(produit.nom);
+    }
 }
