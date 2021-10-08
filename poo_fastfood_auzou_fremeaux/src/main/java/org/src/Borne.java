@@ -23,14 +23,15 @@ public class Borne {
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * Affiche le menu de séléction sur le terminal
+     */
     public void afficherMenuPrincipal() {
-        System.out.println();
-        System.out.println("1 Menus");
+        System.out.println("\n1 Menus");
         System.out.println("2 Compléments");
         System.out.println("3 Valider panier");
         System.out.println("4 Mes commandes");
-        System.out.println("5 Annuler et quitter");
-        System.out.println();
+        System.out.println("5 Annuler et quitter\n");
     }
 
     /**
@@ -39,9 +40,8 @@ public class Borne {
      */
     public void gererCommande(Client client) {
         Commande commande = new Commande(client);
-
         Scanner sc = new Scanner(System.in);
-        int choix = 0;
+        Integer choix = 0;
 
         do {
             afficherMenuPrincipal();
@@ -84,24 +84,24 @@ public class Borne {
                 id = this.scanner.nextInt();
                 if(this.verifIdentifiantCLient(id)){
                     Client client = this.liste_client.get(id-1);
-                    System.out.format("Bonjour %s %s\n",client.getPrenom(),client.getNom());
-                    System.out.println("Vous pouvez commencer votre commande !");
+                    System.out.format("Bonjour %s %s\n",
+                                        client.getPrenom(),
+                                        client.getNom(),
+                                        "Vous pouvez commencer votre commande !");
                     gererCommande(client);
-                }
-                else { // si le client donne autre chose qu'un entier
+                }else { 
+                    // si le client donne autre chose qu'un entier
                     System.out.println("Identifiant client inconnu !");
                     id=null;
 
                     try {
                         System.out.println("Quitter ? (o/N)");
                         lettre=this.scanner.next();
-                        if (lettre.equals("o")) {
-                            return; // on quitte le programme
-                        }
+
+                        if (lettre.equals("o")) {return;} // on quitte le programme}
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                 }
             } catch (Exception e) {
                 System.out.println("Merci d'entrer un identifiant correct.");
