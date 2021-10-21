@@ -7,8 +7,8 @@ import org.src.ObjetBorne.Menu.Ingredient.Ingredient;
 public class Produit {
     private String nom, type;
     private Boolean isExclusif;
-    private List<Ingredient> liste_ingredient;
     private double tempsPreparation;
+    private List<Ingredient> liste_ingredient;
 
     /**
      * Constructeur de produit, avec ingrédients
@@ -68,11 +68,11 @@ public class Produit {
     public String getNom(){return this.nom;}
     public String getAffichage(){return "Nom produit : " + this.nom + ", Type : " + this.type + ", temps préparation : " + this.tempsPreparation;}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Produit produit = (Produit) o;
-        return nom.equals(produit.nom);
-    }
+    // @Override
+    // public boolean equals(Object o) {
+    //     if (this == o) return true;
+    //     if (o == null || getClass() != o.getClass()) return false;
+    //     Produit produit = (Produit) o;
+    //     return nom.equals(produit.nom);
+    // }
 }

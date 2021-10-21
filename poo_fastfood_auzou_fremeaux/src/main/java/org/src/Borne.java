@@ -49,15 +49,13 @@ public class Borne {
             switch (choix) {
                 case 1:
                     //System.out.println("on affichera les menus ici");
-                    for (Menu m : liste_menu) {
-                        System.out.println(m);
-                    }
+                    for (Menu m : this.liste_menu) {System.out.println(m);}
                     break;
                 case 2:
-                    List<Produit> complements = new ArrayList<>();
+                    List<Produit> complements = new ArrayList<Produit>();
                     boolean found = false;
                     for (Menu m : liste_menu) {
-                        for( Produit p : m.getProduits()) {
+                        for(Produit p : m.getProduits()) {
                             if (!p.getIsExclusif()) {
                                 //System.out.println(complements.size());
                                 for (Produit produit : complements) {
@@ -111,11 +109,9 @@ public class Borne {
                     // si le client donne autre chose qu'un entier
                     System.out.println("Identifiant client inconnu !");
                     id=null;
-
                     try {
                         System.out.println("Quitter ? (o/N)");
-                        lettre=this.scanner.next();
-
+                        lettre = this.scanner.next();
                         if (lettre.equals("o")) {return;} // on quitte le programme}
                     } catch (Exception e) {
                         e.printStackTrace();

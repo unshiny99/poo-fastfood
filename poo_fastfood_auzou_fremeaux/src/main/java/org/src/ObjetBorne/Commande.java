@@ -24,15 +24,15 @@ public class Commande {
      * Constructeur par défaut d'une commande
      */
     public Commande(Client client) {
-        this.prix = 0;
-        this.id = idCommande++;
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         this.menus = new ArrayList<Menu>();
         this.produits = new ArrayList<Produit>();
+        Date date = new Date();
+        this.date = dateFormat.format(date);
+        this.prix = 0;
+        this.id = idCommande++;
         this.tempsPreparation = 0.0;
         this.statut = "En attente de validation";
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        this.date=dateFormat.format(date);
         this.client = client;
     }
 
@@ -53,9 +53,9 @@ public class Commande {
     // test pour vérifier que la date est ok
     public static void main(String[] args) {
         Client cli = new Client("Frémeaux","Maxime");
+        Client cli2 = new Client("Auzou","Geoffrey");
         Commande c = new Commande(cli);
         Commande cbis = new Commande(cli);
-        Client cli2 = new Client("Auzou","Geoffrey");
         Commande c2 = new Commande(cli2);
         System.out.println(c);
         System.out.println(cbis);

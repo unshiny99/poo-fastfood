@@ -16,6 +16,5 @@ public class Ingredient {;
     public String toString(){return "Nom de l'ingrédient : " + this.nom;}
 
     //Getter
-
     public String getName(){return this.nom;}
 }
