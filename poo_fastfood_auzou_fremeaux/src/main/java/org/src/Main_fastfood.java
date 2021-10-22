@@ -15,7 +15,7 @@ public class Main_fastfood{
         // }
         // System.out.println("##########");
 
-        Borne borne_1 = new Borne(1, Data.getListeMenu(), Data.getListeClient());
+        Borne borne_1 = new Borne(1, Data.getListeMenu(), Data.getListeClient(), Data.getListeProduits());
         borne_1.runBorne();
     }
 }

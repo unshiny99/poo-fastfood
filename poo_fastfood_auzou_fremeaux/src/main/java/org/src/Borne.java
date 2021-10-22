@@ -10,16 +10,18 @@ public class Borne {
     private Integer id; 
     private List<Menu> liste_menu;
     private List<Client> liste_client;
+    private List<Produit> liste_produits;
     private Scanner scanner;
     
     /**
      * Constructeur de Borne
      * @param id Integer : id de la borne
      */
-    public Borne(Integer id, List<Menu> liste_menu, List<Client> liste_client){
+    public Borne(Integer id, List<Menu> liste_menu, List<Client> liste_client, List<Produit> liste_produits){
         this.id = id;
         this.liste_client = liste_client;
         this.liste_menu = liste_menu;
+        this.liste_produits = liste_produits;
         this.scanner = new Scanner(System.in);
     }
 
@@ -48,30 +50,37 @@ public class Borne {
             choix = sc.nextInt(); // lire le code
             switch (choix) {
                 case 1:
-                    //System.out.println("on affichera les menus ici");
-                    for (Menu m : this.liste_menu) {System.out.println(m);}
-                    break;
-                case 2:
-                    List<Produit> complements = new ArrayList<Produit>();
-                    boolean found = false;
-                    for (Menu m : liste_menu) {
-                        for(Produit p : m.getProduits()) {
-                            if (!p.getIsExclusif()) {
-                                //System.out.println(complements.size());
-                                for (Produit produit : complements) {
-                                    if (produit.equals(p)) {
-                                        found = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            if (!found) {
-                                complements.add(p);
-                                System.out.println(p.getAffichage());
-                            }
-                        }
+                    for (Menu menu : this.liste_menu) {
+                        System.out.println(menu);
                     }
                     break;
+                case 2:
+                    Integer nb = 0;
+                    for(Produit produit : this.liste_produits){
+                        System.out.println(nb + " : " + produit.getAffichage());
+                        ++nb;
+                    }
+                    nb = null;
+                    break;
+                    // List<Produit> complements = new ArrayList<Produit>();
+                    // boolean found = false;
+                    // for (Menu menu : liste_menu) {        
+                    //     for(Produit produit : menu.getProduits()) {
+                    //         if (!produit.getIsExclusif()) {
+                    //             //System.out.println(complements.size());
+                    //             for (Produit produit_save : complements) {
+                    //                 if (produit.getNom().equals(produit_save.getNom())) {
+                    //                     found = true;
+                    //                     break;
+                    //                 }
+                    //             }
+                    //         }
+                    //         if (!found) {
+                    //             complements.add(produit);
+                    //             this.afficherCommandeClient(complements);
+                    //         }
+                    //     }
+                    // }
                 case 3:
                     System.out.println("on affichera le temps de la commande et son statut");
                     break;
@@ -137,5 +146,14 @@ public class Borne {
             }
         }
         return false;
+    }
+
+    /**
+     * Afficher la commande
+     */
+    public void afficherCommandeClient(List<Produit> liste){
+        for(Produit commande : liste){
+            System.out.println(commande.getNom());
+        }
     }
 }

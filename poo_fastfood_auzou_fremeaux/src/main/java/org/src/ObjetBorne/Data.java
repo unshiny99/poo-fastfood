@@ -14,6 +14,7 @@ public class Data {
 
     private static List<Menu> liste_menu;
     private static List<Client> liste_client;
+    private static List<Produit> liste_produits_non_exlusif;
 
     /**
      * Generation des données pour la borne
@@ -93,8 +94,20 @@ public class Data {
             new Menu("Master Cantal", liste_produits_master_cantal, 16, 3.5),
             new Menu("Wrap Crousty Chèvre", liste_produits_wrap_crousty_chevre, 10, 2)
         ));
+
+        Data.liste_produits_non_exlusif = new ArrayList<Produit>(Arrays.asList(
+            new Produit("Salade", "Accompagnement", false),
+            new Produit("King Fries Cheese & Bacon", "Accompagnement", false),
+            new Produit("King Fries Cheese & Crispy Onions" , "Accompagnement", false),
+            new Produit("Moyennes frites", "Accompagnement", false),
+            new Produit("Onion Rings (6)", "Accompagnement", false),
+            new Produit("Coca-Cola Sans Sucres® (40cl)", "Boisson", false),
+            new Produit("Coca-Cola® (40cl)", "Boisson", false),
+            new Produit("Fanta® Goût Original sans sucres (40cl)", "Boisson", false)
+        ));
     }
 
     public static List<Client> getListeClient(){return Data.liste_client;}
     public static List<Menu> getListeMenu(){return Data.liste_menu;}
+    public static List<Produit> getListeProduits(){return Data.liste_produits_non_exlusif;}
 }

@@ -32,6 +32,21 @@ public class Menu {
                 this.tempsPreparation;
     }
 
+
+    /**
+     * Afficher uniquement les produits non exclusif au menu
+     */
+    public void afficherProduitNonExclusif(){
+        String res = null;
+        for(Produit produit : this.produits){
+            if(!produit.getIsExclusif()){
+                res += "Nom du produit : " + produit.getNom() +
+                                    ", Prix : " + produit.getPrix() +
+                                    "\n";
+            }
+            System.out.println(res);
+        }
+    }
     // Getter
     public String getNom() {return this.nom;}
 
