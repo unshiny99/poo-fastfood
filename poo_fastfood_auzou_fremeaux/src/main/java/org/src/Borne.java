@@ -114,9 +114,13 @@ public class Borne {
                 Validation de la commande (passage dans liste des commande et vidage du panier)
                  */
                 case 4:
-                    client.addCommande(commande);
+                    if (commande.getSize()==0) {
+                        System.out.println("Impossible de valider un panier vide !");
+                    } else {
+                        client.addCommande(commande);
+                        System.out.println("Commande validée");
+                    }
                     commande.viderAll();
-                    System.out.println("Commande validée");
                     break;
                 /*
                 Afficher toutes les commandes d'un client (et leur état)
