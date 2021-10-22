@@ -69,7 +69,7 @@ public class Commande {
     }
 
     public void viderAll() {
-        this.elements.removeAll(elements);
+        this.elements.clear();
     }
 
     public Integer getSize(){return this.elements.size();}

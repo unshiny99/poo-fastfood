@@ -67,6 +67,8 @@ public class Borne {
                     ajout = scanner_choix.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_menu.size()){
                         commande.addElt(this.liste_menu.get(ajout-1));
+                    }else if(ajout.equals(0)) {
+                        break;
                     }else{
                         System.out.println("Erreur de saisie !");
                     }
@@ -86,6 +88,8 @@ public class Borne {
                     ajout = scanner_choix.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_produits.size()){
                         commande.addElt(this.liste_produits.get(ajout-1));
+                    }else if(ajout.equals(0)) {
+                        break;
                     }else{
                         System.out.println("Erreur de saisie !");
                     }
@@ -101,6 +105,8 @@ public class Borne {
                     ajout = scanner_choix.nextInt();
                     if(ajout > 0 && ajout-1 < commande.getSize()){
                         commande.removeElt(ajout-1);
+                    }else if(ajout.equals(0)) {
+                        break;
                     }else{
                         System.out.println("Erreur de saisie !");
                     }
@@ -111,6 +117,7 @@ public class Borne {
                 case 4:
                     client.addCommande(commande);
                     commande.viderAll();
+                    System.out.println("Commande validé");
                     break;
                 /*
                 Afficher toutes les commandes d'un client (et leur état)
