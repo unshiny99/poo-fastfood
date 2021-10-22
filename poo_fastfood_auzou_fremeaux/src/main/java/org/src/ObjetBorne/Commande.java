@@ -49,6 +49,10 @@ public class Commande {
                 '}';
     }
 
+    public String afficherCommande() {
+        return "date=" + date + ", statut=" + statut + ", prix" + prix;
+    }
+
     public void addElt(Menu menu) { this.elements.add(menu);}
     public void addElt(Produit produit) { this.elements.add(produit);}
 

@@ -110,7 +110,7 @@ public class Borne {
                  */
                 case 4:
                     client.addCommande(commande);
-                    // commande.viderAll();
+                    commande.viderAll();
                     break;
                 /*
                 Afficher toutes les commandes d'un client (et leur état)
