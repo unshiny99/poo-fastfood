@@ -161,12 +161,13 @@ public class Borne {
                     System.out.println("Vous pouvez commencer votre commande !");
                     gererCommande(client);
                 }else { 
-                    // si le client donne autre chose qu'un entier
+                    // si identifiant inconnu
                     System.out.println("Identifiant client inconnu !");
                 }
             } catch (Exception e) {
+                // si le client donne autre chose qu'un entier
                 System.out.println("Merci d'entrer un identifiant correct.");
-                e.printStackTrace();
+                scanner.next();
             }
         } while(true); // tant que pas d'id correct attribué
     }
