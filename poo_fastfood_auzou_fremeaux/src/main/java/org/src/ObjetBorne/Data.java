@@ -96,14 +96,14 @@ public class Data {
         ));
 
         Data.liste_produits_non_exlusif = new ArrayList<Produit>(Arrays.asList(
-            new Produit("Salade", "Accompagnement", false),
-            new Produit("King Fries Cheese & Bacon", "Accompagnement", false),
-            new Produit("King Fries Cheese & Crispy Onions" , "Accompagnement", false),
-            new Produit("Moyennes frites", "Accompagnement", false),
-            new Produit("Onion Rings (6)", "Accompagnement", false),
-            new Produit("Coca-Cola Sans Sucres® (40cl)", "Boisson", false),
-            new Produit("Coca-Cola® (40cl)", "Boisson", false),
-            new Produit("Fanta® Goût Original sans sucres (40cl)", "Boisson", false)
+            new Produit("Salade", "Accompagnement", 2.0 ,false),
+            new Produit("King Fries Cheese & Bacon", "Accompagnement", 3.0 ,false),
+            new Produit("King Fries Cheese & Crispy Onions" , "Accompagnement", 3.5, false),
+            new Produit("Moyennes frites", "Accompagnement", 2.0 ,false),
+            new Produit("Onion Rings (6)", "Accompagnement", 4.0 ,false),
+            new Produit("Coca-Cola Sans Sucres® (40cl)", "Boisson", 3.0, false),
+            new Produit("Coca-Cola® (40cl)", "Boisson", 2.5, false),
+            new Produit("Fanta® Goût Original sans sucres (40cl)", "Boisson", 3.5, false)
         ));
     }
 
