@@ -44,7 +44,7 @@ public class Client {
      */
     public void afficherCommandes(){
         for(Commande commande : this.liste_commande){
-            System.out.println(commande);
+            System.out.println(commande.afficherCommande());
         }
     }
 
