@@ -31,9 +31,10 @@ public class Borne {
     public void afficherMenuPrincipal() {
         System.out.println("\n1 Menus");
         System.out.println("2 Compléments");
-        System.out.println("3 Valider panier");
-        System.out.println("4 Mes commandes");
-        System.out.println("5 Annuler et quitter\n");
+        System.out.println("3 Afficher Panier");
+        System.out.println("4 Valider panier");
+        System.out.println("5 Mes commandes");
+        System.out.println("6 Annuler et quitter\n");
     }
 
     /**
@@ -41,26 +42,48 @@ public class Borne {
      * @param client Client : le client faisant la commande
      */
     public void gererCommande(Client client) {
+        List<Object> panier = new ArrayList<Object>();
         Commande commande = new Commande(client);
-        Scanner sc = new Scanner(System.in);
-        Integer choix = 0;
+        Scanner scanner_menu = new Scanner(System.in);
+        Scanner scanner_choix = new Scanner(System.in);
+        Integer choix, ajout = 0;
+        Integer nb = 1;
 
         do {
             afficherMenuPrincipal();
-            choix = sc.nextInt(); // lire le code
+            choix = scanner_menu.nextInt();
             switch (choix) {
                 case 1:
+                    this.separation();
                     for (Menu menu : this.liste_menu) {
-                        System.out.println(menu);
+                        System.out.println(nb + " : " + menu);
+                        ++nb;
+                    }
+                    this.separation();
+                    nb = 1;
+                    System.out.println("Faîte un choix ? (Tapper 0 pour revenir en arrière)");
+                    ajout = scanner_choix.nextInt();
+                    if(ajout > 0 && ajout-1 < this.liste_menu.size()){
+                        panier.add(this.liste_menu.get(ajout-1));
+                    }else{
+                        System.out.println("Erreur de saisi !");
                     }
                     break;
                 case 2:
-                    Integer nb = 0;
+                    this.separation();
                     for(Produit produit : this.liste_produits){
                         System.out.println(nb + " : " + produit.getAffichage());
                         ++nb;
                     }
-                    nb = null;
+                    this.separation();
+                    nb = 1;
+                    System.out.println("Faîte un choix ? (Tapper 0 pour revenir en arrière)");
+                    ajout = scanner_choix.nextInt();
+                    if(ajout > 0 && ajout-1 < this.liste_produits.size()){
+                        panier.add(this.liste_produits.get(ajout-1));
+                    }else{
+                        System.out.println("Erreur de saisi !");
+                    }
                     break;
                     // List<Produit> complements = new ArrayList<Produit>();
                     // boolean found = false;
@@ -82,19 +105,28 @@ public class Borne {
                     //     }
                     // }
                 case 3:
-                    System.out.println("on affichera le temps de la commande et son statut");
+                    this.separation();
+                    for(Object object : panier){
+                        System.out.println(object);
+                    }
+                    this.separation();
                     break;
                 case 4:
-                    System.out.println("on affichera la liste des commandes");
+                    System.out.println("Valider Panier");
                     break;
                 case 5:
+                    System.out.println("Mes commandes");
+                    break;
+                case 6:
                     System.out.println("Au revoir");
                     break;
                 default:
                     System.out.println("Merci de faire un choix correct");
                     break;
             }
-        } while (choix!=5);
+        } while (choix!=6);
+        scanner_choix.close();
+        scanner_menu.close();
     }
 
     /**
@@ -156,4 +188,6 @@ public class Borne {
             System.out.println(commande.getNom());
         }
     }
+
+    private void separation(){System.out.println("############################################################");}
 }

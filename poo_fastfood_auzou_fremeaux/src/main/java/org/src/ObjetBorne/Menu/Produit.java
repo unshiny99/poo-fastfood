@@ -91,8 +91,8 @@ public class Produit {
     @Override
     public String toString(){
         return "Nom produits : " + this.nom +
-                "Type : " + this.type +
-                "Est exclusif : " + this.isExclusif +
+                ", Type : " + this.type +
+                ", Est exclusif : " + this.isExclusif +
                 ", Liste des ingrédients : " +
                 this.liste_ingredient + "\n"; 
     }
