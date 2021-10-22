@@ -1,9 +1,15 @@
 package org.src;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.src.ObjetBorne.Commande;
+
 public class Client {
     private static Integer idClient = 1;
     private Integer id;
     private String nom, prenom;
+    private List<Commande> liste_commande;
 
     /**
      * Constructeur de client
@@ -14,6 +20,7 @@ public class Client {
         this.id = idClient++;
         this.nom = nom;
         this.prenom = prenom;
+        this.liste_commande = new ArrayList<Commande>();
     }
 
     // Getter
@@ -30,5 +37,22 @@ public class Client {
         return "Id : " + this.id +
                 ", nom : " + this.nom +
                 ", prenom : " + this.prenom;
+    }
+
+    /**
+     * Afficher les commandes du client
+     */
+    public void afficherCommandes(){
+        for(Commande commande : this.liste_commande){
+            System.out.println(commande);
+        }
+    }
+
+    /**
+     * Ajout d'une commande 
+     * @param commande Commande du client
+     */
+    public void addCommande(Commande commande){
+        this.liste_commande.add(commande);
     }
 }

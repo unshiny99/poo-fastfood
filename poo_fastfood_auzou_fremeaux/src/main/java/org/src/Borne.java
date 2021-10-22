@@ -97,10 +97,11 @@ public class Borne {
                     }
                     break;
                 case 4:
-                    System.out.println("Valider Panier");
+
+                    client.addCommande(commande);
                     break;
                 case 5:
-                    System.out.println("Mes commandes");
+                    client.afficherCommandes();
                     break;
                 case 6:
                     System.out.println("Au revoir");
