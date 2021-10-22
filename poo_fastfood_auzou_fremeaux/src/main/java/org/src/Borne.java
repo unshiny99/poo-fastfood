@@ -52,6 +52,9 @@ public class Borne {
             afficherMenuPrincipal();
             choix = scanner_menu.nextInt();
             switch (choix) {
+                /*
+                Liste des menus
+                 */
                 case 1:
                     this.separation();
                     for (Menu menu : this.liste_menu) {
@@ -68,6 +71,9 @@ public class Borne {
                         System.out.println("Erreur de saisie !");
                     }
                     break;
+                /*
+                Liste des compléments (ou produits)
+                 */
                 case 2:
                     this.separation();
                     for(Produit produit : this.liste_produits){
@@ -84,6 +90,9 @@ public class Borne {
                         System.out.println("Erreur de saisie !");
                     }
                     break;
+                /*
+                Affichage du panier (et suppression éventuelle d'un article)
+                 */
                 case 3:
                     this.separation();
                     commande.listerAll();
@@ -96,16 +105,28 @@ public class Borne {
                         System.out.println("Erreur de saisie !");
                     }
                     break;
+                /*
+                Validation de la commande (passage dans liste des commande et vidage du panier)
+                 */
                 case 4:
                     commande.viderAll();
                     client.addCommande(commande);
                     break;
+                /*
+                Afficher toutes les commandes d'un client (et leur état)
+                 */
                 case 5:
                     client.afficherCommandes();
                     break;
+                /*
+                Quitter l'application
+                 */
                 case 6:
                     System.out.println("Au revoir");
                     break;
+                /*
+                Cas par défaut (choix incorrect)
+                 */
                 default:
                     System.out.println("Merci de faire un choix correct");
                     break;
@@ -116,7 +137,7 @@ public class Borne {
     }
 
     /**
-     * Lancement du programme de la borne
+     * Lancement du programme principal de la borne
      */
     public void runBorne(){
         Integer id = null;
@@ -166,14 +187,6 @@ public class Borne {
         return false;
     }
 
-    /**
-     * Afficher la commande
-     */
-    public void afficherCommandeClient(List<Produit> liste){
-        for(Produit commande : liste){
-            System.out.println(commande.getNom());
-        }
-    }
-
+    // champ de séparation pour l'affichage (esthétique)
     private void separation(){System.out.println("############################################################");}
 }
