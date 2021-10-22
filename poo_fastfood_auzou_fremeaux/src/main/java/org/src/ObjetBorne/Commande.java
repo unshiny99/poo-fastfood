@@ -71,14 +71,14 @@ public class Commande {
     public Integer getSize(){return this.elements.size();}
 
     // test pour vérifier que la date est ok
-    public static void main(String[] args) {
-        Client cli = new Client("Frémeaux","Maxime");
-        Client cli2 = new Client("Auzou","Geoffrey");
-        Commande c = new Commande(cli);
-        Commande cbis = new Commande(cli);
-        Commande c2 = new Commande(cli2);
-        System.out.println(c);
-        System.out.println(cbis);
-        System.out.println(c2);
-    }
+    // public static void main(String[] args) {
+    //     Client cli = new Client("Frémeaux","Maxime");
+    //     Client cli2 = new Client("Auzou","Geoffrey");
+    //     Commande c = new Commande(cli);
+    //     Commande cbis = new Commande(cli);
+    //     Commande c2 = new Commande(cli2);
+    //     System.out.println(c);
+    //     System.out.println(cbis);
+    //     System.out.println(c2);
+    // }
 }

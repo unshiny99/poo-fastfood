@@ -109,8 +109,8 @@ public class Borne {
                 Validation de la commande (passage dans liste des commande et vidage du panier)
                  */
                 case 4:
-                    commande.viderAll();
                     client.addCommande(commande);
+                    // commande.viderAll();
                     break;
                 /*
                 Afficher toutes les commandes d'un client (et leur état)
