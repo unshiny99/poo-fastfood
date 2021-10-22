@@ -42,7 +42,6 @@ public class Borne {
      * @param client Client : le client faisant la commande
      */
     public void gererCommande(Client client) {
-        List<Object> panier = new ArrayList<Object>();
         Commande commande = new Commande(client);
         Scanner scanner_menu = new Scanner(System.in);
         Scanner scanner_choix = new Scanner(System.in);
@@ -61,12 +60,12 @@ public class Borne {
                     }
                     this.separation();
                     nb = 1;
-                    System.out.println("Faîte un choix ? (Tapper 0 pour revenir en arrière)");
+                    System.out.println("Faites un choix ? (Taper 0 pour revenir en arrière)");
                     ajout = scanner_choix.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_menu.size()){
-                        panier.add(this.liste_menu.get(ajout-1));
+                        commande.addElt(this.liste_menu.get(ajout-1));
                     }else{
-                        System.out.println("Erreur de saisi !");
+                        System.out.println("Erreur de saisie !");
                     }
                     break;
                 case 2:
@@ -77,39 +76,25 @@ public class Borne {
                     }
                     this.separation();
                     nb = 1;
-                    System.out.println("Faîte un choix ? (Tapper 0 pour revenir en arrière)");
+                    System.out.println("Faites un choix ? (Taper 0 pour revenir en arrière)");
                     ajout = scanner_choix.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_produits.size()){
-                        panier.add(this.liste_produits.get(ajout-1));
+                        commande.addElt(this.liste_produits.get(ajout-1));
                     }else{
-                        System.out.println("Erreur de saisi !");
+                        System.out.println("Erreur de saisie !");
                     }
                     break;
-                    // List<Produit> complements = new ArrayList<Produit>();
-                    // boolean found = false;
-                    // for (Menu menu : liste_menu) {        
-                    //     for(Produit produit : menu.getProduits()) {
-                    //         if (!produit.getIsExclusif()) {
-                    //             //System.out.println(complements.size());
-                    //             for (Produit produit_save : complements) {
-                    //                 if (produit.getNom().equals(produit_save.getNom())) {
-                    //                     found = true;
-                    //                     break;
-                    //                 }
-                    //             }
-                    //         }
-                    //         if (!found) {
-                    //             complements.add(produit);
-                    //             this.afficherCommandeClient(complements);
-                    //         }
-                    //     }
-                    // }
                 case 3:
                     this.separation();
-                    for(Object object : panier){
-                        System.out.println(object);
-                    }
+                    commande.listerAll();
                     this.separation();
+                    System.out.println("Supprimer un élément ? (Taper 0 pour revenir en arrière)");
+                    ajout = scanner_choix.nextInt();
+                    if(ajout > 0 && ajout-1 < commande.getSize()){
+                        commande.removeElt(ajout-1);
+                    }else{
+                        System.out.println("Erreur de saisie !");
+                    }
                     break;
                 case 4:
                     System.out.println("Valider Panier");
@@ -143,8 +128,8 @@ public class Borne {
                     Client client = this.liste_client.get(id-1);
                     System.out.format("Bonjour %s %s\n",
                                         client.getPrenom(),
-                                        client.getNom(),
-                                        "Vous pouvez commencer votre commande !");
+                                        client.getNom());
+                    System.out.println("Vous pouvez commencer votre commande !");
                     gererCommande(client);
                 }else { 
                     // si le client donne autre chose qu'un entier

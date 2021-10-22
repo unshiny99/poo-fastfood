@@ -12,8 +12,9 @@ import org.src.ObjetBorne.Menu.*;
 public class Commande {
     private static int idCommande = 1;
     private int id;
-    private List<Menu> menus;
-    private List<Produit> produits;
+    private List<Object> elements;
+    //private List<Menu> menus;
+    //private List<Produit> produits;
     private double tempsPreparation;
     private String statut;
     private String date;
@@ -25,8 +26,9 @@ public class Commande {
      */
     public Commande(Client client) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        this.menus = new ArrayList<Menu>();
-        this.produits = new ArrayList<Produit>();
+        //this.menus = new ArrayList<Menu>();
+        //this.produits = new ArrayList<Produit>();
+        this.elements = new ArrayList<Object>();
         Date date = new Date();
         this.date = dateFormat.format(date);
         this.prix = 0;
@@ -40,8 +42,7 @@ public class Commande {
     public String toString() {
         return "Commande{" +
                 "id=" + id +
-                ", menus=" + menus +
-                ", produits=" + produits +
+                ", elements=" + elements +
                 ", tempsPreparation=" + tempsPreparation +
                 ", statut='" + statut + '\'' +
                 ", date='" + date + '\'' +
@@ -49,6 +50,23 @@ public class Commande {
                 ", client=" + client +
                 '}';
     }
+
+    public void addElt(Menu menu) { this.elements.add(menu);}
+    public void addElt(Produit produit) { this.elements.add(produit);}
+
+    public void removeElt(int i) {
+        this.elements.remove(i);
+    }
+
+    public void listerAll() {
+        int nb=1;
+        for(Object element : this.elements){
+            System.out.println(nb + " : " + element);
+            nb++;
+        }
+    }
+
+    public Integer getSize(){return this.elements.size();}
 
     // test pour vérifier que la date est ok
     public static void main(String[] args) {

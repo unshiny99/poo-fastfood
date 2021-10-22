@@ -94,7 +94,7 @@ public class Produit {
                 ", Type : " + this.type +
                 ", Est exclusif : " + this.isExclusif +
                 ", Liste des ingrédients : " +
-                this.liste_ingredient + "\n"; 
+                this.liste_ingredient;
     }
 
     public String getNom(){return this.nom;}
