@@ -43,14 +43,12 @@ public class Borne {
      */
     public void gererCommande(Client client) {
         Commande commande = new Commande(client);
-        Scanner scanner_menu = new Scanner(System.in);
-        Scanner scanner_choix = new Scanner(System.in);
         Integer choix, ajout = 0;
         Integer nb = 1;
 
         do {
             afficherMenuPrincipal();
-            choix = scanner_menu.nextInt();
+            choix = this.scanner.nextInt();
             switch (choix) {
                 /*
                 Liste des menus
@@ -64,7 +62,7 @@ public class Borne {
                     this.separation();
                     nb = 1;
                     System.out.println("Faites un choix ? (Taper 0 pour revenir en arrière)");
-                    ajout = scanner_choix.nextInt();
+                    ajout = this.scanner.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_menu.size()){
                         commande.addElt(this.liste_menu.get(ajout-1));
                     }else if(ajout.equals(0)) {
@@ -85,7 +83,7 @@ public class Borne {
                     this.separation();
                     nb = 1;
                     System.out.println("Faites un choix ? (Taper 0 pour revenir en arrière)");
-                    ajout = scanner_choix.nextInt();
+                    ajout = this.scanner.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_produits.size()){
                         commande.addElt(this.liste_produits.get(ajout-1));
                     }else if(ajout.equals(0)) {
@@ -103,7 +101,7 @@ public class Borne {
                     System.out.println("Coût total de la commande : " + commande.getPrixAll());
                     this.separation();
                     System.out.println("Supprimer un élément ? (Taper 0 pour revenir en arrière)");
-                    ajout = scanner_choix.nextInt();
+                    ajout = scanner.nextInt();
                     if(ajout > 0 && ajout-1 < commande.getSize()){
                         commande.removeElt(ajout-1);
                     }else if(ajout.equals(0)) {
@@ -140,8 +138,6 @@ public class Borne {
                     break;
             }
         } while (choix!=6);
-        scanner_choix.close();
-        scanner_menu.close();
     }
 
     /**
@@ -149,7 +145,6 @@ public class Borne {
      */
     public void runBorne(){
         Integer id = null;
-        String lettre;
         do {
             System.out.println("Identifiez-vous : ");
             try {
@@ -164,20 +159,13 @@ public class Borne {
                 }else { 
                     // si le client donne autre chose qu'un entier
                     System.out.println("Identifiant client inconnu !");
-                    id=null;
-                    try {
-                        System.out.println("Quitter ? (o/N)");
-                        lettre = this.scanner.next();
-                        if (lettre.equals("o")) {return;} // on quitte le programme}
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    break;
                 }
             } catch (Exception e) {
                 System.out.println("Merci d'entrer un identifiant correct.");
-                scanner.next();
+                e.printStackTrace();
             }
-        } while(id==null); // tant que pas d'id correct attribué
+        } while(true); // tant que pas d'id correct attribué
         this.scanner.close();
     }
 
