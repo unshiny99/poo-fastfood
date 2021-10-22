@@ -117,7 +117,7 @@ public class Borne {
                 case 4:
                     client.addCommande(commande);
                     commande.viderAll();
-                    System.out.println("Commande validé");
+                    System.out.println("Commande validée");
                     break;
                 /*
                 Afficher toutes les commandes d'un client (et leur état)

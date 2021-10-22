@@ -90,7 +90,7 @@ public class Produit {
      */
     @Override
     public String toString(){
-        return "Nom produits : " + this.nom +
+        return "Nom produit : " + this.nom +
                 ", Type : " + this.type +
                 ", Est exclusif : " + this.isExclusif +
                 ", Liste des ingrédients : " +
@@ -99,13 +99,9 @@ public class Produit {
 
     public String getNom(){return this.nom;}
     public Double getPrix(){return this.prix;}
-    public String getAffichage(){return "Nom produit : " + this.nom + ", Prix : " + this.prix;}
+    public String getAffichage(){return "Nom produit : " + this.nom + ", Prix : " + this.prix + ", tempsPreparation : " + this.tempsPreparation;}
 
-    // @Override
-    // public boolean equals(Object o) {
-    //     if (this == o) return true;
-    //     if (o == null || getClass() != o.getClass()) return false;
-    //     Produit produit = (Produit) o;
-    //     return nom.equals(produit.nom);
-    // }
+    public double getTempsPreparation() {
+        return tempsPreparation;
+    }
 }

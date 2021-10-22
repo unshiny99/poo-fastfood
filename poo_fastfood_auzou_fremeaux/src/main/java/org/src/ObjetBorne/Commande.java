@@ -13,8 +13,6 @@ public class Commande {
     private static int idCommande = 1;
     private int id;
     private List<Object> elements;
-    //private List<Menu> menus;
-    //private List<Produit> produits;
     private double tempsPreparation;
     private String statut;
     private String date;
@@ -50,20 +48,40 @@ public class Commande {
     }
 
     public String afficherCommande() {
-        return "date=" + date + ", statut=" + statut + ", prix" + prix;
+        return "date=" + date + ", statut=" + statut + ", prix=" + prix + ", tempsPreparation=" + tempsPreparation;
     }
 
-    public void addElt(Menu menu) { this.elements.add(menu);}
-    public void addElt(Produit produit) { this.elements.add(produit);}
+    public void addElt(Menu menu) {
+        this.elements.add(menu);
+        this.tempsPreparation += menu.getTempsPreparation();
+        this.prix += menu.getPrix();
+    }
+    public void addElt(Produit produit) {
+        this.elements.add(produit);
+        this.tempsPreparation += produit.getTempsPreparation();
+        this.prix += produit.getPrix();
+    }
 
     public void removeElt(int i) {
+        Object o = this.elements.get(i);
+        if (o instanceof Menu) {
+            this.tempsPreparation -= ((Menu) o).getTempsPreparation();
+            this.prix -= ((Menu) o).getPrix();
+        }
+        if (o instanceof Produit) {
+            this.tempsPreparation -= ((Produit) o).getTempsPreparation();
+            this.prix -= ((Produit) o).getPrix();
+        }
         this.elements.remove(i);
     }
 
     public void listerAll() {
         int nb=1;
         for(Object element : this.elements){
-            System.out.println(nb + " : " + element);
+            if (element instanceof Produit)
+                System.out.println(nb + " : " + ((Produit) element).getAffichage());
+            else
+                System.out.println(nb + " : " + element);
             nb++;
         }
     }
@@ -73,16 +91,4 @@ public class Commande {
     }
 
     public Integer getSize(){return this.elements.size();}
-
-    // test pour vérifier que la date est ok
-    // public static void main(String[] args) {
-    //     Client cli = new Client("Frémeaux","Maxime");
-    //     Client cli2 = new Client("Auzou","Geoffrey");
-    //     Commande c = new Commande(cli);
-    //     Commande cbis = new Commande(cli);
-    //     Commande c2 = new Commande(cli2);
-    //     System.out.println(c);
-    //     System.out.println(cbis);
-    //     System.out.println(c2);
-    // }
 }
