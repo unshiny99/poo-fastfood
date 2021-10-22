@@ -26,15 +26,13 @@ public class Commande {
      */
     public Commande(Client client) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        //this.menus = new ArrayList<Menu>();
-        //this.produits = new ArrayList<Produit>();
         this.elements = new ArrayList<Object>();
         Date date = new Date();
         this.date = dateFormat.format(date);
         this.prix = 0;
         this.id = idCommande++;
         this.tempsPreparation = 0.0;
-        this.statut = "En attente de validation";
+        this.statut = "En préparation";
         this.client = client;
     }
 
@@ -64,6 +62,10 @@ public class Commande {
             System.out.println(nb + " : " + element);
             nb++;
         }
+    }
+
+    public void viderAll() {
+        this.elements.removeAll(elements);
     }
 
     public Integer getSize(){return this.elements.size();}

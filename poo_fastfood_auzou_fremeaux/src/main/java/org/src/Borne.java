@@ -97,7 +97,7 @@ public class Borne {
                     }
                     break;
                 case 4:
-
+                    commande.viderAll();
                     client.addCommande(commande);
                     break;
                 case 5:
