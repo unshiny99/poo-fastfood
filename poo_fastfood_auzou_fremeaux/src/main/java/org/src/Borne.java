@@ -100,6 +100,7 @@ public class Borne {
                 case 3:
                     this.separation();
                     commande.listerAll();
+                    System.out.println("Coût total de la commande : " + commande.getPrixAll());
                     this.separation();
                     System.out.println("Supprimer un élément ? (Taper 0 pour revenir en arrière)");
                     ajout = scanner_choix.nextInt();

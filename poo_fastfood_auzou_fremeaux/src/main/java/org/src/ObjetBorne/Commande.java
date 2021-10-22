@@ -91,4 +91,5 @@ public class Commande {
     }
 
     public Integer getSize(){return this.elements.size();}
+    public Double getPrixAll(){return this.prix;}
 }
