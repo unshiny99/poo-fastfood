@@ -11,7 +11,6 @@ public class Borne {
     private List<Menu> liste_menu;
     private List<Client> liste_client;
     private List<Produit> liste_produits;
-    private Scanner scanner;
     
     /**
      * Constructeur de Borne
@@ -22,7 +21,6 @@ public class Borne {
         this.liste_client = liste_client;
         this.liste_menu = liste_menu;
         this.liste_produits = liste_produits;
-        this.scanner = new Scanner(System.in);
     }
 
     /**
