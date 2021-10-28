@@ -1,6 +1,8 @@
 package org.src;
 import org.src.ObjetBorne.Data;
 // import org.src.ObjetBorne.Menu.Menu;
+import org.src.ObjetBorne.Thread.BorneCommandes;
+import org.src.ObjetBorne.Thread.Employer;
 
 public class Main_fastfood{
     public static void main(String[] args){
@@ -8,14 +10,16 @@ public class Main_fastfood{
 
         Data.GenerateData();
 
-        // System.out.println("##### DEBUG #####");
-        // for(Menu menu : Data.getListeMenu()){
-        //     System.out.println(menu);
-        //     System.out.println(menu.getProduits());
-        // }
-        // System.out.println("##########");
+        BorneCommandes borneCommandes = new BorneCommandes();
 
-        Borne borne_1 = new Borne(1, Data.getListeMenu(), Data.getListeClient(), Data.getListeProduits());
-        borne_1.runBorne();
+        Employer employer_1 = new Employer(0, "Dupond", "Proba", borneCommandes);
+
+        Borne borne_1 = new Borne(1, Data.getListeMenu(),
+                Data.getListeClient(),
+                Data.getListeProduits(),
+                borneCommandes);
+
+        employer_1.start();
+        borne_1.runBorne(); // démarrage de la borne (application principale)
     }
 }

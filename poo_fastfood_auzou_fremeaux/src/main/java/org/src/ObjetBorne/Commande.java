@@ -90,6 +90,9 @@ public class Commande {
         this.elements.clear();
     }
 
+    public void setStatus(String preparation){this.statut = preparation;}
+
     public Integer getSize(){return this.elements.size();}
     public Double getPrixAll(){return this.prix;}
+    public Double getTempsPreparation(){return this.tempsPreparation;}
 }

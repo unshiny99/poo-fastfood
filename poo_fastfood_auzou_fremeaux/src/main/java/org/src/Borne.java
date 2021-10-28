@@ -5,24 +5,27 @@ import java.util.*;
 import org.src.ObjetBorne.Commande;
 import org.src.ObjetBorne.Menu.Menu;
 import org.src.ObjetBorne.Menu.Produit;
+import org.src.ObjetBorne.Thread.BorneCommandes;
 
 public class Borne {
-    private Integer id; 
+    private Integer id;
     private List<Menu> liste_menu;
     private List<Client> liste_client;
     private List<Produit> liste_produits;
     private Scanner scanner;
-    
+    private BorneCommandes borneCommandes;
+
     /**
      * Constructeur de Borne
      * @param id Integer : id de la borne
      */
-    public Borne(Integer id, List<Menu> liste_menu, List<Client> liste_client, List<Produit> liste_produits){
+    public Borne(Integer id, List<Menu> liste_menu, List<Client> liste_client, List<Produit> liste_produits, BorneCommandes borneCommandes){
         this.id = id;
         this.liste_client = liste_client;
         this.liste_menu = liste_menu;
         this.liste_produits = liste_produits;
         this.scanner = new Scanner(System.in);
+        this.borneCommandes = borneCommandes;
     }
 
     /**
@@ -118,6 +121,7 @@ public class Borne {
                         System.out.println("Impossible de valider un panier vide !");
                     } else {
                         client.addCommande(commande);
+                        borneCommandes.addCommande(commande);
                         System.out.println("Commande validée");
                     }
                     commande.viderAll();
@@ -156,16 +160,17 @@ public class Borne {
                 if(this.verifIdentifiantCLient(id)){
                     Client client = this.liste_client.get(id-1);
                     System.out.format("Bonjour %s %s\n",
-                                        client.getPrenom(),
-                                        client.getNom());
+                            client.getPrenom(),
+                            client.getNom());
                     System.out.println("Vous pouvez commencer votre commande !");
                     gererCommande(client);
-                }else { 
+                }else {
                     // si identifiant inconnu
                     System.out.println("Identifiant client inconnu !");
                 }
             } catch (Exception e) {
                 // si le client donne autre chose qu'un entier
+                e.printStackTrace();
                 System.out.println("Merci d'entrer un identifiant correct.");
                 scanner.next();
             }
