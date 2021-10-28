@@ -56,10 +56,24 @@ public class Commande {
         this.tempsPreparation += menu.getTempsPreparation();
         this.prix += menu.getPrix();
     }
+
+    /**
+     * ajout d'un produit en supplément
+     * @param produit
+     */
     public void addElt(Produit produit) {
         this.elements.add(produit);
         this.tempsPreparation += produit.getTempsPreparation();
         this.prix += produit.getPrix();
+    }
+
+    /**
+     * ajout d'un élément inclus dans le menu (gratuit)
+     * @param produit
+     */
+    public void addFreeElt(Produit produit) {
+        this.elements.add(produit);
+        //this.tempsPreparation += produit.getTempsPreparation();
     }
 
     public void removeElt(int i) {

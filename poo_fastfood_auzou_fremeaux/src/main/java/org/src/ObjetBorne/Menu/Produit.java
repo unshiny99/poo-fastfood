@@ -101,6 +101,10 @@ public class Produit {
     public Double getPrix(){return this.prix;}
     public String getAffichage(){return "Nom produit : " + this.nom + ", Prix : " + this.prix + ", tempsPreparation : " + this.tempsPreparation;}
 
+    public String getType() {
+        return type;
+    }
+
     public double getTempsPreparation() {
         return tempsPreparation;
     }

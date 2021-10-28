@@ -67,6 +67,53 @@ public class Borne {
                     System.out.println("Faites un choix ? (Taper 0 pour revenir en arrière)");
                     ajout = this.scanner.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_menu.size()){
+                        System.out.println(this.liste_menu.get(ajout-1));
+                        //List<Produit> produits = this.liste_menu.get(ajout-1).getProduits();
+                        List<Produit> accompagnements = this.liste_menu.get(ajout-1).getAccompagnements();
+                        List<Produit> boissons = this.liste_menu.get(ajout-1).getBoissons();
+                        // récupération des accompagnements et boissons d'un menu
+                        /*
+                        for (Produit produit : produits) {
+                            //System.out.println(produit.getNom());
+                            if (produit.getType().equals("Accompagnement")) {
+                                accompagnements.add(produit);
+                            } else {
+                                if (produit.getType().equals("Boisson")) {
+                                    boissons.add(produit);
+                                }
+                            }
+                        }
+                         */
+                        // affichage des choix de produits du menu
+                        int nbAccomp = 1;
+                        this.separation();
+                        for (Produit accompagnement : accompagnements) {
+                            System.out.println(nbAccomp + " : " + accompagnement.getNom());
+                            nbAccomp++;
+                        }
+                        this.separation();
+                        System.out.println("Faites un choix ? (Taper 0 pour annuler)");
+                        int ajout2 = this.scanner.nextInt();
+                        if (ajout2 == 0) break;
+                        Produit accompagnement = this.liste_menu.get(ajout-1).getAccompagnements().get(ajout2-1);
+                        //commande.addFreeElt(accompagnement); // ajoute le produit dans le panier (et non dans le menu directement)
+                        System.out.println("Produit ajouté : " + accompagnement.getNom());
+
+                        int nbBoissons = 1;
+                        this.separation();
+                        for (Produit boisson : boissons) {
+                            System.out.println(nbBoissons + " : " + boisson.getNom());
+                            nbBoissons++;
+                        }
+                        this.separation();
+                        System.out.println("Faites un choix ? (Taper 0 pour annuler)");
+                        int ajout3 = this.scanner.nextInt();
+                        if (ajout3 == 0) break;
+                        Produit boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
+                        //commande.addFreeElt(accompagnement); // ajoute le produit dans le panier (et non dans le menu directement)
+                        System.out.println("Produit ajouté : " + boisson.getNom());
+
+                        // faire cela uniquement si on arrive jusqu'ici
                         commande.addElt(this.liste_menu.get(ajout-1));
                     }else if(ajout.equals(0)) {
                         break;

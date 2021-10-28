@@ -1,5 +1,6 @@
 package org.src.ObjetBorne.Menu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
@@ -51,6 +52,26 @@ public class Menu {
     public String getNom() {return this.nom;}
 
     public List<Produit> getProduits() {return this.produits;}
+
+    public List<Produit> getAccompagnements() {
+        List<Produit> accompagnements = new ArrayList<>();
+        for (Produit produit : this.produits) {
+            if (produit.getType().equals("Accompagnement")) {
+                accompagnements.add(produit);
+            }
+        }
+        return accompagnements;
+    }
+
+    public List<Produit> getBoissons() {
+        List<Produit> boissons = new ArrayList<>();
+        for (Produit produit : this.produits) {
+            if (produit.getType().equals("Boisson")) {
+                boissons.add(produit);
+            }
+        }
+        return boissons;
+    }
 
     public double getPrix() {return this.prix;}
     public double getTempsPreparation() {return this.tempsPreparation;}

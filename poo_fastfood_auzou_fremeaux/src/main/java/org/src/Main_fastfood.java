@@ -12,7 +12,7 @@ public class Main_fastfood{
 
         BorneCommandes borneCommandes = new BorneCommandes();
 
-        Employer employer_1 = new Employer(0, "Dupond", "Proba", borneCommandes);
+        Employer employer_1 = new Employer(0, "Dupond", "Proba", borneCommandes); // instance d'un employé
 
         Borne borne_1 = new Borne(1, Data.getListeMenu(),
                 Data.getListeClient(),
