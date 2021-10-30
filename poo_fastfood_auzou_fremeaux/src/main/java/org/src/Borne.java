@@ -182,14 +182,23 @@ public class Borne {
                         commande.listerAll();
                         System.out.println("Coût total de la commande : " + commande.getPrixAll());
                         this.separation();
-                        System.out.println("Supprimer un élément ? (Taper 0 pour revenir en arrière)");
-                        ajout = scanner.nextInt();
-                        if(ajout > 0 && ajout-1 < commande.getSize()){
-                            commande.removeElt(ajout-1);
-                        }else if(ajout.equals(0)) {
+
+                        do {
+                            System.out.println("Supprimer un élément ? (Taper 0 pour revenir en arrière)");
+                            try {
+                                ajout = scanner.nextInt();
+                                if (ajout > 0 && ajout - 1 < commande.getSize()) {
+                                    commande.removeElt(ajout - 1);
+                                } else if (ajout != 0){
+                                    System.out.println("Erreur de saisie !");
+                                }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Merci d'entrer un nombre !");
+                                scanner.next();
+                            }
+                        } while (ajout < 0 || ajout > commande.getSize());
+                        if(ajout == 0) {
                             break;
-                        }else{
-                            System.out.println("Erreur de saisie !");
                         }
                     }
                     break;
