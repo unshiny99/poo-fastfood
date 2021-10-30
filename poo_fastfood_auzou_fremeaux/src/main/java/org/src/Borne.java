@@ -163,6 +163,7 @@ public class Borne {
                     ajout = this.scanner.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_produits.size()){
                         commande.addElt(this.liste_produits.get(ajout-1));
+                        System.out.println("Vous avez choisi : " + this.liste_produits.get(ajout-1).getNom());
                     }else if(ajout.equals(0)) {
                         break;
                     }else{
@@ -249,7 +250,7 @@ public class Borne {
                 }
             } catch (Exception e) {
                 // si le client donne autre chose qu'un entier
-                e.printStackTrace();
+                //e.printStackTrace();
                 System.out.println("Merci d'entrer un identifiant correct.");
                 scanner.next();
             }
