@@ -180,6 +180,7 @@ public class Borne {
                         this.separation();
                         commande.listerAll();
                         System.out.println("Coût total de la commande : " + commande.getPrixAll());
+                        System.out.println("Temps total de préparation : " + commande.getTempsPreparation());
                         this.separation();
 
                         do {
