@@ -110,12 +110,35 @@ public class Borne {
                             nbBoissons++;
                         }
                         this.separation();
-                        System.out.println("Faites un choix ? (Taper 0 pour annuler)");
-                        int ajout3 = this.scanner.nextInt();
-                        if (ajout3 == 0) break;
-                        Produit boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
-                        //commande.addFreeElt(accompagnement); // ajoute le produit dans le panier (et non dans le menu directement)
-                        System.out.println("Produit ajouté : " + boisson.getNom());
+                        // System.out.println("Faites un choix ? (Taper 0 pour annuler)");
+                        // int ajout3 = this.scanner.nextInt();
+                        // if (ajout3 == 0) break;
+                        // Produit boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
+                        // //commande.addFreeElt(accompagnement); // ajoute le produit dans le panier (et non dans le menu directement)
+                        // System.out.println("Produit ajouté : " + boisson.getNom());
+
+                        int ajout3;
+                        pass = false;
+
+                        do{
+                            System.out.println("Faites un choix ? (Taper 0 pour annuler)");
+                            ajout3 = this.scanner.nextInt();
+                            //commande.addFreeElt(accompagnement); // ajoute le produit dans le panier (et non dans le menu directement)
+                            if(ajout3-1 > boissons.size() || ajout3 < 0){
+                                System.out.println("Numéro non valide");
+                            }else if(ajout3 == 0){
+                                pass = true;
+                            }else{
+                                pass = true;
+                            }
+                        }while(!(pass));
+
+                        if (ajout3 == 0 || ajout3 > boissons.size()){
+                            break;
+                        }else{
+                            Produit boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
+                            System.out.println("Produit ajouté : " + boisson.getNom());
+                        }
 
                         // faire cela uniquement si on arrive jusqu'ici
                         commande.addElt(this.liste_menu.get(ajout-1));
