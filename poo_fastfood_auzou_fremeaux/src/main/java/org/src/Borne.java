@@ -80,12 +80,28 @@ public class Borne {
                             nbAccomp++;
                         }
                         this.separation();
-                        System.out.println("Faites un choix ? (Taper 0 pour annuler)");
-                        int ajout2 = this.scanner.nextInt();
-                        if (ajout2 == 0) break;
-                        Produit accompagnement = this.liste_menu.get(ajout-1).getAccompagnements().get(ajout2-1);
-                        //commande.addFreeElt(accompagnement); // ajoute le produit dans le panier (et non dans le menu directement)
-                        System.out.println("Produit ajouté : " + accompagnement.getNom());
+                        int ajout2;
+                        boolean pass = false;
+
+                        do{
+                            System.out.println("Faites un choix ? (Taper 0 pour annuler)");
+                            ajout2 = this.scanner.nextInt();
+                            //commande.addFreeElt(accompagnement); // ajoute le produit dans le panier (et non dans le menu directement)
+                            if(ajout2-1 > accompagnements.size() || ajout2 < 0){
+                                System.out.println("Numéro non valide");
+                            }else if(ajout2 == 0){
+                                pass = true;
+                            }else{
+                                pass = true;
+                            }
+                        }while(!(pass));
+
+                        if (ajout2 == 0 || ajout2 > accompagnements.size()){
+                            break;
+                        }else{
+                            Produit accompagnement = this.liste_menu.get(ajout-1).getAccompagnements().get(ajout2-1);
+                            System.out.println("Produit ajouté : " + accompagnement.getNom());
+                        }
 
                         int nbBoissons = 1;
                         this.separation();

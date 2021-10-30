@@ -54,7 +54,7 @@ public class Menu {
     public List<Produit> getProduits() {return this.produits;}
 
     public List<Produit> getAccompagnements() {
-        List<Produit> accompagnements = new ArrayList<>();
+        List<Produit> accompagnements = new ArrayList<Produit>();
         for (Produit produit : this.produits) {
             if (produit.getType().equals("Accompagnement")) {
                 accompagnements.add(produit);
@@ -64,7 +64,7 @@ public class Menu {
     }
 
     public List<Produit> getBoissons() {
-        List<Produit> boissons = new ArrayList<>();
+        List<Produit> boissons = new ArrayList<Produit>();
         for (Produit produit : this.produits) {
             if (produit.getType().equals("Boisson")) {
                 boissons.add(produit);
