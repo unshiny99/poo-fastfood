@@ -150,18 +150,23 @@ public class Borne {
                 Affichage du panier (et suppression éventuelle d'un article)
                  */
                 case 3:
-                    this.separation();
-                    commande.listerAll();
-                    System.out.println("Coût total de la commande : " + commande.getPrixAll());
-                    this.separation();
-                    System.out.println("Supprimer un élément ? (Taper 0 pour revenir en arrière)");
-                    ajout = scanner.nextInt();
-                    if(ajout > 0 && ajout-1 < commande.getSize()){
-                        commande.removeElt(ajout-1);
-                    }else if(ajout.equals(0)) {
-                        break;
-                    }else{
-                        System.out.println("Erreur de saisie !");
+                    if (commande.getSize() == 0) {
+                        System.out.println("Votre panier est vide !");
+                    }
+                    else {
+                        this.separation();
+                        commande.listerAll();
+                        System.out.println("Coût total de la commande : " + commande.getPrixAll());
+                        this.separation();
+                        System.out.println("Supprimer un élément ? (Taper 0 pour revenir en arrière)");
+                        ajout = scanner.nextInt();
+                        if(ajout > 0 && ajout-1 < commande.getSize()){
+                            commande.removeElt(ajout-1);
+                        }else if(ajout.equals(0)) {
+                            break;
+                        }else{
+                            System.out.println("Erreur de saisie !");
+                        }
                     }
                     break;
                 /*

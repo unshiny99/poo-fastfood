@@ -46,6 +46,9 @@ public class Client {
         for(Commande commande : this.liste_commande){
             System.out.println(commande.afficherCommande());
         }
+        if (this.liste_commande.size() == 0) {
+            System.out.println("Vous n'avez pas encore fait de commande chez nous.");
+        }
     }
 
     /**
