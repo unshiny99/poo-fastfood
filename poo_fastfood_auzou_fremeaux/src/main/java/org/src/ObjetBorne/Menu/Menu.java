@@ -42,8 +42,8 @@ public class Menu {
         for(Produit produit : this.produits){
             if(!produit.getIsExclusif()){
                 res += "Nom du produit : " + produit.getNom() +
-                                    ", Prix : " + produit.getPrix() +
-                                    "\n";
+                        ", Prix : " + produit.getPrix() +
+                        "\n";
             }
             System.out.println(res);
         }
@@ -58,6 +58,16 @@ public class Menu {
         for (Produit produit : this.produits) {
             if (produit.getType().equals("Accompagnement")) {
                 accompagnements.add(produit);
+            }
+        }
+        return accompagnements;
+    }
+
+    public String getAccompagnementsName() {
+        String accompagnements = "";
+        for (Produit produit : this.produits) {
+            if (produit.getType().equals("Accompagnement")) {
+                accompagnements += produit.getNom() + " ";
             }
         }
         return accompagnements;

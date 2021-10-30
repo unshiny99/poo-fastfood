@@ -3,6 +3,7 @@ package org.src.ObjetBorne;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class Commande {
     private static int idCommande = 1;
     private int id;
     private List<Object> elements;
+    private List<ArrayList<Produit>> liste_produit_menu;
     private double tempsPreparation;
     private String statut;
     private String date;
@@ -25,6 +27,7 @@ public class Commande {
     public Commande(Client client) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         this.elements = new ArrayList<Object>();
+        this.liste_produit_menu = new ArrayList<ArrayList<Produit>>();
         Date date = new Date();
         this.date = dateFormat.format(date);
         this.prix = 0;
@@ -71,9 +74,8 @@ public class Commande {
      * ajout d'un élément inclus dans le menu (gratuit)
      * @param produit
      */
-    public void addFreeElt(Produit produit) {
-        this.elements.add(produit);
-        //this.tempsPreparation += produit.getTempsPreparation();
+    public void addFreeElt(Produit produit, Produit produit2) {
+        this.liste_produit_menu.add(new ArrayList<Produit>(Arrays.asList(produit, produit2)));
     }
 
     public void removeElt(int i) {
@@ -92,12 +94,26 @@ public class Commande {
     public void listerAll() {
         int nb=1;
         for(Object element : this.elements){
-            if (element instanceof Produit)
+            if (element instanceof Produit){
                 System.out.println(nb + " : " + ((Produit) element).getAffichage());
-            else
+            }else if(element instanceof Menu){
+                System.out.println("------------------------------------------------------------");
                 System.out.println(nb + " : " + element);
+                System.out.println("Contenu : [ " + afficherProduitMenuCustom(nb-1) + "]");
+                System.out.println("------------------------------------------------------------");
+            }else{
+                System.out.println(nb + " : " + element);
+            }
             nb++;
         }
+    }
+
+    public String afficherProduitMenuCustom(Integer index){
+        String menu_custom = "";
+        for(Produit produit : this.liste_produit_menu.get(index)){
+            menu_custom += produit.getNom() + ",";
+        }
+        return menu_custom;
     }
 
     public void viderAll() {

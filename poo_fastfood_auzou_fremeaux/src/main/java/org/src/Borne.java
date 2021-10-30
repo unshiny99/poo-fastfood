@@ -72,11 +72,13 @@ public class Borne {
                         List<Produit> accompagnements = this.liste_menu.get(ajout-1).getAccompagnements();
                         List<Produit> boissons = this.liste_menu.get(ajout-1).getBoissons();
 
+                        Produit accompagnement = null;
+                        Produit boisson = null;
                         // affichage des choix d'accompagnements du menu
                         int nbAccomp = 1;
                         this.separation();
-                        for (Produit accompagnement : accompagnements) {
-                            System.out.println(nbAccomp + " : " + accompagnement.getNom());
+                        for (Produit produit : accompagnements) {
+                            System.out.println(nbAccomp + " : " + produit.getNom());
                             nbAccomp++;
                         }
                         this.separation();
@@ -99,23 +101,17 @@ public class Borne {
                         if (ajout2 == 0 || ajout2 > accompagnements.size()){
                             break;
                         }else{
-                            Produit accompagnement = this.liste_menu.get(ajout-1).getAccompagnements().get(ajout2-1);
+                            accompagnement = this.liste_menu.get(ajout-1).getAccompagnements().get(ajout2-1);
                             System.out.println("Produit ajouté : " + accompagnement.getNom());
                         }
 
                         int nbBoissons = 1;
                         this.separation();
-                        for (Produit boisson : boissons) {
-                            System.out.println(nbBoissons + " : " + boisson.getNom());
+                        for (Produit produit : boissons) {
+                            System.out.println(nbBoissons + " : " + produit.getNom());
                             nbBoissons++;
                         }
                         this.separation();
-                        // System.out.println("Faites un choix ? (Taper 0 pour annuler)");
-                        // int ajout3 = this.scanner.nextInt();
-                        // if (ajout3 == 0) break;
-                        // Produit boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
-                        // //commande.addFreeElt(accompagnement); // ajoute le produit dans le panier (et non dans le menu directement)
-                        // System.out.println("Produit ajouté : " + boisson.getNom());
 
                         int ajout3;
                         pass = false;
@@ -136,12 +132,13 @@ public class Borne {
                         if (ajout3 == 0 || ajout3 > boissons.size()){
                             break;
                         }else{
-                            Produit boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
+                            boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
                             System.out.println("Produit ajouté : " + boisson.getNom());
                         }
 
                         // faire cela uniquement si on arrive jusqu'ici
                         commande.addElt(this.liste_menu.get(ajout-1));
+                        commande.addFreeElt(accompagnement, boisson);
                     }else if(ajout.equals(0)) {
                         break;
                     }else{
@@ -182,6 +179,7 @@ public class Borne {
                         commande.listerAll();
                         System.out.println("Coût total de la commande : " + commande.getPrixAll());
                         this.separation();
+                        
                         System.out.println("Supprimer un élément ? (Taper 0 pour revenir en arrière)");
                         ajout = scanner.nextInt();
                         if(ajout > 0 && ajout-1 < commande.getSize()){
