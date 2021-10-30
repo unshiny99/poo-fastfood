@@ -66,25 +66,13 @@ public class Borne {
                     nb = 1;
                     System.out.println("Faites un choix ? (Taper 0 pour revenir en arrière)");
                     ajout = this.scanner.nextInt();
-                    if(ajout > 0 && ajout-1 < this.liste_menu.size()){
+                    if(ajout > 0 && ajout-1 < this.liste_menu.size()) {
                         System.out.println(this.liste_menu.get(ajout-1));
-                        //List<Produit> produits = this.liste_menu.get(ajout-1).getProduits();
+
                         List<Produit> accompagnements = this.liste_menu.get(ajout-1).getAccompagnements();
                         List<Produit> boissons = this.liste_menu.get(ajout-1).getBoissons();
-                        // récupération des accompagnements et boissons d'un menu
-                        /*
-                        for (Produit produit : produits) {
-                            //System.out.println(produit.getNom());
-                            if (produit.getType().equals("Accompagnement")) {
-                                accompagnements.add(produit);
-                            } else {
-                                if (produit.getType().equals("Boisson")) {
-                                    boissons.add(produit);
-                                }
-                            }
-                        }
-                         */
-                        // affichage des choix de produits du menu
+
+                        // affichage des choix d'accompagnements du menu
                         int nbAccomp = 1;
                         this.separation();
                         for (Produit accompagnement : accompagnements) {
