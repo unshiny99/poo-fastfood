@@ -48,6 +48,7 @@ public class Borne {
         Commande commande = new Commande(client);
         Integer choix, ajout = 0;
         Integer nb = 1;
+        Boolean valide = false;
 
         do {
             afficherMenuPrincipal();
@@ -208,6 +209,7 @@ public class Borne {
                     } else {
                         client.addCommande(commande);
                         borneCommandes.addCommande(commande);
+                        valide = true;
                         System.out.println("Commande validée");
                     }
                     commande.viderAll();
@@ -231,7 +233,7 @@ public class Borne {
                     System.out.println("Merci de faire un choix correct");
                     break;
             }
-        } while (choix!=6 && choix!=4);
+        } while (choix!=6 && !valide);
     }
 
     /**
