@@ -231,7 +231,7 @@ public class Borne {
                     System.out.println("Merci de faire un choix correct");
                     break;
             }
-        } while (choix!=6);
+        } while (choix!=6 && choix!=4);
     }
 
     /**
