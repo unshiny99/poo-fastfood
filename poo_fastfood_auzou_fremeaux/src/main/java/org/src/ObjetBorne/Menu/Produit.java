@@ -62,11 +62,12 @@ public class Produit {
      * @param prix Double : prix du produit
      * @param isExclusif Boolean : si le produit est exclusif à un menu
      */
-    public Produit(String nom, String type, Double prix, Boolean isExclusif){
+    public Produit(String nom, String type, Double prix, Boolean isExclusif, Double tempsPreparation){
         this.nom = nom;
         this.type = type;
         this.prix = prix;
         this.isExclusif = isExclusif;
+        this.tempsPreparation = tempsPreparation;
     }
 
     // Getter
