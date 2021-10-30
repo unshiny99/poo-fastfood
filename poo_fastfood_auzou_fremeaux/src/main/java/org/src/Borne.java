@@ -34,10 +34,10 @@ public class Borne {
     public void afficherMenuPrincipal() {
         System.out.println("\n1 Menus");
         System.out.println("2 Compléments");
-        System.out.println("3 Afficher Panier");
+        System.out.println("3 Afficher panier");
         System.out.println("4 Valider panier");
         System.out.println("5 Mes commandes");
-        System.out.println("6 Annuler et quitter\n");
+        System.out.println("6 Quitter\n");
     }
 
     /**
@@ -48,6 +48,7 @@ public class Borne {
         Commande commande = new Commande(client);
         Integer choix, ajout = 0;
         Integer nb = 1;
+        boolean flagAnnuler = true;
 
         do {
             afficherMenuPrincipal();
@@ -222,7 +223,21 @@ public class Borne {
                 Quitter l'application
                  */
                 case 6:
-                    System.out.println("Au revoir");
+                    if (commande.getSize() != 0) {
+                        System.out.println("Souhaitez-vous vraiment annuler la commande en cours (O/n) ?");
+                    }
+                    try {
+                        String annuler = this.scanner.next();
+                        if (annuler.equals("n")) {
+                            flagAnnuler=false;
+                            System.out.println("Retour commande");
+                        } else {
+                            flagAnnuler=true;
+                            System.out.println("Au revoir");
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println("Choix non correct");
+                    }
                     break;
                 /*
                 Cas par défaut (choix incorrect)
@@ -231,7 +246,7 @@ public class Borne {
                     System.out.println("Merci de faire un choix correct");
                     break;
             }
-        } while (choix!=6 && choix!=4);
+        } while ((choix!=6 && choix!=4) || (choix==6 && !flagAnnuler));
     }
 
     /**
