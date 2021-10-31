@@ -8,6 +8,7 @@ public class Main_fastfood{
         System.out.println("FIS'eat");
 
         Data.GenerateData();
+        Data.ecrireJSON("historique.json");
 
         BorneCommandes borneCommandes = new BorneCommandes();
 

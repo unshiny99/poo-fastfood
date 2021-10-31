@@ -1,9 +1,15 @@
 package org.src.ObjetBorne;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.src.Client;
 import org.src.ObjetBorne.Menu.Menu;
 import org.src.ObjetBorne.Menu.Produit;
@@ -17,7 +23,7 @@ public class Data {
     private static List<Produit> liste_produits_non_exlusif;
 
     /**
-     * Generation des données pour la borne
+     * Génération des données pour la borne
      */
     public static void GenerateData(){
         
@@ -110,4 +116,40 @@ public class Data {
     public static List<Client> getListeClient(){return Data.liste_client;}
     public static List<Menu> getListeMenu(){return Data.liste_menu;}
     public static List<Produit> getListeProduits(){return Data.liste_produits_non_exlusif;}
+
+    /**
+     * fonction d'écriture initiale du fichier JSON
+     * @param nomFic
+     * @throws Exception
+     */
+    public static void ecrireJSON(String nomFic) {
+        File f = new File(nomFic);
+
+        if (!f.exists()) {
+            System.out.println("Génération d'un fichier de sauvegarde...");
+            JSONArray historiqueComplet = new JSONArray();
+
+            for (Client currentClient : liste_client) {
+
+                JSONArray commandes = new JSONArray();
+
+                JSONObject client = new JSONObject();
+                client.put("idClient",currentClient.getId().toString());
+                client.put("commandes",commandes);
+
+                historiqueComplet.add(client);
+            }
+
+            // écriture du fichier JSON
+            try (FileWriter file = new FileWriter(nomFic)) {
+                //We can write any JSONArray or JSONObject instance to the file
+                file.write(historiqueComplet.toJSONString());
+                file.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Importation de la sauvegarde...");
+        }
+    }
 }

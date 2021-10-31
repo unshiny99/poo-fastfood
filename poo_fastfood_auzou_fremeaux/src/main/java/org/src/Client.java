@@ -28,6 +28,12 @@ public class Client {
     public String getNom(){return this.nom;}
     public String getPrenom(){return this.prenom;}
     public Integer getId(){return this.id;}
+    public static Integer getIdClient() {
+        return idClient;
+    }
+    public List<Commande> getListe_commande() {
+        return liste_commande;
+    }
 
     /**
      * Redifinition de la méthode toString

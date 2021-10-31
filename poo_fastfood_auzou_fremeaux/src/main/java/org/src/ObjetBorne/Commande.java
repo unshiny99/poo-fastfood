@@ -125,4 +125,32 @@ public class Commande {
     public Integer getSize(){return this.elements.size();}
     public Double getPrixAll(){return this.prix;}
     public Double getTempsPreparation(){return this.tempsPreparation;}
+
+    public int getId() {
+        return id;
+    }
+
+    public List<Object> getElements() {
+        return elements;
+    }
+
+    public List<ArrayList<Produit>> getListe_produit_menu() {
+        return liste_produit_menu;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public Client getClient() {
+        return client;
+    }
 }
