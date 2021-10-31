@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import org.json.simple.JSONArray;
@@ -67,22 +68,27 @@ public class JsonEdit {
         commandeObj.put("date",String.valueOf(commande.getDate()));
         commandeObj.put("prix",String.valueOf(commande.getPrix()));
         for (Object element : commande.getElements()) {
+            // si c'est un menu (avec des produits)
             if (element instanceof Menu) {
                 JSONArray menus = new JSONArray();
                 JSONObject menu = new JSONObject();
                 menu.put("nom",((Menu) element).getNom());
                 menu.put("prix",String.valueOf(((Menu) element).getPrix()));
-                menu.put("contenus",((Menu) element).getAccompagnements());
-                for (Produit p : ((Menu) element).getAccompagnements()) {
-                    JSONArray produits = new JSONArray();
-                    JSONObject produit = new JSONObject();
-                    produit.put("nom",p.getNom());
-                    produit.put("type",p.getType());
-                    produits.add(produit);
+
+                JSONArray produits = new JSONArray();
+                for (ArrayList<Produit> p : commande.getListe_produit_menu()) {
+                    for (Produit produit : p) {
+                        JSONObject produitObj = new JSONObject();
+                        produitObj.put("nom", produit.getNom());
+                        produitObj.put("type", produit.getType());
+                        produits.add(produitObj);
+                    }
                 }
+                menu.put("contenus",produits);
                 menus.add(menu);
                 commandeObj.put("menus", menus);
             }
+            // si c'est un complément
             if (element instanceof Produit) {
                 JSONArray complements = new JSONArray();
                 JSONObject complement = new JSONObject();
