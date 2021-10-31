@@ -1,8 +1,8 @@
-package org.src.ObjetBorne.Menu;
+package org.src.Commande.Menu;
 
 import java.util.List;
 
-import org.src.ObjetBorne.Menu.Ingredient.Ingredient;
+import org.src.Commande.Menu.Ingredient.Ingredient;
 
 public class Produit {
     private String nom, type;

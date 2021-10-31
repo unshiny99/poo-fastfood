@@ -1,4 +1,4 @@
-package org.src.ObjetBorne;
+package org.src.ObjetBorne.Data;
 
 import java.io.File;
 import java.io.FileReader;
@@ -10,11 +10,11 @@ import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.src.Client;
-import org.src.ObjetBorne.Menu.Menu;
-import org.src.ObjetBorne.Menu.Produit;
-import org.src.ObjetBorne.Menu.Ingredient.Ingredient;
-import org.src.ObjetBorne.Menu.Ingredient.IngredientCuisable;
+import org.src.Commande.Menu.Menu;
+import org.src.Commande.Menu.Produit;
+import org.src.Commande.Menu.Ingredient.Ingredient;
+import org.src.Commande.Menu.Ingredient.IngredientCuisable;
+import org.src.ObjetBorne.Client.Client;
 
 public class Data {
 
@@ -117,39 +117,39 @@ public class Data {
     public static List<Menu> getListeMenu(){return Data.liste_menu;}
     public static List<Produit> getListeProduits(){return Data.liste_produits_non_exlusif;}
 
-    /**
-     * fonction d'écriture initiale du fichier JSON
-     * @param nomFic
-     * @throws Exception
-     */
-    public static void ecrireJSON(String nomFic) {
-        File f = new File(nomFic);
+    // /**
+    //  * fonction d'écriture initiale du fichier JSON
+    //  * @param nomFic
+    //  * @throws Exception
+    //  */
+    // public static void ecrireJSON(String nomFic) {
+    //     File f = new File(nomFic);
 
-        if (!f.exists()) {
-            System.out.println("Génération d'un fichier de sauvegarde...");
-            JSONArray historiqueComplet = new JSONArray();
+    //     if (!f.exists()) {
+    //         System.out.println("Génération d'un fichier de sauvegarde...");
+    //         JSONArray historiqueComplet = new JSONArray();
 
-            for (Client currentClient : liste_client) {
+    //         for (Client currentClient : liste_client) {
 
-                JSONArray commandes = new JSONArray();
+    //             JSONArray commandes = new JSONArray();
 
-                JSONObject client = new JSONObject();
-                client.put("idClient",currentClient.getId().toString());
-                client.put("commandes",commandes);
+    //             JSONObject client = new JSONObject();
+    //             client.put("idClient",currentClient.getId().toString());
+    //             client.put("commandes",commandes);
 
-                historiqueComplet.add(client);
-            }
+    //             historiqueComplet.add(client);
+    //         }
 
-            // écriture du fichier JSON
-            try (FileWriter file = new FileWriter(nomFic)) {
-                //We can write any JSONArray or JSONObject instance to the file
-                file.write(historiqueComplet.toJSONString());
-                file.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("Importation de la sauvegarde...");
-        }
-    }
+    //         // écriture du fichier JSON
+    //         try (FileWriter file = new FileWriter(nomFic)) {
+    //             //We can write any JSONArray or JSONObject instance to the file
+    //             file.write(historiqueComplet.toJSONString());
+    //             file.flush();
+    //         } catch (IOException e) {
+    //             e.printStackTrace();
+    //         }
+    //     } else {
+    //         System.out.println("Importation de la sauvegarde...");
+    //     }
+    // }
 }

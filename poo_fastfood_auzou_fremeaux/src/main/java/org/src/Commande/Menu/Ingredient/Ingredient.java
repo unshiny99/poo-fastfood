@@ -1,4 +1,4 @@
-package org.src.ObjetBorne.Menu.Ingredient;
+package org.src.Commande.Menu.Ingredient;
 
 public class Ingredient {;
     private String nom;

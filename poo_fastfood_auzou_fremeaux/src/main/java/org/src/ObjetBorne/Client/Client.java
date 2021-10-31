@@ -1,9 +1,9 @@
-package org.src;
+package org.src.ObjetBorne.Client;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.src.ObjetBorne.Commande;
+import org.src.Commande.Commande;
 
 public class Client {
     private static Integer idClient = 1;

@@ -1,4 +1,4 @@
-package org.src.ObjetBorne.Menu;
+package org.src.Commande.Menu;
 
 import java.util.ArrayList;
 import java.util.List;

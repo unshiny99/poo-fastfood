@@ -1,4 +1,4 @@
-package org.src.ObjetBorne;
+package org.src.Commande;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.src.Client;
-import org.src.ObjetBorne.Menu.*;
+import org.src.Commande.Menu.*;
+import org.src.ObjetBorne.Client.Client;
 
 public class Commande {
     private static int idCommande = 1;

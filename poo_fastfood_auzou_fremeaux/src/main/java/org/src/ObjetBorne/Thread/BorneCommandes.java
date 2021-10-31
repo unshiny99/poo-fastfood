@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.src.ObjetBorne.Commande;
+import org.src.Commande.Commande;
 
 public class BorneCommandes extends Timer{
     private List<Commande> listeCommandes;
