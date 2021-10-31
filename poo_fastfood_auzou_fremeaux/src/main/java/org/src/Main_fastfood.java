@@ -1,10 +1,8 @@
 package org.src;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 import org.src.ObjetBorne.Borne;
 import org.src.ObjetBorne.Data.Data;
+import org.src.ObjetBorne.Json.JsonEdit;
 import org.src.ObjetBorne.Thread.BorneCommandes;
 import org.src.ObjetBorne.Thread.Employer;
 
@@ -16,22 +14,22 @@ public class Main_fastfood{
 
         // Vérification présence du fichier JsonEdit
         // System.out.println(System.getProperty("user.dir"));
-        try{
-            File json = new File("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
-            if(!json.isFile()){
-                System.out.println("Le fichier HistoriqueCommandes.json n'éxiste pas");
-                FileWriter writer = new FileWriter(json);
-                json.createNewFile();
-                writer.write("{\n\n}");
-                writer.flush();
-                writer.close();
-                System.out.println("Génération terminé");
-            }
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+        // try{
+        //     File json = new File("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
+        //     if(!json.isFile()){
+        //         System.out.println("Le fichier HistoriqueCommandes.json n'existe pas");
+        //         FileWriter writer = new FileWriter(json);
+        //         json.createNewFile();
+        //         writer.write("{\n\n}");
+        //         writer.flush();
+        //         writer.close();
+        //         System.out.println("Génération terminée");
+        //     }
+        // }catch(IOException e){
+        //     e.printStackTrace();
+        // }
         
-        // Data.ecrireJSON("historique.json");
+        JsonEdit.initJSON("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
 
         BorneCommandes borneCommandes = new BorneCommandes();
 

@@ -6,6 +6,7 @@ import org.src.Commande.Commande;
 import org.src.Commande.Menu.Menu;
 import org.src.Commande.Menu.Produit;
 import org.src.ObjetBorne.Client.Client;
+import org.src.ObjetBorne.Json.JsonEdit;
 import org.src.ObjetBorne.Thread.BorneCommandes;
 
 public class Borne {
@@ -230,7 +231,7 @@ public class Borne {
             System.out.println("Commande validée");
 
             // fonction d'ajout de la commande pour le client donné
-            //ajouterCommandeJSON("historique.json",commande);
+            JsonEdit.ajouterCommandeJSON("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json",commande);
         }
         commande.viderAll();
     }
@@ -294,13 +295,13 @@ public class Borne {
      * @param client Client
      */
     public void affichageAllCommandeClient(Client client){
-        client.afficherCommandes();
-        // try {
-        //     // lit à partir du fichier json fourni en paramètre
-        //     this.afficherHistorique(client.getId());
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
+        //client.afficherCommandes();
+        try {
+            // lit à partir du fichier json fourni en paramètre
+            JsonEdit.afficherHistorique(client.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

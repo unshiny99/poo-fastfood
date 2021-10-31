@@ -1,3 +1,27 @@
-{
-
-}
+[
+    {
+        "commandes": [
+            {
+                "date": "31\/10\/2021 22:40:10",
+                "prix": "14.0",
+                "menus": [
+                    {
+                        "prix": "14.0",
+                        "contenus": [Nom produit : Salade, Type : Accompagnement, Est exclusif : false, Liste des ingrédients : null,Nom produit : King Fries Cheese & Bacon, Type : Accompagnement, Est exclusif : false, Liste des ingrédients : null,Nom produit : King Fries Cheese & Crispy Onions, Type : Accompagnement, Est exclusif : false, Liste des ingrédients : null,Nom produit : Moyennes frites, Type : Accompagnement, Est exclusif : false, Liste des ingrédients : null,Nom produit : Onion Rings (6), Type : Accompagnement, Est exclusif : false, Liste des ingrédients : null
+                        ],
+                        "nom": "Master Montagnard"
+                    }
+                ]
+            }
+        ],
+        "idClient": "1"
+    },
+    {
+        "commandes": [],
+        "idClient": "2"
+    },
+    {
+        "commandes": [],
+        "idClient": "3"
+    }
+]
