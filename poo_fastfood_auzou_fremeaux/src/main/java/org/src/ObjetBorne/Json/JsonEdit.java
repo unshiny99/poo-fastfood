@@ -22,15 +22,13 @@ public class JsonEdit {
 
     /**
      * fonction d'écriture initiale du fichier JSON
-     * @param nomFic
-     * @throws Exception
+     * @param nomFic nom du fichier
      */
     public static void initJSON(String nomFic) {
         File json = new File(nomFic);
         try{
             if (!json.exists()) {
                 System.out.println("Génération d'un fichier de sauvegarde...");
-                json.createNewFile();
                 
                 JSONArray historiqueComplet = new JSONArray();
                 for (Client currentClient : Data.getListeClient()) {
@@ -59,17 +57,20 @@ public class JsonEdit {
 
      /**
      * ajout d'une commande dans le fichier de sauvegarde
-     * @param commande
+     * @param nomFic nom du fichier
+     * @param commande commande courante
      */
     public static void ajouterCommandeJSON(String nomFic, Commande commande) {
         JSONObject commandeObj = new JSONObject();
         commandeObj.put("date",String.valueOf(commande.getDate()));
         commandeObj.put("prix",String.valueOf(commande.getPrix()));
         commandeObj.put("statut",commande.getStatut());
+
+        JSONArray menus = new JSONArray();
+        JSONArray complements = new JSONArray();
         for (Object element : commande.getElements()) {
             // si c'est un menu (avec des produits)
             if (element instanceof Menu) {
-                JSONArray menus = new JSONArray();
                 JSONObject menu = new JSONObject();
                 menu.put("nom",((Menu) element).getNom());
                 menu.put("prix",String.valueOf(((Menu) element).getPrix()));
@@ -85,19 +86,19 @@ public class JsonEdit {
                 }
                 menu.put("contenus",produits);
                 menus.add(menu);
-                commandeObj.put("menus", menus);
             }
             // si c'est un complément
             if (element instanceof Produit) {
-                JSONArray complements = new JSONArray();
                 JSONObject complement = new JSONObject();
-                complement.put("nom",((Produit) element).getNom());
-                complement.put("type",((Produit) element).getType());
-                complement.put("prix",String.valueOf(((Produit) element).getPrix()));
-                complements.add(complement);
-                commandeObj.put("complements", complements);
+                System.out.println(element);
+                    complement.put("nom",((Produit) element).getNom());
+                    complement.put("type",((Produit) element).getType());
+                    complement.put("prix",String.valueOf(((Produit) element).getPrix()));
+                    complements.add(complement);
             }
         }
+        commandeObj.put("menus", menus);
+        commandeObj.put("complements", complements);
 
         JSONArray historique = getHistoriqueComplet();
 
@@ -137,7 +138,7 @@ public class JsonEdit {
 
     /**
      * récupérer les données des objets json "commande"
-     * @param commande
+     * @param commande objet commande d'un client
      */
     public static void parseCommandeObject(JSONObject commande) {
         // on affiche les infos des commandes
@@ -186,6 +187,7 @@ public class JsonEdit {
             e.printStackTrace();
         }
         //JSONArray commandes = getClientObject(idClient.toString());
+        assert liste != null;
         for (Object client : liste) {
             JSONObject clientObj = (JSONObject) client;
             String idClientJson = (String) (clientObj.get("idClient"));
