@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.src.ObjetBorne.Client.Client;
 import org.src.ObjetBorne.Commande_Menu.Commande;
 import org.src.ObjetBorne.Commande_Menu.Menu.Menu;
@@ -306,12 +308,13 @@ public class Borne {
      */
     public void affichageAllCommandeClient(Client client){
         //client.afficherCommandes();
-        try {
-            // lit à partir du fichier json fourni en paramètre
-            JsonEdit.afficherHistorique(client.getId());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        // mise à jour des statuts de commande
+        String nomFic = "./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json";
+        JsonEdit.updateStatut(client,nomFic);
+
+        // lit à partir du fichier json fourni en paramètre
+        JsonEdit.afficherHistorique(client.getId());
     }
 
     /**

@@ -62,7 +62,6 @@ public class JsonEdit {
      */
     public static void ajouterCommandeJSON(String nomFic, Commande commande) {
         JSONObject commandeObj = new JSONObject();
-        System.out.println("DEBUG\n" + commande);
         commandeObj.put("idCommande",String.valueOf(commande.getId()));
         commandeObj.put("date",String.valueOf(commande.getDate()));
         commandeObj.put("prix",String.valueOf(commande.getPrix()));
@@ -142,7 +141,7 @@ public class JsonEdit {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        //JSONArray commandes = getClientObject(idClient.toString());
+
         assert liste != null;
         for (Object client : liste) {
             JSONObject clientObj = (JSONObject) client;
@@ -156,17 +155,57 @@ public class JsonEdit {
     }
 
     public static JSONObject getCommande(String idCommande, String idClient) {
-        JSONArray historiqueClient = getHistoriqueClient(idClient);
-        assert historiqueClient != null;
-        for (Object commandes : historiqueClient) {
-            System.out.println(commandes);
+        // must return JSONObject
+        JSONArray commandes = JsonEdit.getHistoriqueClient(idClient);
+        assert commandes != null;
+        for (Object commande : commandes) {
+            JSONObject commandeObj = (JSONObject) commande;
+            String idCommandeJson = (String) (commandeObj.get("idCommande"));
+            if (idCommandeJson.equals(idCommande))
+                return commandeObj;
         }
-
-        return null; // on retournera la commande avec l'id fourni
+        return null;
     }
 
-    public static void updateStatut() {
+    /**
+     * mise à jour du statut d'une commande
+     * @param client
+     * @param nomFic
+     */
+    public static void updateStatut(Client client, String nomFic) {
+        JSONArray historique = getHistoriqueComplet();
 
+
+        for (Object clientObj : historique) {
+            JSONObject clientObject = (JSONObject) clientObj;
+            if (clientObject.get("idClient").equals(String.valueOf(client.getId()))) {
+                //historique.remove(clientObject);
+                JSONArray commandes = getHistoriqueClient(String.valueOf(client.getId()));
+                JSONObject commandeObj;
+                for (Commande commande : client.getListe_commande()) {
+                    //System.out.println(commande.getStatut());
+
+                    commandeObj = JsonEdit.getCommande(String.valueOf(commande.getId()),String.valueOf(client.getId()));
+                    commandes.remove(commandeObj);
+                    commandeObj.put("statut",commande.getStatut()); // réécrire la valeur de l'objet
+
+                    commandes.add(commandeObj);
+                }
+                clientObject.put("commandes",commandes);
+            }
+        }
+
+
+        // écriture du fichier JSON
+        try {
+            FileWriter file = new FileWriter(nomFic);
+            //We can write any JSONArray or JSONObject instance to the file
+            file.write(historique.toJSONString());
+            file.flush();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void afficherHistorique(Integer idClient) {
@@ -225,11 +264,11 @@ public class JsonEdit {
      */
     public static void parseCommandeObject(JSONObject commande) {
         // on affiche les infos des commandes
-        //String id = (String) commande.get("idCommande");
+        String id = (String) commande.get("idCommande");
         String date = (String) commande.get("date");
         String prix = (String) commande.get("prix");
         String statut = (String) commande.get("statut");
-        System.out.println("Commande du " + date + " - Montant total : " + prix + "€ - Statut : " + statut);
+        System.out.println("Commande n° " + id + " du " + date + " - Montant total : " + prix + "€ - Statut : " + statut);
 
         // puis leurs articles
         JSONArray menus = (JSONArray) commande.get("menus");

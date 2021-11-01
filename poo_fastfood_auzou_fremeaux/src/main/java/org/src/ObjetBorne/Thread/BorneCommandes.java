@@ -46,7 +46,7 @@ public class BorneCommandes extends Timer{
         // System.out.println("[Info] : Commande terminée par : " + employer.getNom() + " " + employer.getPrenom());
 
         // code pour prévenir le client
-        System.out.println("Commande " + commande.getId() + " pour le client" + commande.getClient().getId() + " prête");
+        System.out.println("Client " + commande.getClient().getId() + " : commande " + commande.getId() + " prête");
     }
 
     /**
@@ -76,10 +76,6 @@ public class BorneCommandes extends Timer{
         public void run(){
             Date currentDate = new Date(); // date courante
             double tempsPasse = (currentDate.getTime()-this.date.getTime())/1000.0; // temps en secondes depuis le début de la préparation de commande
-            /*
-                TODO : remove DEBUG
-             */
-            System.out.println(this.commande.getStatut());
 
             if(tempsPasse >= this.commande.getTempsPreparation()) {
                 this.commande.setStatus("Commande prête");
@@ -87,10 +83,8 @@ public class BorneCommandes extends Timer{
                 this.cancel(); // arrêt du traitement des temps
             } else {
                 this.commande.setStatus((int) (tempsPasse/this.commande.getTempsPreparation()*100) + "%");
-                System.out.println((int) (tempsPasse/this.commande.getTempsPreparation()*100) + "%");
+                //System.out.println((int) (tempsPasse/this.commande.getTempsPreparation()*100) + "%");
             }
-            // todo : remove debug
-            System.out.println(this.commande.getStatut());
         }
     }
 }
