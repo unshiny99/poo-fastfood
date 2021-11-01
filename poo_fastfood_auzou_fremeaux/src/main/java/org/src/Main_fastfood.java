@@ -6,7 +6,7 @@ import org.src.ObjetBorne.Json.JsonEdit;
 import org.src.ObjetBorne.Thread.BorneCommandes;
 import org.src.ObjetBorne.Thread.Employer;
 
-public class Main_fastfood{
+public class Main_fastfood {
     public static void main(String[] args) {
         System.out.println("---------- FIS'eat ----------");
 

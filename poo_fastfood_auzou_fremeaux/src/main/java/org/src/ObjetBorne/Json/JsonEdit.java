@@ -19,7 +19,6 @@ import org.src.ObjetBorne.Commande_Menu.Menu.Produit;
 import org.src.ObjetBorne.Data.Data;
 
 public class JsonEdit {
-
     /**
      * fonction d'écriture initiale du fichier JSON
      * @param nomFic nom du fichier
@@ -106,8 +105,10 @@ public class JsonEdit {
         for (JSONObject client : (Iterable<JSONObject>) historique) {
             String idClient = (String) client.get("idClient");
             if (Objects.equals(idClient, commande.getClient().getId().toString())) {
+                // récupérer le tableau de commandes d'un client donné
                 JSONArray commandes = getHistoriqueClient(commande.getClient().getId().toString());
-                //récupérer le tableau de commandes d'un client donné
+
+                // mettre à jour le tableau de commandes (ajout)
                 commandes.add(commandeObj);
                 client.put("commandes",commandes);
             }
@@ -115,7 +116,7 @@ public class JsonEdit {
         // écriture du fichier JSON
         try {
             FileWriter file = new FileWriter(nomFic);
-            //We can write any JSONArray or JSONObject instance to the file
+
             file.write(historique.toJSONString());
             file.flush();
             file.close();
@@ -124,6 +125,10 @@ public class JsonEdit {
         }
     }
 
+    /**
+     * Obtenir l'historique complet de commandes (par client)
+     * @return tableau de tous les clients
+     */
     public static JSONArray getHistoriqueComplet() {
         JSONArray liste = null;
         try {
@@ -134,6 +139,10 @@ public class JsonEdit {
         return liste;
     }
 
+    /**
+     * @param idClient identifiant client
+     * @return tableau des commandes du client
+     */
     public static JSONArray getHistoriqueClient(String idClient) {
         JSONArray liste = null;
         try {
@@ -154,6 +163,11 @@ public class JsonEdit {
         return null;
     }
 
+    /**
+     * @param idCommande identifiant commande
+     * @param idClient identifiant client
+     * @return la commande dont les paramètres sont spécifiés
+     */
     public static JSONObject getCommande(String idCommande, String idClient) {
         // must return JSONObject
         JSONArray commandes = JsonEdit.getHistoriqueClient(idClient);
@@ -168,9 +182,9 @@ public class JsonEdit {
     }
 
     /**
-     * mise à jour du statut d'une commande
-     * @param client
-     * @param nomFic
+     * mise à jour du statut d'une commande dans le fichier d'historique
+     * @param client le client concerné
+     * @param nomFic nom du fichier destination
      */
     public static void updateStatut(Client client, String nomFic) {
         JSONArray historique = getHistoriqueComplet();
@@ -195,7 +209,6 @@ public class JsonEdit {
             }
         }
 
-
         // écriture du fichier JSON
         try {
             FileWriter file = new FileWriter(nomFic);
@@ -208,6 +221,10 @@ public class JsonEdit {
         }
     }
 
+    /**
+     * afficher l'historique d'un client
+     * @param idClient identifiant client
+     */
     public static void afficherHistorique(Integer idClient) {
         JSONArray liste = null;
         try {
@@ -219,6 +236,13 @@ public class JsonEdit {
             liste.forEach(client -> parseClientObject((JSONObject) client, idClient.toString()));
     }
 
+    /**
+     * lire le fichier JSON spécifié
+     * @param filename nom fichier
+     * @return l'objet JSON
+     * @throws IOException erreur entrée/sortie
+     * @throws ParseException erreur parse
+     */
     public static Object readJsonSimpleDemo(String filename) throws IOException, ParseException {
         FileReader reader = null;
         try {
@@ -230,6 +254,10 @@ public class JsonEdit {
         return jsonParser.parse(reader);
     }
 
+    /**
+     * parser les contenus d'un menu (produits)
+     * @param contenu objet contenu
+     */
     public static void parseContenuObject(JSONObject contenu) {
         // on affiche les infos des produits
         String type = (String) contenu.get("type");
@@ -237,6 +265,10 @@ public class JsonEdit {
         System.out.println("\t\t" + nom + " (" + type + ")");
     }
 
+    /**
+     * parser un menu
+     * @param menu objet menu
+     */
     public static void parseMenuObject(JSONObject menu) {
         // on affiche les infos des menus
         String prix = (String) menu.get("prix");
@@ -250,6 +282,10 @@ public class JsonEdit {
         }
     }
 
+    /**
+     * parser un complement
+     * @param complement objet complement
+     */
     public static void parseComplementObject(JSONObject complement) {
         // on affiche les infos des compléments
         String prix = (String) complement.get("prix");
@@ -279,6 +315,11 @@ public class JsonEdit {
             complements.forEach(complement -> parseComplementObject((JSONObject) complement));
     }
 
+    /**
+     * parser le spécifié par l'identifiant uniquement
+     * @param client client à afficher
+     * @param idClient identfiant client
+     */
     public static void parseClientObject(JSONObject client, String idClient) {
         // on affiche les id des clients et on récupère celui qui nous intéresse
         String idClientJson = (String) (client.get("idClient"));
