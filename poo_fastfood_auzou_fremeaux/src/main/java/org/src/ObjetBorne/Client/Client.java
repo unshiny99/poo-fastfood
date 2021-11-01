@@ -3,7 +3,7 @@ package org.src.ObjetBorne.Client;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.src.Commande.Commande;
+import org.src.ObjetBorne.Commande_Menu.Commande;
 
 public class Client {
     private static Integer idClient = 1;

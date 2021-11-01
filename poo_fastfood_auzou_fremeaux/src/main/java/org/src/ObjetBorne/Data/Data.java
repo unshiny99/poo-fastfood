@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.src.Commande.Menu.Menu;
-import org.src.Commande.Menu.Produit;
-import org.src.Commande.Menu.Ingredient.Ingredient;
-import org.src.Commande.Menu.Ingredient.IngredientCuisable;
 import org.src.ObjetBorne.Client.Client;
+import org.src.ObjetBorne.Commande_Menu.Menu.Menu;
+import org.src.ObjetBorne.Commande_Menu.Menu.Produit;
+import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.Ingredient;
+import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.IngredientCuisable;
 
 public class Data {
 

@@ -12,10 +12,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.src.Commande.Commande;
-import org.src.Commande.Menu.Menu;
-import org.src.Commande.Menu.Produit;
 import org.src.ObjetBorne.Client.Client;
+import org.src.ObjetBorne.Commande_Menu.Commande;
+import org.src.ObjetBorne.Commande_Menu.Menu.Menu;
+import org.src.ObjetBorne.Commande_Menu.Menu.Produit;
 import org.src.ObjetBorne.Data.Data;
 
 public class JsonEdit {

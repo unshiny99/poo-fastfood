@@ -1,11 +1,13 @@
 package org.src.ObjetBorne;
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
 
-import org.src.Commande.Commande;
-import org.src.Commande.Menu.Menu;
-import org.src.Commande.Menu.Produit;
 import org.src.ObjetBorne.Client.Client;
+import org.src.ObjetBorne.Commande_Menu.Commande;
+import org.src.ObjetBorne.Commande_Menu.Menu.Menu;
+import org.src.ObjetBorne.Commande_Menu.Menu.Produit;
 import org.src.ObjetBorne.Json.JsonEdit;
 import org.src.ObjetBorne.Thread.BorneCommandes;
 
