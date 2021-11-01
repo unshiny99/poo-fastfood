@@ -67,6 +67,7 @@ public class JsonEdit {
         JSONObject commandeObj = new JSONObject();
         commandeObj.put("date",String.valueOf(commande.getDate()));
         commandeObj.put("prix",String.valueOf(commande.getPrix()));
+        commandeObj.put("statut",commande.getStatut());
         for (Object element : commande.getElements()) {
             // si c'est un menu (avec des produits)
             if (element instanceof Menu) {
@@ -108,7 +109,7 @@ public class JsonEdit {
                 JSONArray commandes = getHistoriqueClient(commande.getClient().getId().toString());
                 //récupérer le tableau de commandes d'un client donné
                 commandes.add(commandeObj);
-                System.out.println("La commande a été ajouté dans l'historique");
+                //System.out.println("La commande a été ajoutée dans l'historique");
                 client.put("commandes",commandes);
             }
         }
@@ -119,6 +120,7 @@ public class JsonEdit {
             //We can write any JSONArray or JSONObject instance to the file
             file.write(historique.toJSONString());
             file.flush();
+            file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -128,7 +130,7 @@ public class JsonEdit {
         // on affiche les infos des menus
         String prix = (String) menu.get("prix");
         String nom = (String) menu.get("nom");
-        System.out.println("\tMenu " + nom + " , prix : " + prix);
+        System.out.println("\tMenu " + nom + " (" + prix + " €)");
 
         // puis leurs produits
         JSONArray contenus = (JSONArray) menu.get("contenus");
@@ -145,7 +147,8 @@ public class JsonEdit {
         // on affiche les infos des commandes
         String date = (String) commande.get("date");
         String prix = (String) commande.get("prix");
-        System.out.println("Commande du " + date + " - Montant : " + prix + "€");
+        String statut = (String) commande.get("statut");
+        System.out.println("Commande du " + date + " - Montant total : " + prix + "€ - Statut : " + statut);
 
         // puis leurs articles
         JSONArray menus = (JSONArray) commande.get("menus");
