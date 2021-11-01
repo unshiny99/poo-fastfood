@@ -7,6 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.src.ObjetBorne.Commande_Menu.Commande;
+import org.src.ObjetBorne.Json.JsonEdit;
 
 public class BorneCommandes extends Timer{
     private List<Commande> listeCommandes;
@@ -45,22 +46,23 @@ public class BorneCommandes extends Timer{
         // System.out.println("[Info] : Commande terminée par : " + employer.getNom() + " " + employer.getPrenom());
 
         // code pour prévenir le client
+        System.out.println("Commande " + commande.getId() + " pour le client" + commande.getClient().getId() + " prête");
     }
 
     /**
-     * 
+     * préparer une commande validée
      * @param commande
      */
     public void traiterCommande(Commande commande, Employer employer) throws InterruptedException {
         UpdateTask updateTask = new UpdateTask(commande);
-        schedule(updateTask, 0, 1000);
+        schedule(updateTask, 0, 1000); // mettre à jour toutes les secondes
         updateTask = null;
         Thread.sleep((long) (commande.getTempsPreparation()*1000));
         // System.out.println("[Info] : Commande Traitée par : " + employer.getNom() + " " + employer.getPrenom());
         this.retourCommande(commande, employer);
     }
 
-    private class UpdateTask extends TimerTask {
+    private static class UpdateTask extends TimerTask {
         private Commande commande;
         private Date date;
 
@@ -73,14 +75,22 @@ public class BorneCommandes extends Timer{
         @Override
         public void run(){
             Date currentDate = new Date(); // date courante
-            double tempsPasse = (currentDate.getTime()-this.date.getTime())/1000; // temps en secondes depuis le début de la préparation de commande
+            double tempsPasse = (currentDate.getTime()-this.date.getTime())/1000.0; // temps en secondes depuis le début de la préparation de commande
+            /*
+                TODO : remove DEBUG
+             */
+            System.out.println(this.commande.getStatut());
+
             if(tempsPasse >= this.commande.getTempsPreparation()) {
                 this.commande.setStatus("Commande prête");
+
                 this.cancel(); // arrêt du traitement des temps
             } else {
                 this.commande.setStatus((int) (tempsPasse/this.commande.getTempsPreparation()*100) + "%");
-                // System.out.println((int) (tempsPasse/this.commande.getTempsPreparation()*100) + "%");
+                System.out.println((int) (tempsPasse/this.commande.getTempsPreparation()*100) + "%");
             }
+            // todo : remove debug
+            System.out.println(this.commande.getStatut());
         }
     }
 }

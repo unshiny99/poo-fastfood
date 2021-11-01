@@ -62,6 +62,8 @@ public class JsonEdit {
      */
     public static void ajouterCommandeJSON(String nomFic, Commande commande) {
         JSONObject commandeObj = new JSONObject();
+        System.out.println("DEBUG\n" + commande);
+        commandeObj.put("idCommande",String.valueOf(commande.getId()));
         commandeObj.put("date",String.valueOf(commande.getDate()));
         commandeObj.put("prix",String.valueOf(commande.getPrix()));
         commandeObj.put("statut",commande.getStatut());
@@ -123,6 +125,79 @@ public class JsonEdit {
         }
     }
 
+    public static JSONArray getHistoriqueComplet() {
+        JSONArray liste = null;
+        try {
+            liste = (JSONArray) readJsonSimpleDemo("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+        return liste;
+    }
+
+    public static JSONArray getHistoriqueClient(String idClient) {
+        JSONArray liste = null;
+        try {
+            liste = (JSONArray) readJsonSimpleDemo("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+        //JSONArray commandes = getClientObject(idClient.toString());
+        assert liste != null;
+        for (Object client : liste) {
+            JSONObject clientObj = (JSONObject) client;
+            String idClientJson = (String) (clientObj.get("idClient"));
+            if (Objects.equals(idClient, idClientJson)) {
+                return (JSONArray) clientObj.get("commandes");
+            }
+        }
+        System.out.println("Client non trouvé !");
+        return null;
+    }
+
+    public static JSONObject getCommande(String idCommande, String idClient) {
+        JSONArray historiqueClient = getHistoriqueClient(idClient);
+        assert historiqueClient != null;
+        for (Object commandes : historiqueClient) {
+            System.out.println(commandes);
+        }
+
+        return null; // on retournera la commande avec l'id fourni
+    }
+
+    public static void updateStatut() {
+
+    }
+
+    public static void afficherHistorique(Integer idClient) {
+        JSONArray liste = null;
+        try {
+            liste = (JSONArray) readJsonSimpleDemo("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+        if (liste != null)
+            liste.forEach(client -> parseClientObject((JSONObject) client, idClient.toString()));
+    }
+
+    public static Object readJsonSimpleDemo(String filename) throws IOException, ParseException {
+        FileReader reader = null;
+        try {
+            reader = new FileReader(filename);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        JSONParser jsonParser = new JSONParser();
+        return jsonParser.parse(reader);
+    }
+
+    public static void parseContenuObject(JSONObject contenu) {
+        // on affiche les infos des produits
+        String type = (String) contenu.get("type");
+        String nom = (String) contenu.get("nom");
+        System.out.println("\t\t" + nom + " (" + type + ")");
+    }
+
     public static void parseMenuObject(JSONObject menu) {
         // on affiche les infos des menus
         String prix = (String) menu.get("prix");
@@ -136,12 +211,21 @@ public class JsonEdit {
         }
     }
 
+    public static void parseComplementObject(JSONObject complement) {
+        // on affiche les infos des compléments
+        String prix = (String) complement.get("prix");
+        String type = (String) complement.get("type");
+        String nom = (String) complement.get("nom");
+        System.out.println("\tComplément " + nom + " , type : " + type + " , prix : " + prix);
+    }
+
     /**
      * récupérer les données des objets json "commande"
      * @param commande objet commande d'un client
      */
     public static void parseCommandeObject(JSONObject commande) {
         // on affiche les infos des commandes
+        //String id = (String) commande.get("idCommande");
         String date = (String) commande.get("date");
         String prix = (String) commande.get("prix");
         String statut = (String) commande.get("statut");
@@ -167,72 +251,4 @@ public class JsonEdit {
                 commandes.forEach(commande -> parseCommandeObject((JSONObject) commande));
         }
     }
-
-    public static void afficherHistorique(Integer idClient) {
-        JSONArray liste = null;
-        try {
-            liste = (JSONArray) readJsonSimpleDemo("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
-        if (liste != null)
-            liste.forEach(client -> parseClientObject((JSONObject) client, idClient.toString()));
-    }
-
-    public static JSONArray getHistoriqueClient(String idClient) {
-        JSONArray liste = null;
-        try {
-            liste = (JSONArray) readJsonSimpleDemo("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
-        //JSONArray commandes = getClientObject(idClient.toString());
-        assert liste != null;
-        for (Object client : liste) {
-            JSONObject clientObj = (JSONObject) client;
-            String idClientJson = (String) (clientObj.get("idClient"));
-            if (Objects.equals(idClient, idClientJson)) {
-                return (JSONArray) clientObj.get("commandes");
-            }
-        }
-        System.out.println("Client non trouvé !");
-        return null;
-    }
-
-    public static JSONArray getHistoriqueComplet() {
-        JSONArray liste = null;
-        try {
-            liste = (JSONArray) readJsonSimpleDemo("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
-        return liste;
-    }
-
-    public static Object readJsonSimpleDemo(String filename) throws IOException, ParseException {
-        FileReader reader = null;
-        try {
-            reader = new FileReader(filename);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        JSONParser jsonParser = new JSONParser();
-        return jsonParser.parse(reader);
-    }
-
-    public static void parseComplementObject(JSONObject complement) {
-        // on affiche les infos des compléments
-        String prix = (String) complement.get("prix");
-        String type = (String) complement.get("type");
-        String nom = (String) complement.get("nom");
-        System.out.println("\tComplément " + nom + " , type : " + type + " , prix : " + prix);
-    }
-
-    public static void parseContenuObject(JSONObject contenu) {
-        // on affiche les infos des produits
-        String type = (String) contenu.get("type");
-        String nom = (String) contenu.get("nom");
-        System.out.println("\t\t" + nom + " (" + type + ")");
-    }
-
 }

@@ -49,10 +49,10 @@ public class Borne {
      * @param client Client : le client faisant la commande
      */
     public void gererCommande(Client client) {
-        Commande commande = new Commande(client);
         Integer choix, nb = 1;
         Integer ajout = 0, ajout2, ajout3;
         boolean flagAnnuler = true;
+        Commande commande = null;
 
         do {
             afficherMenuPrincipal();
@@ -62,6 +62,9 @@ public class Borne {
                 Liste des menus
                  */
                 case 1:
+                    if (commande == null)
+                        commande = new Commande(client);
+
                     this.separation();
                     for (Menu menu : this.liste_menu) {
                         System.out.println(nb + " : " + menu);
@@ -150,6 +153,9 @@ public class Borne {
                 Liste des compléments (ou produits)
                  */
                 case 2:
+                    if (commande == null)
+                        commande = new Commande(client);
+
                     this.separation();
                     for(Produit produit : this.liste_produits){
                         System.out.println(nb + " : " + produit.getAffichage());
@@ -169,11 +175,13 @@ public class Borne {
                     }
                     break;
                 case 3:
-                    this.affichagePannier(commande, ajout);
+                    this.affichagePanier(commande, ajout);
                     if(ajout == 0) {break;}
                     break;
                 case 4:
                     this.validationCommande(commande, client);
+                    //commande = new Commande(client); // on recrée une nouvelle instance de commande
+                    commande = null;
                     break;
                 case 5:
                     this.affichageAllCommandeClient(client);
@@ -225,7 +233,7 @@ public class Borne {
      * @param client Client 
      */
     public void validationCommande(Commande commande, Client client){
-        if (commande.getSize()==0) {
+        if (commande==null || commande.getSize()==0) {
             System.out.println("Impossible de valider un panier vide !");
         } else {
             client.addCommande(commande);
@@ -234,8 +242,8 @@ public class Borne {
 
             // fonction d'ajout de la commande pour le client donné
             JsonEdit.ajouterCommandeJSON("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json",commande);
+            commande.viderAll();
         }
-        commande.viderAll();
     }
 
     /**
@@ -244,7 +252,7 @@ public class Borne {
      * @param flagAnnuler Boolean 
      */
     public void quitterApplication(Commande commande, Boolean flagAnnuler){
-        if (commande.getSize() != 0) {
+        if (commande != null && commande.getSize() != 0) {
             System.out.println("Souhaitez-vous vraiment annuler la commande en cours (O/n) ?");
             try {
                 String annuler = this.scanner.next();
@@ -266,8 +274,8 @@ public class Borne {
      * @param commande Commande du client
      * @param ajout Integer : choix du client
      */
-    public void affichagePannier(Commande commande, Integer ajout){
-        if (commande.getSize() == 0) {System.out.println("Votre panier est vide !");}
+    public void affichagePanier(Commande commande, Integer ajout){
+        if (commande == null || commande.getSize() == 0) {System.out.println("Votre panier est vide !");}
         else {
             this.separation();
             commande.listerAll();
