@@ -200,10 +200,10 @@ public class Borne {
                 id = this.scanner.nextInt();
                 if(this.verifIdentifiantCLient(id)){
                     Client client = this.liste_client.get(id-1);
-                    System.out.format("Bonjour %s %s\n",
+                    System.out.format("Bonjour :\n%s,%s\n",
                             client.getPrenom(),
                             client.getNom());
-                    System.out.println("Vous pouvez commencer votre commande !");
+                    System.out.println("\nVous pouvez commencer votre commande !");
                     gererCommande(client);
                 }else {
                     // si identifiant inconnu

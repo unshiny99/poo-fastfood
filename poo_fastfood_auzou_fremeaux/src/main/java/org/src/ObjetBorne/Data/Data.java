@@ -22,9 +22,9 @@ public class Data {
     public static void GenerateData(){
         
         Data.liste_client = new ArrayList<Client>(Arrays.asList(
-            new Client("Client_1_nom", "Client_1_prenom"),
-            new Client("Client_2_nom", "Client_2_prenom"),
-            new Client("Client_3_nom", "Client_3_prenom")
+            new Client("Maxime", "Frémeaux"),
+            new Client("Joe", "Dupond"),
+            new Client("Marie", "Proba")
         ));
 
         List<Produit> liste_produits_master_montagnard = new ArrayList<Produit>(Arrays.asList(

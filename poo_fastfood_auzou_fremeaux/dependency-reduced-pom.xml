@@ -19,6 +19,13 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>org.src.Main_fastfood</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -33,7 +40,6 @@
   <properties>
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
-    <start-class>org.src.Main_fastfood</start-class>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>

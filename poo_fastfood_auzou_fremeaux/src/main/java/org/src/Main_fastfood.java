@@ -11,23 +11,6 @@ public class Main_fastfood{
         System.out.println("---------- FIS'eat ----------");
 
         Data.GenerateData();
-
-        // Vérification présence du fichier JsonEdit
-        // System.out.println(System.getProperty("user.dir"));
-        // try{
-        //     File json = new File("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
-        //     if(!json.isFile()){
-        //         System.out.println("Le fichier HistoriqueCommandes.json n'existe pas");
-        //         FileWriter writer = new FileWriter(json);
-        //         json.createNewFile();
-        //         writer.write("{\n\n}");
-        //         writer.flush();
-        //         writer.close();
-        //         System.out.println("Génération terminée");
-        //     }
-        // }catch(IOException e){
-        //     e.printStackTrace();
-        // }
         
         JsonEdit.initJSON("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
 

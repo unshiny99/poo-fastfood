@@ -27,7 +27,6 @@ public class JsonEdit {
      */
     public static void initJSON(String nomFic) {
         File json = new File(nomFic);
-        
         try{
             if (!json.exists()) {
                 System.out.println("Génération d'un fichier de sauvegarde...");
@@ -63,7 +62,6 @@ public class JsonEdit {
      * @param commande
      */
     public static void ajouterCommandeJSON(String nomFic, Commande commande) {
-
         JSONObject commandeObj = new JSONObject();
         commandeObj.put("date",String.valueOf(commande.getDate()));
         commandeObj.put("prix",String.valueOf(commande.getPrix()));
@@ -109,11 +107,9 @@ public class JsonEdit {
                 JSONArray commandes = getHistoriqueClient(commande.getClient().getId().toString());
                 //récupérer le tableau de commandes d'un client donné
                 commandes.add(commandeObj);
-                //System.out.println("La commande a été ajoutée dans l'historique");
                 client.put("commandes",commandes);
             }
         }
-
         // écriture du fichier JSON
         try {
             FileWriter file = new FileWriter(nomFic);
