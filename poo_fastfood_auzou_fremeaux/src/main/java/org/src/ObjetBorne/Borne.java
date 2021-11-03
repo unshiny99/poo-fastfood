@@ -98,7 +98,7 @@ public class Borne {
                         do{
                             System.out.println("Faites un choix ? (Taper 0 pour annuler)");
                             ajout2 = this.scanner.nextInt();
-                            if(ajout2-1 > accompagnements.size() || ajout2 < 0){
+                            if(ajout2 > accompagnements.size() || ajout2 < 0){
                                 System.out.println("Numéro non valide");
                             }else if(ajout2 == 0){
                                 pass = true;
@@ -127,18 +127,18 @@ public class Borne {
                         do{
                             System.out.println("Faites un choix ? (Taper 0 pour annuler)");
                             ajout3 = this.scanner.nextInt();
-                            if(ajout3-1 > boissons.size() || ajout3 < 0){
+                            if(ajout3 > boissons.size() || ajout3 < 0){
                                 System.out.println("Numéro non valide");
-                            }else if(ajout3 == 0){
+                            } else if(ajout3 == 0) {
                                 pass = true;
-                            }else{
+                            } else {
                                 pass = true;
                             }
                         }while(!(pass));
 
-                        if (ajout3 == 0 || ajout3 > boissons.size()){
+                        if (ajout3 == 0 || ajout3 > boissons.size()) {
                             break;
-                        }else{
+                        } else {
                             boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
                             System.out.println("Produit ajouté : " + boisson.getNom());
                         }
