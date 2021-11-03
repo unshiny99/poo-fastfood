@@ -7,8 +7,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.src.ObjetBorne.Client.Client;
 import org.src.ObjetBorne.Commande_Menu.Menu.*;
+import org.src.ObjetBorne.Json.JsonEdit;
 
 public class Commande {
     private static int idCommande = 1;
@@ -31,10 +33,15 @@ public class Commande {
         Date date = new Date();
         this.date = dateFormat.format(date);
         this.prix = 0;
-        this.id = idCommande++;
         this.tempsPreparation = 0.0;
         this.statut = "En préparation";
         this.client = client;
+        this.setId();
+    }
+
+    public void setId() {
+        JSONArray nbCommandes = JsonEdit.getHistoriqueClient(String.valueOf(this.client.getId()));
+        this.id = nbCommandes.size()+1;
     }
 
     @Override
