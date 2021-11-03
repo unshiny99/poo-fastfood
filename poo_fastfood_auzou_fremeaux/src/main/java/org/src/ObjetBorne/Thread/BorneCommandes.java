@@ -7,7 +7,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.src.ObjetBorne.Commande_Menu.Commande;
-import org.src.ObjetBorne.Json.JsonEdit;
 
 public class BorneCommandes extends Timer{
     private List<Commande> listeCommandes;
@@ -21,7 +20,7 @@ public class BorneCommandes extends Timer{
     public synchronized void addCommande(Commande commande){
         this.listeCommandes.add(commande);
         notifyAll(); // notification de tous les threads
-        // System.out.println("[Info] : Commande ajoutée à la file de préparation");
+        System.out.println("[THREAD][Info] : Commande ajoutée à la file de préparation");
     }
 
     /**
@@ -29,12 +28,12 @@ public class BorneCommandes extends Timer{
      */
     public synchronized void prendreCommmande(Employer employer) throws InterruptedException {
         while(this.listeCommandes.isEmpty()){
-            // System.out.println("[Info] : En attente : " + employer.getNom() + " " + employer.getPrenom());
+            System.out.println("[thread][Info] : En attente : " + employer.getNom() + " " + employer.getPrenom());
             wait(); // tant que liste vide on attend
         }
         traiterCommande(this.listeCommandes.get(0), employer);
         notifyAll(); // notification de tous les threads
-        //System.out.println("[Info] : Commandre prise");
+        System.out.println("[THREAD][Info] : Commandre prise : " + employer.getNom() + " " + employer.getPrenom());
     }
 
     /**
@@ -43,10 +42,10 @@ public class BorneCommandes extends Timer{
      */
     public synchronized void retourCommande(Commande commande, Employer employer) {
         this.listeCommandes.remove(commande); // supprimer la liste des commandes
-        // System.out.println("[Info] : Commande terminée par : " + employer.getNom() + " " + employer.getPrenom());
+        System.out.println("[THREAD][Info] : Commande terminée par : " + employer.getNom() + " " + employer.getPrenom());
 
         // code pour prévenir le client
-        System.out.println("Client " + commande.getClient().getId() + " : commande " + commande.getId() + " prête");
+        //System.out.println("Client " + commande.getClient().getId() + " : commande " + commande.getId() + " prête");
     }
 
     /**
@@ -58,7 +57,7 @@ public class BorneCommandes extends Timer{
         schedule(updateTask, 0, 1000); // mettre à jour toutes les secondes
         updateTask = null;
         Thread.sleep((long) (commande.getTempsPreparation()*1000));
-        // System.out.println("[Info] : Commande Traitée par : " + employer.getNom() + " " + employer.getPrenom());
+        System.out.println("[THREAD][Info] : Commande Traitée par : " + employer.getNom() + " " + employer.getPrenom());
         this.retourCommande(commande, employer);
     }
 
@@ -79,7 +78,6 @@ public class BorneCommandes extends Timer{
 
             if(tempsPasse >= this.commande.getTempsPreparation()) {
                 this.commande.setStatus("Commande prête");
-
                 this.cancel(); // arrêt du traitement des temps
             } else {
                 this.commande.setStatus((int) (tempsPasse/this.commande.getTempsPreparation()*100) + "%");

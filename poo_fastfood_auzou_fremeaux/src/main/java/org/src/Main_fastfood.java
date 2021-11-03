@@ -16,14 +16,16 @@ public class Main_fastfood {
 
         BorneCommandes borneCommandes = new BorneCommandes();
 
-        Employer employer_1 = new Employer(0, "Dupond", "Proba", borneCommandes);
+        Employer employer_1 = new Employer(0, "Dupond", "Employer", borneCommandes);
+        Employer employer_2 = new Employer(0, "Bernard", "Employer", borneCommandes);
+        Employer employer_3 = new Employer(0, "Maxime", "Employer", borneCommandes);
 
         Borne borne_1 = new Borne(1, Data.getListeMenu(),
                 Data.getListeClient(),
                 Data.getListeProduits(),
                 borneCommandes);
 
-        employer_1.start();
+        employer_1.start();employer_2.start();employer_3.start();
         borne_1.runBorne();
     }
 }

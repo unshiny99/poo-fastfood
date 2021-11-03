@@ -171,14 +171,16 @@ public class JsonEdit {
     public static JSONObject getCommande(String idCommande, String idClient) {
         // must return JSONObject
         JSONArray commandes = JsonEdit.getHistoriqueClient(idClient);
-        assert commandes != null;
-        for (Object commande : commandes) {
+        if(commandes != null){
+            for (Object commande : commandes) {
             JSONObject commandeObj = (JSONObject) commande;
             String idCommandeJson = (String) (commandeObj.get("idCommande"));
-            if (idCommandeJson.equals(idCommande))
+            if (idCommandeJson.equals(idCommande)){
                 return commandeObj;
+                }
+            }
         }
-        return null;
+        return new JSONObject();
     }
 
     /**

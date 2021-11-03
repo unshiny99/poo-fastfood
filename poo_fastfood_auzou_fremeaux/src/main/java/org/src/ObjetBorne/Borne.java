@@ -311,7 +311,7 @@ public class Borne {
 
         // mise à jour des statuts de commande
         String nomFic = "./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json";
-        JsonEdit.updateStatut(client,nomFic);
+        JsonEdit.updateStatut(client, nomFic);
 
         // lit à partir du fichier json fourni en paramètre
         JsonEdit.afficherHistorique(client.getId());
