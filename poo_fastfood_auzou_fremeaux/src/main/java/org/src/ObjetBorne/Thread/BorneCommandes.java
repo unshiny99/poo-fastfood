@@ -19,7 +19,7 @@ public class BorneCommandes extends Timer{
      */
     public synchronized void addCommande(Commande commande){
         this.listeCommandes.add(commande);
-        notifyAll(); // notification de tous les threads
+        this.notifyAll(); // notification de tous les threads
         System.out.println("[THREAD][Info] : Commande ajoutée à la file de préparation");
     }
 
@@ -28,11 +28,10 @@ public class BorneCommandes extends Timer{
      */
     public synchronized void prendreCommmande(Employer employer) throws InterruptedException {
         while(this.listeCommandes.isEmpty()){
-            System.out.println("[thread][Info] : En attente : " + employer.getNom() + " " + employer.getPrenom());
-            wait(); // tant que liste vide on attend
+            // System.out.println("[thread][Info] : En attente : " + employer.getNom() + " " + employer.getPrenom());
+            this.wait(5000); // tant que liste vide on attend
         }
         traiterCommande(this.listeCommandes.get(0), employer);
-        notifyAll(); // notification de tous les threads
         System.out.println("[THREAD][Info] : Commandre prise : " + employer.getNom() + " " + employer.getPrenom());
     }
 
