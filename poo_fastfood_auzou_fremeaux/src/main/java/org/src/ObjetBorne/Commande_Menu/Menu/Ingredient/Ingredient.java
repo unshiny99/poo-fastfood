@@ -1,6 +1,6 @@
 package org.src.ObjetBorne.Commande_Menu.Menu.Ingredient;
 
-public class Ingredient {;
+public class Ingredient implements IngredientInterface {
     private String nom;
 
     /**
@@ -15,6 +15,6 @@ public class Ingredient {;
     @Override
     public String toString(){return "Nom de l'ingrédient : " + this.nom;}
 
-    //Getter
+    // Getter
     public String getName(){return this.nom;}
 }

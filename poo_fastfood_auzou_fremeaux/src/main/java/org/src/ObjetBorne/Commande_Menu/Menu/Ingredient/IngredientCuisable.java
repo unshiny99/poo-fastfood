@@ -1,6 +1,6 @@
 package org.src.ObjetBorne.Commande_Menu.Menu.Ingredient;
 
-public class IngredientCuisable extends Ingredient{
+public class IngredientCuisable extends Ingredient implements IngredientInterface {
     private Boolean cuit;
     private Double time_cuisson;
     private String type_cuisson;
