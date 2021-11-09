@@ -1,5 +1,7 @@
 package org.src.ObjetBorne.Commande_Menu.Menu;
 
+import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.Ingredient;
+import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.IngredientCuisable;
 import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.IngredientInterface;
 
 import java.util.ArrayList;
@@ -86,5 +88,12 @@ public class Menu implements ProduitInterface, IngredientInterface {
     }
 
     public Double getPrix() {return this.prix;}
-    public Double getTempsPreparation() {return this.tempsPreparation;}
+
+    public Double getTempsPreparation() {
+        Double tempsPreparation = this.tempsPreparation;
+        for (Produit produit : produits) {
+            tempsPreparation += produit.getTempsPreparation();
+        }
+        return tempsPreparation;
+    }
 }

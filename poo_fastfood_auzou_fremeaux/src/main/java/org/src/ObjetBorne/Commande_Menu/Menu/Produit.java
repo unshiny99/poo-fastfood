@@ -3,6 +3,7 @@ package org.src.ObjetBorne.Commande_Menu.Menu;
 import java.util.List;
 
 import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.Ingredient;
+import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.IngredientCuisable;
 import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.IngredientInterface;
 
 public class Produit implements ProduitInterface, IngredientInterface {
@@ -56,7 +57,7 @@ public class Produit implements ProduitInterface, IngredientInterface {
         this.isExclusif = isExclusif;
     }
 
-        /**
+    /**
      * Constructeur de produit, sans ingrédients avec un prix
      * @param nom String : nom produit
      * @param type String : type du produit
@@ -108,6 +109,15 @@ public class Produit implements ProduitInterface, IngredientInterface {
     }
 
     public Double getTempsPreparation() {
-        return tempsPreparation;
+        if (this.liste_ingredient != null) {
+            Double tempsPreparation = this.tempsPreparation;
+            for (Ingredient ingredient : liste_ingredient) {
+                if (ingredient instanceof IngredientCuisable) {
+                    tempsPreparation += ((IngredientCuisable) ingredient).getTimeCuisson();
+                }
+            }
+            return tempsPreparation;
+        } else
+            return this.tempsPreparation;
     }
 }
