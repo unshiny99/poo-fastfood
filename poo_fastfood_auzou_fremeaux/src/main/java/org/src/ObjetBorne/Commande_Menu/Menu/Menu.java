@@ -1,9 +1,11 @@
 package org.src.ObjetBorne.Commande_Menu.Menu;
 
+import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.IngredientInterface;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu {
+public class Menu implements ProduitInterface, IngredientInterface {
     private String nom;
     private List<Produit> produits;
     private double prix;
@@ -41,7 +43,7 @@ public class Menu {
         String res = null;
         for(Produit produit : this.produits){
             if(!produit.getIsExclusif()){
-                res += "Nom du produit : " + produit.getNom() +
+                res += "Nom du produit : " + produit.getName() +
                         ", Prix : " + produit.getPrix() +
                         "\n";
             }
@@ -49,7 +51,7 @@ public class Menu {
         }
     }
     // Getter
-    public String getNom() {return this.nom;}
+    public String getName() {return this.nom;}
 
     public List<Produit> getProduits() {return this.produits;}
 
@@ -67,7 +69,7 @@ public class Menu {
         String accompagnements = "";
         for (Produit produit : this.produits) {
             if (produit.getType().equals("Accompagnement")) {
-                accompagnements += produit.getNom() + " ";
+                accompagnements += produit.getName() + " ";
             }
         }
         return accompagnements;
@@ -83,6 +85,6 @@ public class Menu {
         return boissons;
     }
 
-    public double getPrix() {return this.prix;}
-    public double getTempsPreparation() {return this.tempsPreparation;}
+    public Double getPrix() {return this.prix;}
+    public Double getTempsPreparation() {return this.tempsPreparation;}
 }

@@ -72,14 +72,14 @@ public class JsonEdit {
             // si c'est un menu (avec des produits)
             if (element instanceof Menu) {
                 JSONObject menu = new JSONObject();
-                menu.put("nom",((Menu) element).getNom());
+                menu.put("nom",((Menu) element).getName());
                 menu.put("prix",String.valueOf(((Menu) element).getPrix()));
 
                 JSONArray produits = new JSONArray();
                 for (ArrayList<Produit> p : commande.getListe_produit_menu()) {
                     for (Produit produit : p) {
                         JSONObject produitObj = new JSONObject();
-                        produitObj.put("nom", produit.getNom());
+                        produitObj.put("nom", produit.getName());
                         produitObj.put("type", produit.getType());
                         produits.add(produitObj);
                     }
@@ -91,7 +91,7 @@ public class JsonEdit {
             if (element instanceof Produit) {
                 JSONObject complement = new JSONObject();
                 System.out.println(element);
-                    complement.put("nom",((Produit) element).getNom());
+                    complement.put("nom",((Produit) element).getName());
                     complement.put("type",((Produit) element).getType());
                     complement.put("prix",String.valueOf(((Produit) element).getPrix()));
                     complements.add(complement);
