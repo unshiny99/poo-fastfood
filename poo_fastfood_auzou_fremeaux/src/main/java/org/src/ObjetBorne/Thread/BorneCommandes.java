@@ -20,7 +20,7 @@ public class BorneCommandes extends Timer{
     public synchronized void addCommande(Commande commande){
         this.listeCommandes.add(commande);
         this.notifyAll(); // notification de tous les threads
-        System.out.println("[THREAD][Info] : Commande ajoutée à la file de préparation");
+        // System.out.println("[THREAD][Info] : Commande ajoutée à la file de préparation");
     }
 
     /**
@@ -32,7 +32,7 @@ public class BorneCommandes extends Timer{
             this.wait(5000); // tant que liste vide on attend
         }
         traiterCommande(this.listeCommandes.get(0), employer);
-        System.out.println("[THREAD][Info] : Commandre prise : " + employer.getNom() + " " + employer.getPrenom());
+        // System.out.println("[THREAD][Info] : Commandre prise : " + employer.getNom() + " " + employer.getPrenom());
     }
 
     /**
@@ -41,7 +41,7 @@ public class BorneCommandes extends Timer{
      */
     public synchronized void retourCommande(Commande commande, Employer employer) {
         this.listeCommandes.remove(commande); // supprimer la liste des commandes
-        System.out.println("[THREAD][Info] : Commande terminée par : " + employer.getNom() + " " + employer.getPrenom());
+        // System.out.println("[THREAD][Info] : Commande terminée par : " + employer.getNom() + " " + employer.getPrenom());
 
         // code pour prévenir le client
         //System.out.println("Client " + commande.getClient().getId() + " : commande " + commande.getId() + " prête");
@@ -56,7 +56,7 @@ public class BorneCommandes extends Timer{
         schedule(updateTask, 0, 1000); // mettre à jour toutes les secondes
         updateTask = null;
         Thread.sleep((long) (commande.getTempsPreparation()*1000));
-        System.out.println("[THREAD][Info] : Commande Traitée par : " + employer.getNom() + " " + employer.getPrenom());
+        // System.out.println("[THREAD][Info] : Commande Traitée par : " + employer.getNom() + " " + employer.getPrenom());
         this.retourCommande(commande, employer);
     }
 
