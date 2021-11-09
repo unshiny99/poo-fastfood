@@ -16,6 +16,12 @@ public class Data {
     private static List<Client> liste_client;
     private static List<Produit> liste_produits_non_exlusif;
 
+    public static String COLOR_BLUE = "\033[94m";
+    public static String COLOR_GREEN = "\033[92m";
+    public static String COLOR_RED = "\033[91m";
+
+    public static String COLOR_RESET = "\033[0m";
+
     /**
      * Génération des données pour la borne
      */

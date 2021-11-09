@@ -8,14 +8,7 @@ import org.src.ObjetBorne.Thread.Employer;
 
 public class Main_fastfood {
     public static void main(String[] args) {
-        System.out.println('________ ___  ________  _______   ________  _________   
-                    |\  _____\\  \|\   ____\|\  ___ \ |\   __  \|\___   ___\ 
-                    \ \  \__/\ \  \ \  \___|\ \   __/|\ \  \|\  \|___ \  \_| 
-                    \ \   __\\ \  \ \_____  \ \  \_|/_\ \   __  \   \ \  \  
-                    \ \  \_| \ \  \|____|\  \ \  \_|\ \ \  \ \  \   \ \  \ 
-                    \ \__\   \ \__\____\_\  \ \_______\ \__\ \__\   \ \__\
-                        \|__|    \|__|\_________\|_______|\|__|\|__|    \|__|
-                                    \|_________|');
+        System.out.println("----------" + Data.COLOR_GREEN + "FIS'eat" + Data.COLOR_RESET + "----------");
 
         Data.GenerateData();
         

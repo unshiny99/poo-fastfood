@@ -4,8 +4,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.src.ObjetBorne.Data.Data;
+
 import org.src.ObjetBorne.Client.Client;
 import org.src.ObjetBorne.Commande_Menu.Commande;
 import org.src.ObjetBorne.Commande_Menu.Menu.Menu;
@@ -38,12 +38,12 @@ public class Borne {
      * Affiche le menu de séléction sur le terminal
      */
     public void afficherMenuPrincipal() {
-        System.out.println("\n1 Menus");
+        System.out.println(Data.COLOR_BLUE +"\n1 Menus");
         System.out.println("2 Compléments");
         System.out.println("3 Afficher panier");
         System.out.println("4 Valider panier");
         System.out.println("5 Mes commandes");
-        System.out.println("6 Quitter\n");
+        System.out.println(Data.COLOR_RED + "6 Quitter\n" + Data.COLOR_RESET);
     }
 
     /**
@@ -74,7 +74,7 @@ public class Borne {
                     }
                     this.separation();
                     nb = 1;
-                    System.out.println("Faites un choix ? (Taper 0 pour revenir en arrière)");
+                    System.out.println(Data.COLOR_BLUE + "Faites un choix ? (Taper 0 pour revenir en arrière)" + Data.COLOR_RESET);
                     ajout = this.scanner.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_menu.size()) {
                         System.out.println(this.liste_menu.get(ajout-1));
@@ -96,10 +96,10 @@ public class Borne {
                         boolean pass = false;
 
                         do{
-                            System.out.println("Faites un choix ? (Taper 0 pour annuler)");
+                            System.out.println(Data.COLOR_BLUE + "Faites un choix ? (Taper 0 pour annuler)" + Data.COLOR_RESET);
                             ajout2 = this.scanner.nextInt();
                             if(ajout2 > accompagnements.size() || ajout2 < 0){
-                                System.out.println("Numéro non valide");
+                                System.out.println(Data.COLOR_RED + "Numéro non valide" + Data.COLOR_RESET);
                             }else if(ajout2 == 0){
                                 pass = true;
                             }else{
@@ -111,7 +111,7 @@ public class Borne {
                             break;
                         }else{
                             accompagnement = this.liste_menu.get(ajout-1).getAccompagnements().get(ajout2-1);
-                            System.out.println("Produit ajouté : " + accompagnement.getName());
+                            System.out.println(Data.COLOR_GREEN + "Produit ajouté : " + accompagnement.getName() + Data.COLOR_RESET);
                         }
 
                         int nbBoissons = 1;
@@ -125,10 +125,10 @@ public class Borne {
                         pass = false;
 
                         do{
-                            System.out.println("Faites un choix ? (Taper 0 pour annuler)");
+                            System.out.println(Data.COLOR_BLUE + "Faites un choix ? (Taper 0 pour annuler)" + Data.COLOR_RESET);
                             ajout3 = this.scanner.nextInt();
                             if(ajout3 > boissons.size() || ajout3 < 0){
-                                System.out.println("Numéro non valide");
+                                System.out.println(Data.COLOR_RED + "Numéro non valide" + Data.COLOR_RESET);
                             } else if(ajout3 == 0) {
                                 pass = true;
                             } else {
@@ -140,7 +140,7 @@ public class Borne {
                             break;
                         } else {
                             boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
-                            System.out.println("Produit ajouté : " + boisson.getName());
+                            System.out.println(Data.COLOR_GREEN + "Produit ajouté : " + boisson.getName() + Data.COLOR_RESET);
                         }
 
                         commande.addElt(this.liste_menu.get(ajout-1));
@@ -148,7 +148,7 @@ public class Borne {
                     }else if(ajout.equals(0)) {
                         break;
                     }else{
-                        System.out.println("Erreur de saisie !");
+                        System.out.println(Data.COLOR_RED + "Erreur de saisie !" + Data.COLOR_RESET);
                     }
                     break;
                 /*
@@ -165,15 +165,15 @@ public class Borne {
                     }
                     this.separation();
                     nb = 1;
-                    System.out.println("Faites un choix ? (Taper 0 pour revenir en arrière)");
+                    System.out.println(Data.COLOR_BLUE + "Faites un choix ? (Taper 0 pour revenir en arrière)" + Data.COLOR_RESET);
                     ajout = this.scanner.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_produits.size()){
                         commande.addElt(this.liste_produits.get(ajout-1));
-                        System.out.println("Vous avez choisi : " + this.liste_produits.get(ajout-1).getName());
+                        System.out.println(Data.COLOR_GREEN + "Vous avez choisi : " + this.liste_produits.get(ajout-1).getName() + Data.COLOR_RESET);
                     }else if(ajout.equals(0)) {
                         break;
                     }else{
-                        System.out.println("Erreur de saisie !");
+                        System.out.println(Data.COLOR_RED + "Erreur de saisie !" + Data.COLOR_RESET);
                     }
                     break;
                 case 3:
@@ -195,7 +195,7 @@ public class Borne {
                 Cas par défaut (choix incorrect)
                  */
                 default:
-                    System.out.println("Merci de faire un choix correct");
+                    System.out.println(Data.COLOR_RED + "Merci de faire un choix correct" + Data.COLOR_RESET);
                     break;
             }
         } while (choix != 6 || !flagAnnuler);
@@ -207,23 +207,23 @@ public class Borne {
     public void runBorne(){
         Integer id = null;
         do {
-            System.out.println("Identifiez-vous : ");
+            System.out.println(Data.COLOR_BLUE + "Identifiez-vous : " + Data.COLOR_RESET);
             try {
                 id = this.scanner.nextInt();
                 if(this.verifIdentifiantCLient(id)){
                     Client client = this.liste_client.get(id-1);
-                    System.out.format("Bonjour :\n%s,%s\n",
+                    System.out.format(Data.COLOR_GREEN + "Bonjour :\n%s,%s\n" + Data.COLOR_RESET,
                             client.getPrenom(),
                             client.getNom());
-                    System.out.println("\nVous pouvez commencer votre commande !");
+                    System.out.println("\n" + Data.COLOR_GREEN + "Vous pouvez commencer votre commande !" + Data.COLOR_RESET);
                     gererCommande(client);
                 }else {
                     // si identifiant inconnu
-                    System.out.println("Identifiant client inconnu !");
+                    System.out.println(Data.COLOR_RED + "Identifiant client inconnu !" + Data.COLOR_RESET);
                 }
             } catch (InputMismatchException e) {
                 // si le client donne autre chose qu'un entier
-                System.out.println("Merci d'entrer un identifiant correct.");
+                System.out.println(Data.COLOR_RED + "Merci d'entrer un identifiant correct." + Data.COLOR_RESET);
                 scanner.next();
             }
         } while(true); // tant que pas d'id correct attribué
@@ -236,11 +236,11 @@ public class Borne {
      */
     public void validationCommande(Commande commande, Client client){
         if (commande==null || commande.getSize()==0) {
-            System.out.println("Impossible de valider un panier vide !");
+            System.out.println(Data.COLOR_RED + "Impossible de valider un panier vide !" + Data.COLOR_RESET);
         } else {
             client.addCommande(commande);
             borneCommandes.addCommande(commande);
-            System.out.println("Commande validée");
+            System.out.println(Data.COLOR_GREEN + "Commande validée" + Data.COLOR_RESET);
 
             // fonction d'ajout de la commande pour le client donné
             JsonEdit.ajouterCommandeJSON("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json",commande);
@@ -255,18 +255,18 @@ public class Borne {
      */
     public void quitterApplication(Commande commande, Boolean flagAnnuler){
         if (commande != null && commande.getSize() != 0) {
-            System.out.println("Souhaitez-vous vraiment annuler la commande en cours (O/n) ?");
+            System.out.println(Data.COLOR_BLUE + "Souhaitez-vous vraiment annuler la commande en cours (O/n) ?" + Data.COLOR_RESET);
             try {
                 String annuler = this.scanner.next();
                 if (annuler.equals("n")) {
                     flagAnnuler=false;
-                    System.out.println("Retour commande");
+                    System.out.println(Data.COLOR_BLUE + "Retour commande" + Data.COLOR_RESET);
                 } else {
                     flagAnnuler=true;
-                    System.out.println("Au revoir");
+                    System.out.println(Data.COLOR_BLUE + "Au revoir" + Data.COLOR_RESET);
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Choix non correct");
+                System.out.println(Data.COLOR_RED + "Choix non correct" + Data.COLOR_RESET);
             }
         }
     }
@@ -277,25 +277,25 @@ public class Borne {
      * @param ajout Integer : choix du client
      */
     public void affichagePanier(Commande commande, Integer ajout){
-        if (commande == null || commande.getSize() == 0) {System.out.println("Votre panier est vide !");}
+        if (commande == null || commande.getSize() == 0) {System.out.println(Data.COLOR_RED + "Votre panier est vide !" + Data.COLOR_RESET);}
         else {
             this.separation();
             commande.listerAll();
-            System.out.println("Coût total de la commande : " + commande.getPrixAll() +
-                                "\nTemps total de préparation : " + commande.getTempsPreparation());
+            System.out.println(Data.COLOR_BLUE + "Coût total de la commande : " + Data.COLOR_RESET + commande.getPrixAll() +
+                                "\n" + Data.COLOR_BLUE + "Temps total de préparation : " + Data.COLOR_RESET + commande.getTempsPreparation());
             this.separation();
 
             do {
-                System.out.println("Supprimer un élément ? (Taper 0 pour revenir en arrière)");
+                System.out.println(Data.COLOR_RED + "Supprimer un élément ? (Taper 0 pour revenir en arrière)" + Data.COLOR_RESET);
                 try {
                     ajout = scanner.nextInt();
                     if (ajout > 0 && ajout - 1 < commande.getSize()) {
                         commande.removeElt(ajout - 1);
                     } else if (ajout != 0){
-                        System.out.println("Erreur de saisie !");
+                        System.out.println(Data.COLOR_RED + "Erreur de saisie !" + Data.COLOR_RESET);
                     }
                 } catch (InputMismatchException e) {
-                    System.out.println("Merci d'entrer un nombre !");
+                    System.out.println(Data.COLOR_RED + "Merci d'entrer un nombre !" + Data.COLOR_RESET);
                     scanner.next();
                 }
             } while (ajout < 0 || ajout > commande.getSize());
