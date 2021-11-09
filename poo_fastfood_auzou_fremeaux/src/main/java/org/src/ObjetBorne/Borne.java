@@ -15,6 +15,7 @@ import org.src.ObjetBorne.Thread.BorneCommandes;
 
 public class Borne {
     private Integer id;
+    private Integer choix;
     private List<Menu> liste_menu;
     private List<Client> liste_client;
     private List<Produit> liste_produits;
@@ -32,6 +33,7 @@ public class Borne {
         this.liste_produits = liste_produits;
         this.scanner = new Scanner(System.in);
         this.borneCommandes = borneCommandes;
+        this.choix = null;
     }
 
     /**
@@ -51,15 +53,15 @@ public class Borne {
      * @param client Client : le client faisant la commande
      */
     public void gererCommande(Client client) {
-        Integer choix, nb = 1;
+        Integer nb = 1;
         Integer ajout = 0, ajout2, ajout3;
         boolean flagAnnuler = true;
         Commande commande = null;
 
         do {
             afficherMenuPrincipal();
-            choix = this.scanner.nextInt();
-            switch (choix) {
+            this.choix = this.scanner.nextInt();
+            switch (this.choix) {
                 /*
                 Liste des menus
                  */
@@ -182,6 +184,9 @@ public class Borne {
                     break;
                 case 4:
                     this.validationCommande(commande, client);
+                    if(this.choix == 6){
+                        this.quitterApplication(commande, flagAnnuler);
+                    }
                     //commande = new Commande(client); // on recrée une nouvelle instance de commande
                     commande = null;
                     break;
@@ -240,6 +245,7 @@ public class Borne {
         } else {
             client.addCommande(commande);
             borneCommandes.addCommande(commande);
+            this.choix = 6;
             System.out.println(Data.COLOR_GREEN + "Commande validée" + Data.COLOR_RESET);
 
             // fonction d'ajout de la commande pour le client donné
