@@ -88,7 +88,7 @@ public class Borne {
                         int nbAccomp = 1;
                         this.separation();
                         for (Produit produit : accompagnements) {
-                            System.out.println(nbAccomp + " : " + produit.getNom());
+                            System.out.println(nbAccomp + " : " + produit.getName());
                             nbAccomp++;
                         }
                         this.separation();
@@ -111,13 +111,13 @@ public class Borne {
                             break;
                         }else{
                             accompagnement = this.liste_menu.get(ajout-1).getAccompagnements().get(ajout2-1);
-                            System.out.println("Produit ajouté : " + accompagnement.getNom());
+                            System.out.println("Produit ajouté : " + accompagnement.getName());
                         }
 
                         int nbBoissons = 1;
                         this.separation();
                         for (Produit produit : boissons) {
-                            System.out.println(nbBoissons + " : " + produit.getNom());
+                            System.out.println(nbBoissons + " : " + produit.getName());
                             nbBoissons++;
                         }
                         this.separation();
@@ -140,7 +140,7 @@ public class Borne {
                             break;
                         } else {
                             boisson = this.liste_menu.get(ajout-1).getBoissons().get(ajout3-1);
-                            System.out.println("Produit ajouté : " + boisson.getNom());
+                            System.out.println("Produit ajouté : " + boisson.getName());
                         }
 
                         commande.addElt(this.liste_menu.get(ajout-1));
@@ -169,7 +169,7 @@ public class Borne {
                     ajout = this.scanner.nextInt();
                     if(ajout > 0 && ajout-1 < this.liste_produits.size()){
                         commande.addElt(this.liste_produits.get(ajout-1));
-                        System.out.println("Vous avez choisi : " + this.liste_produits.get(ajout-1).getNom());
+                        System.out.println("Vous avez choisi : " + this.liste_produits.get(ajout-1).getName());
                     }else if(ajout.equals(0)) {
                         break;
                     }else{

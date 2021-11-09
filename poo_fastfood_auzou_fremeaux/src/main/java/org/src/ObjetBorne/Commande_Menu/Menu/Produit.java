@@ -3,8 +3,9 @@ package org.src.ObjetBorne.Commande_Menu.Menu;
 import java.util.List;
 
 import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.Ingredient;
+import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.IngredientInterface;
 
-public class Produit {
+public class Produit implements ProduitInterface, IngredientInterface {
     private String nom, type;
     private Boolean isExclusif;
     private double tempsPreparation;
@@ -70,6 +71,18 @@ public class Produit {
         this.tempsPreparation = tempsPreparation;
     }
 
+    /**
+     * Redéfinition de la méthode toString pour Produits
+     */
+    @Override
+    public String toString(){
+        return "Nom produit : " + this.nom +
+                ", Type : " + this.type +
+                ", Est exclusif : " + this.isExclusif +
+                ", Liste des ingrédients : " +
+                this.liste_ingredient;
+    }
+
     // Getter
 
     /**
@@ -86,19 +99,7 @@ public class Produit {
 
     public Boolean getIsExclusif(){return this.isExclusif;}
 
-    /**
-     * Redéfinition de la méthode toString pour Produits
-     */
-    @Override
-    public String toString(){
-        return "Nom produit : " + this.nom +
-                ", Type : " + this.type +
-                ", Est exclusif : " + this.isExclusif +
-                ", Liste des ingrédients : " +
-                this.liste_ingredient;
-    }
-
-    public String getNom(){return this.nom;}
+    public String getName(){return this.nom;}
     public Double getPrix(){return this.prix;}
     public String getAffichage(){return "Nom produit : " + this.nom + ", Prix : " + this.prix + ", tempsPreparation : " + this.tempsPreparation;}
 
@@ -106,7 +107,7 @@ public class Produit {
         return type;
     }
 
-    public double getTempsPreparation() {
+    public Double getTempsPreparation() {
         return tempsPreparation;
     }
 }

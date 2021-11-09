@@ -140,7 +140,7 @@ public class Commande {
     public String afficherProduitMenuCustom(Integer index){
         String menu_custom = "";
         for(Produit produit : this.liste_produit_menu.get(index)){
-            menu_custom += produit.getNom() + ",";
+            menu_custom += produit.getName() + ",";
         }
         return menu_custom;
     }
