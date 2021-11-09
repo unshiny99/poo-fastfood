@@ -13,7 +13,6 @@ import org.src.ObjetBorne.Commande_Menu.Menu.*;
 import org.src.ObjetBorne.Json.JsonEdit;
 
 public class Commande {
-    private static int idCommande = 1;
     private int id;
     private List<Object> elements;
     private List<ArrayList<Produit>> liste_produit_menu;
@@ -39,9 +38,16 @@ public class Commande {
         this.setId();
     }
 
+    /**
+     * changer l'id d'une commande
+     */
     public void setId() {
         JSONArray nbCommandes = JsonEdit.getHistoriqueClient(String.valueOf(this.client.getId()));
-        this.id = nbCommandes.size()+1;
+        if (nbCommandes==null) {
+            this.id = 1;
+        } else {
+            this.id = nbCommandes.size() + 1;
+        }
     }
 
     @Override
@@ -57,6 +63,10 @@ public class Commande {
                 '}';
     }
 
+    /**
+     * afficher les attributs utiles d'une commande
+     * @return la chaïne à afficher
+     */
     public String afficherCommande() {
         return "date=" + date + ", statut=" + statut + ", prix=" + prix + ", tempsPreparation=" + tempsPreparation;
     }
@@ -69,7 +79,7 @@ public class Commande {
 
     /**
      * ajout d'un produit en supplément
-     * @param produit
+     * @param produit le produit à ajouter
      */
     public void addElt(Produit produit) {
         this.elements.add(produit);
@@ -79,12 +89,16 @@ public class Commande {
 
     /**
      * ajout d'un élément inclus dans le menu (gratuit)
-     * @param produit
+     * @param produit le produit à ajouter sans supplément
      */
     public void addFreeElt(Produit produit, Produit produit2) {
         this.liste_produit_menu.add(new ArrayList<Produit>(Arrays.asList(produit, produit2)));
     }
 
+    /**
+     * retirer un élément
+     * @param i l'index de l'élément à retirer
+     */
     public void removeElt(int i) {
         Object o = this.elements.get(i);
         if (o instanceof Menu) {
@@ -98,6 +112,9 @@ public class Commande {
         this.elements.remove(i);
     }
 
+    /**
+     * lister tous les éléments d'un menu ou d'un produit
+     */
     public void listerAll() {
         int nb=1;
         for(Object element : this.elements){
@@ -115,6 +132,11 @@ public class Commande {
         }
     }
 
+    /**
+     * affiche le contenu d'un menu
+     * @param index
+     * @return
+     */
     public String afficherProduitMenuCustom(Integer index){
         String menu_custom = "";
         for(Produit produit : this.liste_produit_menu.get(index)){
@@ -123,12 +145,22 @@ public class Commande {
         return menu_custom;
     }
 
+    /**
+     * vider le panier
+     */
     public void viderAll() {
         this.elements.clear();
     }
 
+    /**
+     * changer le statut de la commande
+     * @param preparation le statut à écrire
+     */
     public void setStatus(String preparation){this.statut = preparation;}
 
+    /*
+        liste des getters nécessaires
+     */
     public Integer getSize(){return this.elements.size();}
     public Double getPrixAll(){return this.prix;}
     public Double getTempsPreparation(){return this.tempsPreparation;}

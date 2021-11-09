@@ -234,8 +234,9 @@ public class JsonEdit {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        if (liste != null)
+        if (liste != null) {
             liste.forEach(client -> parseClientObject((JSONObject) client, idClient.toString()));
+        }
     }
 
     /**
@@ -329,8 +330,12 @@ public class JsonEdit {
             JSONArray commandes = (JSONArray) client.get("commandes");
 
             // pour chaque commande du client, on la liste
-            if (commandes != null)
+            if (commandes != null) {
                 commandes.forEach(commande -> parseCommandeObject((JSONObject) commande));
+                if (commandes.isEmpty())
+                    System.out.println("Vous n'avez pas encore de commande réalisée");
+            }
+
         }
     }
 }
