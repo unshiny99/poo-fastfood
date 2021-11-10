@@ -1,5 +1,8 @@
 package org.src.ObjetBorne.Thread;
 
+import java.awt.*;
+import java.awt.TrayIcon.MessageType;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,8 +28,9 @@ public class BorneCommandes extends Timer{
 
     /**
      * gestion des commandes (threads)
+     * @throws AWTException
      */
-    public synchronized void prendreCommmande(Employer employer) throws InterruptedException {
+    public synchronized void prendreCommmande(Employer employer) throws InterruptedException, AWTException {
         while(this.listeCommandes.isEmpty()){
             // System.out.println("[thread][Info] : En attente : " + employer.getNom() + " " + employer.getPrenom());
             this.wait(5000); // tant que liste vide on attend
@@ -38,20 +42,39 @@ public class BorneCommandes extends Timer{
     /**
      * @param commande
      * notification de la commande prête à l'utilisateur
+     * @throws AWTException
      */
-    public synchronized void retourCommande(Commande commande, Employer employer) {
+    public synchronized void retourCommande(Commande commande, Employer employer) throws AWTException {
         this.listeCommandes.remove(commande); // supprimer la liste des commandes
         // System.out.println("[THREAD][Info] : Commande terminée par : " + employer.getNom() + " " + employer.getPrenom());
 
         // code pour prévenir le client
         //System.out.println("Client " + commande.getClient().getId() + " : commande " + commande.getId() + " prête");
+        if(SystemTray.isSupported()){
+            SystemTray tray = SystemTray.getSystemTray();
+
+            Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
+            
+            TrayIcon trayIcon = new TrayIcon(image, "test");
+            trayIcon.setImageAutoSize(true);
+            trayIcon.setToolTip("Système notification PNG");
+            tray.add(trayIcon);
+            trayIcon.displayMessage("Commande de : " +
+                                    commande.getClient().getNom() +
+                                    ", " + commande.getClient().getPrenom() + " : prête",
+                                    commande.getStatut(), 
+                                    MessageType.INFO);
+        }else{
+            System.out.println("Client " + commande.getClient().getId() + " : commande " + commande.getId() + " prête");
+        }
     }
 
     /**
      * préparer une commande validée
      * @param commande
+     * @throws AWTException
      */
-    public void traiterCommande(Commande commande, Employer employer) throws InterruptedException {
+    public void traiterCommande(Commande commande, Employer employer) throws InterruptedException, AWTException {
         UpdateTask updateTask = new UpdateTask(commande);
         schedule(updateTask, 0, 1000); // mettre à jour toutes les secondes
         updateTask = null;
