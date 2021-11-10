@@ -184,9 +184,7 @@ public class Borne {
                     break;
                 case 4:
                     this.validationCommande(commande, client);
-                    if(this.choix == 6){
-                        this.quitterApplication(commande, flagAnnuler);
-                    }
+                    flagAnnuler=this.quitterApplication(commande);
                     //commande = new Commande(client); // on recrée une nouvelle instance de commande
                     commande = null;
                     break;
@@ -194,7 +192,7 @@ public class Borne {
                     this.affichageAllCommandeClient(client);
                     break;
                 case 6:
-                    this.quitterApplication(commande, flagAnnuler);
+                    flagAnnuler=this.quitterApplication(commande);
                     break;
                 /*
                 Cas par défaut (choix incorrect)
@@ -203,7 +201,7 @@ public class Borne {
                     System.out.println(Data.COLOR_RED + "Merci de faire un choix correct" + Data.COLOR_RESET);
                     break;
             }
-        } while (choix != 6 || !flagAnnuler);
+        } while (this.choix != 6 || !flagAnnuler);
     }
 
     /**
@@ -257,9 +255,9 @@ public class Borne {
     /**
      * Quitter l'application
      * @param commande Commande du client
-     * @param flagAnnuler Boolean 
      */
-    public void quitterApplication(Commande commande, Boolean flagAnnuler){
+    public Boolean quitterApplication(Commande commande){
+        Boolean flagAnnuler = true;
         if (commande != null && commande.getSize() != 0) {
             System.out.println(Data.COLOR_BLUE + "Souhaitez-vous vraiment annuler la commande en cours (O/n) ?" + Data.COLOR_RESET);
             try {
@@ -274,7 +272,10 @@ public class Borne {
             } catch (InputMismatchException e) {
                 System.out.println(Data.COLOR_RED + "Choix non correct" + Data.COLOR_RESET);
             }
+        } else {
+            System.out.println("Au revoir");
         }
+        return flagAnnuler;
     }
 
     /**
