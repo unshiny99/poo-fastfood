@@ -1,7 +1,5 @@
 package org.src.ObjetBorne.Commande_Menu.Menu;
 
-import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.Ingredient;
-import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.IngredientCuisable;
 import org.src.ObjetBorne.Commande_Menu.Menu.Ingredient.IngredientInterface;
 
 import java.util.ArrayList;
@@ -37,41 +35,14 @@ public class Menu implements ProduitInterface, IngredientInterface {
                 this.tempsPreparation;
     }
 
-
-    /**
-     * Afficher uniquement les produits non exclusif au menu
-     */
-    public void afficherProduitNonExclusif(){
-        String res = null;
-        for(Produit produit : this.produits){
-            if(!produit.getIsExclusif()){
-                res += "Nom du produit : " + produit.getName() +
-                        ", Prix : " + produit.getPrix() +
-                        "\n";
-            }
-            System.out.println(res);
-        }
-    }
-    // Getter
+    // Getters
     public String getName() {return this.nom;}
-
-    public List<Produit> getProduits() {return this.produits;}
 
     public List<Produit> getAccompagnements() {
         List<Produit> accompagnements = new ArrayList<Produit>();
         for (Produit produit : this.produits) {
             if (produit.getType().equals("Accompagnement")) {
                 accompagnements.add(produit);
-            }
-        }
-        return accompagnements;
-    }
-
-    public String getAccompagnementsName() {
-        String accompagnements = "";
-        for (Produit produit : this.produits) {
-            if (produit.getType().equals("Accompagnement")) {
-                accompagnements += produit.getName() + " ";
             }
         }
         return accompagnements;
