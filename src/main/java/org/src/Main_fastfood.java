@@ -11,7 +11,7 @@ public class Main_fastfood {
         System.out.println("----------" + Data.COLOR_GREEN + "FIS'eat" + Data.COLOR_RESET + "----------");
 
         Data.GenerateData();
-        JsonEdit.initJSON("./poo_fastfood_auzou_fremeaux/src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
+        JsonEdit.initJSON("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
 
         BorneCommandes borneCommandes = new BorneCommandes();
 

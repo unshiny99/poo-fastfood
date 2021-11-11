@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.src</groupId>
-  <artifactId>poo_fastfood_auzou_fremeaux</artifactId>
+  <artifactId>tp-poo-fastfood-auzou-fremeaux</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>poo_fastfood_auzou_fremeaux</name>
+  <name>tp-poo-fastfood-auzou-fremeaux</name>
   <url>http://maven.apache.org</url>
 
   <properties>

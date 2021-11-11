@@ -247,7 +247,7 @@ public class Borne {
             System.out.println(Data.COLOR_GREEN + "Commande validée" + Data.COLOR_RESET);
 
             // fonction d'ajout de la commande pour le client donné
-            JsonEdit.ajouterCommandeJSON("./poo_fastfood_auzou_fremeaux/src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json",commande);
+            JsonEdit.ajouterCommandeJSON("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json",commande);
             System.out.println(Data.COLOR_BLUE + "Numéro de la commande : " + commande.getId() + Data.COLOR_RESET);
             commande.viderAll();
         }
@@ -317,7 +317,7 @@ public class Borne {
     public void affichageAllCommandeClient(Client client){
 
         // mise à jour des statuts de commande
-        String nomFic = "./poo_fastfood_auzou_fremeaux/src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json";
+        String nomFic = "./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json";
         JsonEdit.updateStatut(client, nomFic);
 
         // lit à partir du fichier json fourni en paramètre

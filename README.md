@@ -5,4 +5,4 @@
 ## Installation et Run du programme
 - [Installation] : ``` mvn install```
 - [Compilation] : ``` mvn package```
-- [Run] : ``` java -cp ./poo_fastfood_auzou_fremeaux/target/poo_fastfood_auzou_fremeaux-1.0-SNAPSHOT.jar org.src.Main_fastfood ```
+- [Run] : ``` java -cp ./target/tp-poo-fastfood-auzou-fremeaux-1.0-SNAPSHOT.jar org.src.Main_fastfood ```

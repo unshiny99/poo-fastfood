@@ -1,0 +1,15 @@
+org/src/ObjetBorne/Commande_Menu/Commande.class
+org/src/ObjetBorne/Commande_Menu/Menu/Ingredient/IngredientCuisable.class
+org/src/ObjetBorne/Thread/Employer.class
+org/src/ObjetBorne/Json/JsonEdit.class
+org/src/ObjetBorne/Commande_Menu/Menu/Ingredient/Ingredient.class
+org/src/ObjetBorne/Commande_Menu/Menu/Produit.class
+org/src/Main_fastfood.class
+org/src/ObjetBorne/Borne.class
+org/src/ObjetBorne/Thread/BorneCommandes$UpdateTask.class
+org/src/ObjetBorne/Client/Client.class
+org/src/ObjetBorne/Data/Data.class
+org/src/ObjetBorne/Commande_Menu/Menu/Ingredient/IngredientInterface.class
+org/src/ObjetBorne/Thread/BorneCommandes.class
+org/src/ObjetBorne/Commande_Menu/Menu/Menu.class
+org/src/ObjetBorne/Commande_Menu/Menu/ProduitInterface.class
