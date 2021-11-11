@@ -10,7 +10,6 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.src.ObjetBorne.Client.Client;
 import org.src.ObjetBorne.Commande_Menu.Menu.*;
-import org.src.ObjetBorne.Data.Data;
 import org.src.ObjetBorne.Json.JsonEdit;
 
 public class Commande {
@@ -62,14 +61,6 @@ public class Commande {
                 ", prix=" + prix +
                 ", client=" + client +
                 '}';
-    }
-
-    /**
-     * afficher les attributs utiles d'une commande
-     * @return la chaïne à afficher
-     */
-    public String afficherCommande() {
-        return Data.COLOR_BLUE + "date=" + date + ", statut=" + statut + ", prix=" + prix + ", tempsPreparation=" + tempsPreparation + Data.COLOR_RESET;
     }
 
     public void addElt(Menu menu) {

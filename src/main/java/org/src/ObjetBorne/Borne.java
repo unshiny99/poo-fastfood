@@ -259,23 +259,26 @@ public class Borne {
      */
     public Boolean quitterApplication(Commande commande){
         Boolean flagAnnuler = true;
-        if (commande != null && commande.getSize() != 0) {
-            System.out.println(Data.COLOR_BLUE + "Souhaitez-vous vraiment annuler la commande en cours (O/n) ?" + Data.COLOR_RESET);
-            try {
-                String annuler = this.scanner.next();
-                if (annuler.equals("n")) {
-                    flagAnnuler=false;
-                    System.out.println(Data.COLOR_BLUE + "Retour commande" + Data.COLOR_RESET);
-                } else {
-                    flagAnnuler=true;
-                    System.out.println(Data.COLOR_BLUE + "Au revoir" + Data.COLOR_RESET);
+        if (commande != null) {
+            if(commande.getSize() != 0) {
+                System.out.println(Data.COLOR_BLUE + "Souhaitez-vous vraiment annuler la commande en cours (O/n) ?" + Data.COLOR_RESET);
+                try {
+                    String annuler = this.scanner.next();
+                    if (annuler.equals("n")) {
+                        flagAnnuler=false;
+                        System.out.println(Data.COLOR_BLUE + "Retour commande" + Data.COLOR_RESET);
+                    } else {
+                        flagAnnuler=true;
+                        System.out.println(Data.COLOR_BLUE + "Au revoir" + Data.COLOR_RESET);
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println(Data.COLOR_RED + "Choix non correct" + Data.COLOR_RESET);
                 }
-            } catch (InputMismatchException e) {
-                System.out.println(Data.COLOR_RED + "Choix non correct" + Data.COLOR_RESET);
             }
-        } else {
-            System.out.println("Au revoir");
-        }
+            else {
+                System.out.println("Au revoir");
+            }
+        } 
         return flagAnnuler;
     }
 
