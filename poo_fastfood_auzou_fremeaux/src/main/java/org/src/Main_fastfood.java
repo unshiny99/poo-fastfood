@@ -1,19 +1,14 @@
 package org.src;
 
-import org.src.GUI.Gui_javafx;
 import org.src.ObjetBorne.Borne;
 import org.src.ObjetBorne.Data.Data;
 import org.src.ObjetBorne.Json.JsonEdit;
 import org.src.ObjetBorne.Thread.BorneCommandes;
 import org.src.ObjetBorne.Thread.Employer;
 
-public class Main_fastfood extends Gui_javafx{
+public class Main_fastfood {
     public static void main(String[] args) {
-        Main_fastfood main_fastfood = new Main_fastfood();
-
         System.out.println("----------" + Data.COLOR_GREEN + "FIS'eat" + Data.COLOR_RESET + "----------");
-
-        main_fastfood.setOnGUI(args);
 
         Data.GenerateData();
         JsonEdit.initJSON("./poo_fastfood_auzou_fremeaux/src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json");
