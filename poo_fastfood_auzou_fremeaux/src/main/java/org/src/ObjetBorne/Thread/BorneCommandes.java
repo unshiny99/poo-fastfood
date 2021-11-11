@@ -23,8 +23,7 @@ public class BorneCommandes extends Timer{
      */
     public synchronized void addCommande(Commande commande){
         this.listeCommandes.add(commande);
-        this.notifyAll(); // notification de tous les threads
-        // System.out.println("[THREAD][Info] : Commande ajoutée à la file de préparation");
+        this.notifyAll();
     }
 
     /**
@@ -33,11 +32,9 @@ public class BorneCommandes extends Timer{
      */
     public synchronized void prendreCommmande(Employer employer) throws InterruptedException, AWTException {
         while(this.listeCommandes.isEmpty()){
-            // System.out.println("[thread][Info] : En attente : " + employer.getNom() + " " + employer.getPrenom());
-            this.wait(5000); // tant que liste vide on attend
+            this.wait(5000);
         }
         traiterCommande(this.listeCommandes.get(0), employer);
-        // System.out.println("[THREAD][Info] : Commandre prise : " + employer.getNom() + " " + employer.getPrenom());
     }
 
     /**
@@ -47,7 +44,6 @@ public class BorneCommandes extends Timer{
      */
     public synchronized void retourCommande(Commande commande, Employer employer) throws AWTException {
         this.listeCommandes.remove(commande); // supprimer la liste des commandes
-        // System.out.println("[THREAD][Info] : Commande terminée par : " + employer.getNom() + " " + employer.getPrenom());
 
         // code pour prévenir le client
         if(SystemTray.isSupported()){
@@ -79,7 +75,6 @@ public class BorneCommandes extends Timer{
         schedule(updateTask, 0, 1000); // mettre à jour toutes les secondes
         updateTask = null;
         Thread.sleep((long) (commande.getTempsPreparation()*1000));
-        // System.out.println("[THREAD][Info] : Commande Traitée par : " + employer.getNom() + " " + employer.getPrenom());
         this.retourCommande(commande, employer);
     }
 
@@ -103,7 +98,6 @@ public class BorneCommandes extends Timer{
                 this.cancel(); // arrêt du traitement des temps
             } else {
                 this.commande.setStatus((int) (tempsPasse/this.commande.getTempsPreparation()*100) + "%");
-                //System.out.println((int) (tempsPasse/this.commande.getTempsPreparation()*100) + "%");
             }
         }
     }
