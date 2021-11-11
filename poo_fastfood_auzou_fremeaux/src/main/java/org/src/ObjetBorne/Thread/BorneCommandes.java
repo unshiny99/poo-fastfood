@@ -1,5 +1,7 @@
 package org.src.ObjetBorne.Thread;
 
+import org.src.ObjetBorne.Data.Data;
+
 import java.awt.*;
 import java.awt.TrayIcon.MessageType;
 import java.net.MalformedURLException;
@@ -49,7 +51,6 @@ public class BorneCommandes extends Timer{
         // System.out.println("[THREAD][Info] : Commande terminée par : " + employer.getNom() + " " + employer.getPrenom());
 
         // code pour prévenir le client
-        //System.out.println("Client " + commande.getClient().getId() + " : commande " + commande.getId() + " prête");
         if(SystemTray.isSupported()){
             SystemTray tray = SystemTray.getSystemTray();
 
@@ -59,13 +60,13 @@ public class BorneCommandes extends Timer{
             trayIcon.setImageAutoSize(true);
             trayIcon.setToolTip("Système notification PNG");
             tray.add(trayIcon);
-            trayIcon.displayMessage("Commande de : " +
-                                    commande.getClient().getNom() +
-                                    ", " + commande.getClient().getPrenom() + " : prête",
-                                    commande.getStatut(), 
+            trayIcon.displayMessage("Client : " +
+                                    commande.getClient().getId() +
+                                    ", commande : " + commande.getId(),
+                                    "prête", 
                                     MessageType.INFO);
         }else{
-            System.out.println("Client " + commande.getClient().getId() + " : commande " + commande.getId() + " prête");
+            System.out.println(Data.COLOR_GREEN + "Client " + commande.getClient().getId() + " : Commande " + commande.getId() + " prête" + Data.COLOR_RESET);
         }
     }
 
