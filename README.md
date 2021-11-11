@@ -1,7 +1,7 @@
 # FIS'eat
 
 ## Information importante avant toute manipulation
-- [IMPORTANT] : toute les commandes doivent se faire à la racine du projet !
+- [IMPORTANT] : toutes les commandes qui suivent doivent se faire à la racine du projet !
 ## Installation et Run du programme
 - [Installation] : ``` mvn install```
 - [Compilation] : ``` mvn package```
