@@ -315,7 +315,6 @@ public class Borne {
      * @param client Client
      */
     public void affichageAllCommandeClient(Client client){
-        //client.afficherCommandes();
 
         // mise à jour des statuts de commande
         String nomFic = "./poo_fastfood_auzou_fremeaux/src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json";

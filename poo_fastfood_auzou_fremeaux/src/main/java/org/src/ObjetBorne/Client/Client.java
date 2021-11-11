@@ -46,18 +46,6 @@ public class Client {
     }
 
     /**
-     * Afficher les commandes du client
-     */
-    public void afficherCommandes(){
-        for(Commande commande : this.liste_commande){
-            System.out.println(commande.afficherCommande());
-        }
-        if (this.liste_commande.size() == 0) {
-            System.out.println("Vous n'avez pas encore fait de commande chez nous.");
-        }
-    }
-
-    /**
      * Ajout d'une commande 
      * @param commande Commande du client
      */
