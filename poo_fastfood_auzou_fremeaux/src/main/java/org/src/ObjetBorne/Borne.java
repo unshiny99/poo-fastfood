@@ -248,6 +248,7 @@ public class Borne {
 
             // fonction d'ajout de la commande pour le client donné
             JsonEdit.ajouterCommandeJSON("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json",commande);
+            System.out.println(Data.COLOR_BLUE + "Numéro de la commande : " + commande.getId() + Data.COLOR_RESET);
             commande.viderAll();
         }
     }
