@@ -244,7 +244,7 @@ public class Borne {
             client.addCommande(commande);
             borneCommandes.addCommande(commande);
             this.choix = 6;
-            System.out.println(Data.COLOR_GREEN + "Commande validée" + Data.COLOR_RESET);
+            System.out.println(Data.COLOR_GREEN + "Commande validée, temps de préparation estimé : " + commande.getTempsPreparation() + "s" + Data.COLOR_RESET);
 
             // fonction d'ajout de la commande pour le client donné
             JsonEdit.ajouterCommandeJSON("./src/main/java/org/src/ObjetBorne/Data/HistoriqueCommandes.json",commande);
