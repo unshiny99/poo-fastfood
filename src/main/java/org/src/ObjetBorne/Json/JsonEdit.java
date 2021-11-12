@@ -90,11 +90,10 @@ public class JsonEdit {
             // si c'est un complément
             if (element instanceof Produit) {
                 JSONObject complement = new JSONObject();
-                System.out.println(element);
-                    complement.put("nom",((Produit) element).getName());
-                    complement.put("type",((Produit) element).getType());
-                    complement.put("prix",String.valueOf(((Produit) element).getPrix()));
-                    complements.add(complement);
+                complement.put("nom",((Produit) element).getName());
+                complement.put("type",((Produit) element).getType());
+                complement.put("prix",String.valueOf(((Produit) element).getPrix()));
+                complements.add(complement);
             }
         }
         commandeObj.put("menus", menus);
